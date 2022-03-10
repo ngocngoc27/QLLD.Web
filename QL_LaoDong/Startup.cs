@@ -36,28 +36,20 @@ namespace QL_LaoDong
             //helolollllo, hi2222222222222222222222222222222222222222222222222222222
             //hfjddksssssssssssssssssssssssssssssssss
             //dij fhoxjdncfvmfvkfdkk
+            public void Create(Role model)
+            {
+                var entity = new Role();
+                entity.NameRole = model.NameRole;
+                entity.Lock = false;
+                _context.Role.Add(entity);
+                _context.SaveChanges();
+            }
 
-            services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<ICalendarService, CalendarService>();
-            services.AddScoped<IClassService, ClassService>();
-            services.AddScoped<IFacultyService, FacultyService>();
-            services.AddScoped<IJobService, JobService>();
-            services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<ICalendarService, CalendarService>();
-            services.AddScoped<IClassService, ClassService>();
-            services.AddScoped<IFacultyService, FacultyService>();
-            services.AddScoped<IJobService, JobService>();
-
-            services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<ICalendarService, CalendarService>();
-            services.AddScoped<IClassService, ClassService>();
-            services.AddScoped<IFacultyService, FacultyService>();
-            services.AddScoped<IJobService, JobService>();
 
             //helolollllo, hi2222222222222222222222222222222222222222222222222222222
             //hfjddksssssssssssssssssssssssssssssssss
             //dij fhoxjdncfvmfvkfdkk
-      
+
             services.AddScoped<IMenusService, MenusService>();
             services.AddScoped<IMusterService, MusterService>();
             services.AddScoped<IRoleService, RoleService>();
