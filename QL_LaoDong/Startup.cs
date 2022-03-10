@@ -27,29 +27,42 @@ namespace QL_LaoDong
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            services.AddControllersWithViews();
+            services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=LAPTOP-LFIQ3TTI;Database=QLLD;Trusted_Connection=True;"));
 
-            app.UseRouting();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IWorkTickerService,WorkTickerService>();
 
-            app.UseAuthorization();
+            //helolollllo, hi2222222222222222222222222222222222222222222222222222222
+            //hfjddksssssssssssssssssssssssssssssssss
+            //dij fhoxjdncfvmfvkfdkk
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+
+            //helolollllo, hi2222222222222222222222222222222222222222222222222222222
+            //hfjddksssssssssssssssssssssssssssssssss
+            //dij fhoxjdncfvmfvkfdkk
+      
+            services.AddScoped<IMenusService, MenusService>();
+            services.AddScoped<IMusterService, MusterService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IToolService, ToolService>();
+            services.AddScoped<ITooltickerService, TooltickerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
