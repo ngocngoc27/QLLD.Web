@@ -36,11 +36,24 @@ namespace QL_LaoDong
             //helolollllo, hi2222222222222222222222222222222222222222222222222222222
             //hfjddksssssssssssssssssssssssssssssssss
             //dij fhoxjdncfvmfvkfdkk
+
+            //helolollllo, hi2222222222222222222222222222222222222222222222222222222
+            //hfjddksssssssssssssssssssssssssssssssss
+            //dij fhoxjdncfvmfvkfdkk
+
             services.AddScoped<IAccountService, AccountService>();
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            //hhghghgaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ICalendarService, CalendarService>();
             services.AddScoped<IClassService, ClassService>();
             services.AddScoped<IFacultyService, FacultyService>();
