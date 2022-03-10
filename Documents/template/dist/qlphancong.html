@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DTHU - QUẢN LÝ LAO ĐỘNG</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    
+</head>
+<body>
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper">
+			<div class="navbar-content scroll-div " >				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">HongNgoc<i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-unstyled">
+							<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Thông tin cá nhân</a></li>
+							<li class="list-group-item"><a href="auth-signin.html"><i class="feather icon-log-out m-r-5"></i>Đăng xuất</a></li>
+						</ul>
+					</div>
+				</div>				
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item">
+					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="lichlaodong.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Lịch lao động</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="dangky.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Đăng ký lao động</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="diemdanh.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Điểm danh</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="qlsinhvien.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Thông tin lớp sinh viên</span></a>
+					</li>
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Quản lý chung</label>
+					</li>
+					<li class="nav-item pcoded-hasmenu">
+					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Cán bộ quán lý</span></a>
+					    <ul class="pcoded-submenu">
+                            <li><a href="qltaikhoan.html">Quản lý tài khoản</a></li>
+                            <li><a href="qlthongtinlop.html">Quản lý thông tin các lớp</a></li>
+					        <li><a href="qldangky.html">Quản lý đăng ký</a></li>                            
+					        <li><a href="qlcongviec.html">Danh mục công việc</a></li>
+                            <li><a href="qldungcu.html">Danh mục dụng cụ</a></li>
+                            <li><a href="#">Quản lý danh mục</a></li>
+                        </ul>
+                    </li>             		
+				</ul>			
+			</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">			
+		<div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <img class="img-radius" src="assets/images/dthu.png" style="width:50px">
+                <span style="padding: 5px;">HỆ THỐNG <br> QUẢN LÝ LAO ĐỘNG DTHU</span>                
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+	</header>
+	
+	
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Bootstrap Table</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+			<!-- [ tabs ] start -->
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h5>Basic Tabs</h5>
+					</div>
+					<div class="card-body">
+						<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+							</li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<p class="mb-0">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+									Reprehenderit
+									butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher
+									voluptate nisi qui.
+								</p>
+							</div>
+							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+								<p class="mb-0">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four
+									loko
+									farm-to-table
+									craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. accusamus tattooed echo park.</p>
+							</div>
+							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+								<p class="mb-0">Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed
+									craft beer,
+									iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Lnyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- [ tabs ] end -->
+		</div>
+        <!-- [ breadcrumb ] start -->
+        
+        <div class="row">
+            <div class="col-sm-12">                
+                <div class="card">
+                    <div class="card-header">
+                        <h4>PHÂN CÔNG CÔNG VIỆC</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Tên công việc</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Dọn dẹp H1</option>
+                                        <option>Dọn dẹp C1 - C2 </option>
+                                        <option>Quét đường ống</option>
+                                        <option>Dọn cỏ sân banh</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="btnDangKy">
+                                <button type="submit" class="btn btn-primary" style="width: 220px;">Lưu</button>
+                            </div>                            
+                        </div>                 
+                    </div>
+                </div>    
+                <div class="card">
+                    <div class="card-header">
+                        <h4>PHÂN CÔNG DỤNG CỤ</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Tên dụng cụ</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Chổi</option>
+                                        <option>Ky hốt rác</option>
+                                        <option>Cần xé đựng rác</option>
+                                        <option>Chét</option>
+                                    </select>
+                                </div>           
+                                <div class="form-group">
+                                    <label>Số lượng</label>
+                                    <input type="text" class="form-control">
+                                </div>                                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ghi chú</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>                                               
+                            </div>
+                            <div class="btnDangKy">
+                                <button type="submit" class="btn btn-primary" style="width: 220px;">Lưu</button>
+                            </div>                            
+                        </div>                 
+                    </div>
+                </div>           
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>PHIẾU DỤNG CỤ LAO ĐỘNG</h5>                        
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên dụng cụ</th>
+                                        <th>Số lượng</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-active">
+                                        <td>Chổi</td>
+                                        <td>20</td>
+                                        <td></td>
+                                        <td>
+                                            <button type="button" class="btn  btn-info">Sửa</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td>Ky hốt rác</td>
+                                        <td>15</td>
+                                        <td></td>
+                                        <td>
+                                            <button type="button" class="btn  btn-info">Sửa</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cần xé đựng rác</td>
+                                        <td>5</td>
+                                        <td></td>
+                                        <td>
+                                            <button type="button" class="btn  btn-info">Sửa</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger">Xóa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</section>
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+</body>
+</html>

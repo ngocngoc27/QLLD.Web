@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DTHU - QUẢN LÝ LAO ĐỘNG</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    
+</head>
+<body>
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper">
+			<div class="navbar-content scroll-div " >				
+				<div class="">
+					<div class="main-menu-header">
+						<img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+						<div class="user-details">
+							<div id="more-details">HongNgoc<i class="fa fa-caret-down"></i></div>
+						</div>
+					</div>
+					<div class="collapse" id="nav-user-link">
+						<ul class="list-unstyled">
+							<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Thông tin cá nhân</a></li>
+							<li class="list-group-item"><a href="auth-signin.html"><i class="feather icon-log-out m-r-5"></i>Đăng xuất</a></li>
+						</ul>
+					</div>
+				</div>				
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item">
+					    <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="lichlaodong.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Lịch lao động</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="dangky.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Đăng ký lao động</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="diemdanh.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Điểm danh</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="qlsinhvien.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Thông tin lớp sinh viên</span></a>
+					</li>
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Quản lý chung</label>
+					</li>
+					<li class="nav-item pcoded-hasmenu">
+					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Cán bộ quán lý</span></a>
+					    <ul class="pcoded-submenu">
+                            <li><a href="qltaikhoan.html">Quản lý tài khoản</a></li>
+                            <li><a href="qlthongtinlop.html">Quản lý thông tin các lớp</a></li>
+					        <li><a href="qldangky.html">Quản lý đăng ký</a></li>                            
+					        <li><a href="qlcongviec.html">Danh mục công việc</a></li>
+                            <li><a href="qldungcu.html">Danh mục dụng cụ</a></li>
+                            <li><a href="#">Quản lý danh mục</a></li>
+                        </ul>
+                    </li>             		
+				</ul>			
+			</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">			
+		<div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <img class="img-radius" src="assets/images/dthu.png" style="width:50px">
+                <span style="padding: 5px;">HỆ THỐNG <br> QUẢN LÝ LAO ĐỘNG DTHU</span>                
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+	</header>
+	
+	
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Lịch lao động</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>LỊCH LAO ĐỘNG</h5>                        
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>BUỔI</th>
+                                        <th>THỨ HAI</th>
+                                        <th>THỨ BA</th>
+                                        <th>THỨ TƯ</th>
+                                        <th>THỨ NĂM</th>
+                                        <th>THỨ SÁU</th>
+                                        <th>THỨ BẢY</th>
+                                        <th>CHỦ NHẬT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: rgb(255, 255, 255);">
+                                        <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Sáng</td>     
+                                        <!-- SÁNG/THỨ HAI -->                   
+                                        <td>
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
+                                                </div> 
+                                            </div>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- SÁNG/THỨ BA --> 
+                                        <td>
+                                            
+                                        </td>
+                                        <!-- SÁNG/THỨ TƯ --> 
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- SÁNG/THỨ NĂM --> 
+                                        <td>
+                                            
+                                        </td>
+                                        <!-- SÁNG/THỨ SÁU--> 
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- SÁNG/THỨ THỨ--> 
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                                </div> 
+                                            </div>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- SÁNG/CHỦ NHẬT--> 
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: rgb(255, 255, 255);">
+                                        <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Chiều</td>     
+                                        <!-- CHIỀU/THỨ HAI -->                   
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- CHIỀU/THỨ BA --> 
+                                        <td>
+                                            
+                                        </td>
+                                        <!-- CHIỀU/THỨ TƯ --> 
+                                        <td>
+                                            <div class="tkb"> 
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                                </div> 
+                                            </div>                                                            
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp C1-C2</div>
+                                                </div> 
+                                            </div>
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn dẹp đường ống</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- CHIỀU/THỨ NĂM --> 
+                                        <td>
+                                            
+                                        </td>
+                                        <!-- CHIỀU/THỨ SÁU--> 
+                                        <td>
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [39]</a>
+                                                    <div class="font-size13 text-light-gray">Dọn cỏ sân banh</div>
+                                                </div> 
+                                            </div>                                                            
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [20]</a>
+                                                    <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
+                                                </div> 
+                                            </div>
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHSTIN20A [14]</a>
+                                                    <div class="font-size13 text-light-gray">Vệ sinh phòng học</div>
+                                                </div> 
+                                            </div>
+                                        </td>
+                                        <!-- CHIỀU/THỨ THỨ--> 
+                                        <td>
+                                            
+                                        </td>
+                                        <!-- CHIỀU/CHỦ NHẬT--> 
+                                        <td>
+                                            
+                                        </td> 
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>DANH SÁCH ĐĂNG KÝ LAO ĐỘNG</h5>    
+                        <span>(Chỉ hiển thị danh sách đăng ký do user đó đăng ký!)</span>                    
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên lớp</th>
+                                        <th>Sỉ số</th>
+                                        <th>Buổi đăng ký</th>
+                                        <th>Ngày đăng ký</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-active">
+                                        <td>ĐHCNTT18A</td>
+                                        <td>39</td>
+                                        <td>Sáng</td>
+                                        <td>23/02/2022</td>
+                                        <td>Đã duyệt</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-info">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ĐHCNTT20A</td>
+                                        <td>39</td>
+                                        <td>Sáng</td>
+                                        <td>20/02/2022</td>
+                                        <td>Chờ duyệt</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-danger">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td>ĐHCNTT20A</td>
+                                        <td>39</td>
+                                        <td>Sáng</td>
+                                        <td>20/02/2022</td>
+                                        <td>Báo bận</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ĐHSANH20A</td>
+                                        <td>39</td>
+                                        <td>Sáng</td>
+                                        <td>20/02/2022</td>
+                                        <td>Báo bận</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>ĐHSTN20A</td>
+                                        <td>30</td>
+                                        <td>Sáng</td>
+                                        <td>20/02/2022</td>
+                                        <td>Chờ duyệt</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-danger">Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>ĐHNTTS21A</td>
+                                        <td>39</td>
+                                        <td>Sáng</td>
+                                        <td>20/02/2022</td>
+                                        <td>Báo bận</td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Báo bận</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-secondary">Xóa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</section>
+
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+
+
+
+</body>
+</html>

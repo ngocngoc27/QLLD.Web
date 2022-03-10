@@ -1,0 +1,83 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "DataContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "QL_LaoDong",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[ACCOUNT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CALENDAR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CLASS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FACULTY]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[JOB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MENUS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MUSTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ROLE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[STUDENT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TOOL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TOOLTICKER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WORKTICKER]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "LAPTOP-LFIQ3TTI.QLLD",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": true,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
