@@ -32,7 +32,10 @@ namespace QL_LaoDong
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IWorkTickerService,WorkTickerService>();
-
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
             //helolollllo, hi2222222222222222222222222222222222222222222222222222222
             //hfjddksssssssssssssssssssssssssssssssss
             //dij fhoxjdncfvmfvkfdkk
