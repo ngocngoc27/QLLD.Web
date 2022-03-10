@@ -30,9 +30,19 @@ namespace QL_LaoDong
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=LAPTOP-LFIQ3TTI;Database=QLLD;Trusted_Connection=True;"));
 
-            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IWorkTickerService,WorkTickerService>();
+
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IClassService, ClassService>();
+            services.AddScoped<IFacultyService, FacultyService>();
+            services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IMenusService, MenusService>();
+            services.AddScoped<IMusterService, MusterService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IToolService, ToolService>();
+            services.AddScoped<ITooltickerService, TooltickerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
