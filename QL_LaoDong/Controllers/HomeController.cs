@@ -23,7 +23,6 @@ namespace QL_LaoDong.Controllers
             this._AccountService = accountService;
             this._RoleService = roleService;
         }
-
         public IActionResult Index()
         {
             var data = _AccountService.Get();
@@ -60,17 +59,6 @@ namespace QL_LaoDong.Controllers
             _AccountService.Lock(ac);
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
-        }
-
         private void RoleList(object selectRole = null)
         {
             ViewBag.roles = new SelectList(_RoleService.Get(), "Id", "NameRole", selectRole);
