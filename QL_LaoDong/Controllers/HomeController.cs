@@ -31,7 +31,6 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Create()
         {
-            
             return View();
         }
         [HttpPost]
@@ -40,7 +39,24 @@ namespace QL_LaoDong.Controllers
              _AccountService.Create(model);
             return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult Edit(int id)
+        {
+            var acc = _AccountService.GetById(id);
+            return View(acc);
+        }
+        [HttpPost]
+        public IActionResult Edit(Account model)
+        {
+            _AccountService.Edit(model);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public IActionResult Lock(Account model, int id)
+        {
+            var ac = _AccountService.GetById(id);
+            _AccountService.Lock(ac);
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Privacy()
         {
             return View();

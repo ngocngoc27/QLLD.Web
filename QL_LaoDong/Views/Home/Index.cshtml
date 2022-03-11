@@ -26,10 +26,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Sex)
             </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.Lock)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Role)
             </th>
@@ -52,10 +48,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
             </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.Lock)
-            </td>
             <td>
                 @*@Html.DisplayFor(modelItem => item.Role.NameRole)*@
                 @(item.Role ==null?"":item.Role.NameRole)
@@ -63,7 +55,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                <a asp-action="Lock" asp-route-id="@item.Id">Lock</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
