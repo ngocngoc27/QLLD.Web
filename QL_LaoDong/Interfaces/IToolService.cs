@@ -12,6 +12,7 @@ namespace QL_LaoDong.Interfaces
         Tool GetById(int id);
         void Create(Tool model);
         void Edit(Tool model);
-        void Delete(Tool model);
+        void Lock(Tool model);
+
     }
 }

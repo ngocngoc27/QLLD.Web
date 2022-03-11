@@ -29,14 +29,9 @@ namespace QL_LaoDong.Controllers
             var data = _AccountService.Get();
             return View(data);
         }
-        public IActionResult Create()
-<<<<<<< .mine
-        {            
-
-=======
+        public IActionResult Create()         
         {
             RoleList();
->>>>>>> .theirs
             return View();
         }
         [HttpPost]
@@ -73,7 +68,7 @@ namespace QL_LaoDong.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
 
         private void RoleList(object selectRole = null)
@@ -87,7 +82,5 @@ namespace QL_LaoDong.Controllers
             _AccountService.Delete(ac);
             return RedirectToAction(nameof(Index));
         }
-
-
     }
 }
