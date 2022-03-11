@@ -31,7 +31,7 @@ namespace QL_LaoDong.Services
             entity.Password = Security.MD5(pass);
             entity.Fullname = model.Fullname;
             entity.Sex = model.Sex;
-            entity.RoleId = 4;
+            entity.RoleId = model.RoleId;
             entity.DateOfBirth = model.DateOfBirth;
             entity.Lock = false;
             _context.Account.Add(entity);

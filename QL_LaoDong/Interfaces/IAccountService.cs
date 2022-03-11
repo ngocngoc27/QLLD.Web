@@ -14,5 +14,6 @@ namespace QL_LaoDong.Interfaces
         void Edit(Account model);
         void Delete(Account model);
         void Lock(Account model);
+
     }
 }
