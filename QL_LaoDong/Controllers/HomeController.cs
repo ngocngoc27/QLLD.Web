@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -8,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using static QL_LaoDong.Helpers.Helper;
 
 namespace QL_LaoDong.Controllers
 {
@@ -28,30 +31,7 @@ namespace QL_LaoDong.Controllers
             var data = _AccountService.Get();
             return View(data);
         }
-        public IActionResult Create()         
-        {
-            RoleList();
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(Account model)
-        {
-
-             _AccountService.Create(model);
-            return RedirectToAction(nameof(Index));
-        }
-        public IActionResult Edit(int id)
-        {
-            RoleList();
-            var acc = _AccountService.GetById(id);
-            return View(acc);
-        }
-        [HttpPost]
-        public IActionResult Edit(Account model)
-        {
-            _AccountService.Edit(model);
-            return RedirectToAction(nameof(Index));
-        }
+    
         [HttpGet]
         public IActionResult Lock(Account model, int id)
         {
@@ -63,12 +43,73 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.roles = new SelectList(_RoleService.Get(), "Id", "NameRole", selectRole);
         }
-        [HttpGet]
-        public IActionResult Delete(Account model, int id)
+
+        private bool AccExists(long id)
         {
-            var ac = _AccountService.GetById(id);
-            _AccountService.Delete(ac);
-            return RedirectToAction(nameof(Index));
+            return _AccountService.AccountExists(id);
+        }
+        [NoDirectAccess]
+        public IActionResult AddOrEdit(int id = 0)
+        {
+            RoleList();
+            if (id == 0)
+            {
+                return View(new Account());
+            }
+
+            else
+            {
+                var Acc = _AccountService.GetById(id);
+                if (Acc == null)
+                {
+                    return NotFound();
+                }
+                return View(Acc);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public  IActionResult AddOrEdit(Account model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (model.Id == 0)
+                {
+                   
+                    _AccountService.Create(model);
+                }
+                else
+                {
+                    try
+                    {
+                        _AccountService.Edit(model);
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!AccExists(model.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _AccountService.Get()) });
+            }
+            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Account model)
+        {
+            _AccountService.Delete(model);
+            return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _AccountService.Get()) });
         }
     }
 }

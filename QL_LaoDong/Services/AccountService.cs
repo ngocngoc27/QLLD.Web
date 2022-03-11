@@ -70,7 +70,10 @@ namespace QL_LaoDong.Services
         {
             return _context.Account.Where(x => x.Id == id).FirstOrDefault();
         }
-
+        public bool AccountExists(long id)
+        {
+            return _context.Account.Any(x => x.Id == id);
+        }
         public void Lock(Account model)
         {
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
