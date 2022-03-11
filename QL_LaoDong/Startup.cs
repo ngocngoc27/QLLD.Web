@@ -28,7 +28,7 @@ namespace QL_LaoDong
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=HONGNGOC\SQLEXPRESS;Database=QLLD;Trusted_Connection=True;"));
+            services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=.;Database=QLLD;Trusted_Connection=True;"));
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IWorkTickerService,WorkTickerService>();
