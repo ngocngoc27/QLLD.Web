@@ -5,4 +5,88 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<<<<<<< HEAD
 @await Html.PartialAsync("_ViewAll", Model)
+=======
+<div class="card-body btn-page">
+    <button asp-action="Create" type="button" class="btn  btn-primary" data-toggle="modal" data-target="#exampleModal">THÊM TÀI KHOẢN MỚI</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+ 
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>DANH MỤC TÀI KHOẢN NGƯỜI DÙNG</h5>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Username)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Fullname)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Sex)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Role)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Username)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fullname)
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.DateOfBirth.ToString("dd/MM/yyyy"))*@
+                                        @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sex)
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.Role.NameRole)*@
+                                        @(item.Role ==null?"":item.Role.NameRole)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Lock" asp-route-id="@item.Id">Lock</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+>>>>>>> 22bede7d068e970d86ca9172e9b0b2570f974777
