@@ -51,12 +51,21 @@ namespace QL_LaoDong.Services
 
         public List<Job> Get()
         {
-            return _context.Job.ToList();
+            return _context.Job.Where(x=>x.Lock!=true).ToList();
         }
 
         public Job GetById(int id)
         {
             return _context.Job.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public void Lock(Job model)
+        {
+            var entity = _context.Job.Where(x => x.Id == model.Id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu.");
+            entity.Lock = true;
+            _context.Job.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

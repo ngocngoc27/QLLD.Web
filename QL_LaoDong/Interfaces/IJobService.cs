@@ -13,5 +13,6 @@ namespace QL_LaoDong.Interfaces
         void Create(Job model);
         void Edit(Job model);
         void Delete(Job model);
+        void Lock(Job model);
     }
 }

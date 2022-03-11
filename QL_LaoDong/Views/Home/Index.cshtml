@@ -43,7 +43,8 @@
                 @Html.DisplayFor(modelItem => item.Fullname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                @*@Html.DisplayFor(modelItem => item.DateOfBirth.ToString("dd/MM/yyyy"))*@
+                @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
