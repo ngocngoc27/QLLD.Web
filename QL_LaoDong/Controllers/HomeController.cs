@@ -28,7 +28,7 @@ namespace QL_LaoDong.Controllers
             var data = _AccountService.Get();
             return View(data);
         }
-        public IActionResult Create()
+        public IActionResult Create()         
         {
             RoleList();
             return View();
@@ -70,7 +70,5 @@ namespace QL_LaoDong.Controllers
             _AccountService.Delete(ac);
             return RedirectToAction(nameof(Index));
         }
-
-
     }
 }

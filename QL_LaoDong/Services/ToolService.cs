@@ -51,16 +51,24 @@ namespace QL_LaoDong.Services
             _context.SaveChanges();
         }
 
-        public void Delete(Tool model)
+        //public void Delete(Tool model)
+        //{
+        //    var entity = _context.Tool.Where(x => x.Id == model.Id).FirstOrDefault();
+        //    if (entity == default)
+        //        throw new Exception("Không tìm thấy dữ liệu.");
+
+        //    _context.Tool.Remove(entity);
+        //    _context.SaveChanges();
+        //}
+
+        public void Lock(Tool model)
         {
             var entity = _context.Tool.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Tool.Remove(entity);
+            entity.Lock = true;
+            _context.Tool.Update(entity);
             _context.SaveChanges();
         }
-
-        
     }
 }
