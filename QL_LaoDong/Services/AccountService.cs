@@ -53,8 +53,7 @@ namespace QL_LaoDong.Services
             entity.Sex = model.Sex;
             entity.Fullname = model.Fullname;
             entity.DateOfBirth = model.DateOfBirth;
-            //entity.RoleId = model.RoleId;
-            //entity.Lock = model.Lock;
+            entity.RoleId = model.RoleId;
             _context.Account.Update(entity);
             _context.SaveChanges();
         }
