@@ -30,8 +30,7 @@ namespace QL_LaoDong.Controllers
             return View(data);
         }
         public IActionResult Create()
-        {
-            
+        {            
             return View();
         }
         [HttpPost]
