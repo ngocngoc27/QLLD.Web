@@ -30,16 +30,41 @@ namespace QL_LaoDong.Controllers
             return View(data);
         }
         public IActionResult Create()
+<<<<<<< .mine
         {            
+
+=======
+        {
+            RoleList();
+>>>>>>> .theirs
             return View();
         }
         [HttpPost]
         public IActionResult Create(Account model)
         {
+
              _AccountService.Create(model);
             return RedirectToAction(nameof(Index));
         }
-
+        public IActionResult Edit(int id)
+        {
+            RoleList();
+            var acc = _AccountService.GetById(id);
+            return View(acc);
+        }
+        [HttpPost]
+        public IActionResult Edit(Account model)
+        {
+            _AccountService.Edit(model);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public IActionResult Lock(Account model, int id)
+        {
+            var ac = _AccountService.GetById(id);
+            _AccountService.Lock(ac);
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -50,5 +75,19 @@ namespace QL_LaoDong.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        private void RoleList(object selectRole = null)
+        {
+            ViewBag.roles = new SelectList(_RoleService.Get(), "Id", "NameRole", selectRole);
+        }
+        [HttpGet]
+        public IActionResult Delete(Account model, int id)
+        {
+            var ac = _AccountService.GetById(id);
+            _AccountService.Delete(ac);
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

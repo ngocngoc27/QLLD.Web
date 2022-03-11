@@ -50,13 +50,11 @@ namespace QL_LaoDong.Services
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.Username = model.Username;
-            string pass = model.Password;
-            entity.Password = Security.MD5(pass);
             entity.Sex = model.Sex;
             entity.Fullname = model.Fullname;
             entity.DateOfBirth = model.DateOfBirth;
-            entity.RoleId = model.RoleId;
-            entity.Lock = model.Lock;
+            //entity.RoleId = model.RoleId;
+            //entity.Lock = model.Lock;
             _context.Account.Update(entity);
             _context.SaveChanges();
         }
@@ -72,6 +70,16 @@ namespace QL_LaoDong.Services
         public Account GetById(int id)
         {
             return _context.Account.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public void Lock(Account model)
+        {
+            var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu.");
+            entity.Lock = true;
+            _context.Account.Update(entity);
+            _context.SaveChanges();
         }
 
     }

@@ -13,5 +13,7 @@ namespace QL_LaoDong.Interfaces
         void Create(Account model);
         void Edit(Account model);
         void Delete(Account model);
+        void Lock(Account model);
+
     }
 }
