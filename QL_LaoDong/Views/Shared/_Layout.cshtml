@@ -4,11 +4,114 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QL_LaoDong</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <nav class="pcoded-navbar menu-light ">
+        <div class="navbar-wrapper">
+            <div class="navbar-content scroll-div ">
+                <div class="">
+                    <div class="main-menu-header">
+                        <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+                        <div class="user-details">
+                            <div id="more-details">HongNgoc<i class="fa fa-caret-down"></i></div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="nav-user-link">
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Thông tin cá nhân</a></li>
+                            <li class="list-group-item"><a href="auth-signin.html"><i class="feather icon-log-out m-r-5"></i>Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lichlaodong.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Lịch lao động</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dangky.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Đăng ký lao động</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="diemdanh.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Điểm danh</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qlsinhvien.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Thông tin lớp sinh viên</span></a>
+                    </li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Quản lý chung</label>
+                    </li>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Cán bộ quán lý</span></a>
+                        <ul class="pcoded-submenu">
+                            <li><a href="qltaikhoan.html">Quản lý tài khoản</a></li>
+                            <li><a href="qlthongtinlop.html">Quản lý thông tin các lớp</a></li>
+                            <li><a href="qldangky.html">Quản lý đăng ký</a></li>
+                            <li><a href="qlcongviec.html">Danh mục công việc</a></li>
+                            <li><a href="qldungcu.html">Danh mục dụng cụ</a></li>
+                            <li><a href="qldanhmuc.html">Quản lý danh mục</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <img class="img-radius" src="assets/images/dthu.png" style="width:50px">
+                <span style="padding: 5px;">HỆ THỐNG <br> QUẢN LÝ LAO ĐỘNG DTHU</span>
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Dashboard Analytics</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/assets/js/vendor-all.min.js"></script>
+    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/assets/js/ripple.js"></script>
+    <script src="~/assets/js/pcoded.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+@*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QL_LaoDong</a>
@@ -43,6 +146,4 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+    @await RenderSectionAsync("Scripts", required: false)*@
