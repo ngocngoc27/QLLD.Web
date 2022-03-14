@@ -9,10 +9,10 @@ namespace QL_LaoDong.Interfaces
     public interface IMenusService
     {
         List<Menus> Get();
-        Menus GetById(int id);
+        Menus GetById(int IdMn);
         void Create(Menus model);
-        void Edit(Menus model);
-        void Delete(Menus model);
-        bool MenusExists(long id);
+        void Edit(Menus model, int id);
+        void Delete(int id);
+        bool MenusExists(long IdMn);
     }
 }

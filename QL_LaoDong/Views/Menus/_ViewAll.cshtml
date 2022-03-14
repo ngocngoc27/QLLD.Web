@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<QL_LaoDong.Models.Menus>
 
-<a onclick="showInPopup('@Url.Action("AddOrEdit","Menus",new {id=0},Context.Request.Scheme)', 'New menu')" class="btn btn-success text-white"><i class="fas fa-random"></i> Create New</a>
+<a onclick="showInPopup('@Url.Action("AddOrEdit","Menus",new {IdMn=0},Context.Request.Scheme)', 'New menu')" class="btn btn-success text-white"><i class="fas fa-random"></i> Create New</a>
 <br />
 <br />
 <table class="table">
@@ -9,17 +9,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Label)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Parent)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.UrlLink)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderKey)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hide)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserAddNavigation)
@@ -34,23 +29,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Label)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Parent)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.UrlLink)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderKey)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hide)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.UserAddNavigation.Username)
                 </td>
                 <td>
-                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Menus",new {id=item.IdMn },Context.Request.Scheme)', 'Update Menu')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Menus",new {IdMn=item.IdMn },Context.Request.Scheme)', 'Update Menu')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
                     <form asp-action="Delete" asp-route-id="@item.IdMn" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                         <input type="submit" value="Delete" class="btn btn-danger" />
                     </form>

@@ -20,8 +20,9 @@
                 <div class=" col-md-6">
                     <div class="form-group">
                         <label asp-for="Parent" class="control-label"></label>
-                        <input asp-for="Parent" class="form-control" />
-                        <span asp-validation-for="Parent" class="text-danger"></span>
+                        <select asp-for="Parent" class="form-control" asp-items="@ViewBag.parent">
+                            <option>---Chọn danh mục cha---</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -45,7 +46,9 @@
                 <div class=" col-md-6">
                     <div class="form-group">
                         <label asp-for="UserAdd" class="control-label"></label>
-                        <select asp-for="UserAdd" class="form-control" asp-items="ViewBag.UserAdd"></select>
+                        <select asp-for="UserAdd" class="form-control" asp-items="@ViewBag.user">
+                            <option>---Chọn user---</option>
+                        </select>
                     </div>
                 </div>
                 <div class=" col-md-6">

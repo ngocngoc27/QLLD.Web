@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -15,6 +16,7 @@ namespace QL_LaoDong.Services
         {
             _context = context;
         }
+
         public void Create(Menus model)
         {
             var entity = new Menus();
@@ -28,18 +30,19 @@ namespace QL_LaoDong.Services
             _context.SaveChanges();
         }
 
-        public void Delete(Menus model)
+        public void Delete(int id)
         {
-            var entity = _context.Menus.Where(x =>x.IdMn == model.IdMn).FirstOrDefault();
+            var entity = _context.Menus.Where(x => x.IdMn == id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
+
             _context.Menus.Remove(entity);
             _context.SaveChanges();
         }
 
-        public void Edit(Menus model)
+        public void Edit(Menus model, int id)
         {
-            var entity = _context.Menus.Where(x => x.IdMn == model.IdMn).FirstOrDefault();
+            var entity = _context.Menus.Where(x => x.IdMn == id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.Label = model.Label;
@@ -48,22 +51,23 @@ namespace QL_LaoDong.Services
             entity.OrderKey = model.OrderKey;
             entity.UserAdd = model.UserAdd;
             entity.Hide = model.Hide;
-            _context.Menus.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Menus> Get()
         {
-            return _context.Menus.ToList();
+            var menu = _context.Menus.Include(x => x.UserAddNavigation).ToList();
+            return menu;
         }
 
-        public Menus GetById(int id)
+        public Menus GetById(int IdMn)
         {
-            return _context.Menus.Where(x => x.IdMn == id).FirstOrDefault();
+            return _context.Menus.Where(x => x.IdMn == IdMn).FirstOrDefault();
         }
-        public bool MenusExists(long id)
+
+        public bool MenusExists(long IdMn)
         {
-            return _context.Menus.Any(x => x.IdMn == id);
+            return _context.Menus.Any(x => x.IdMn == IdMn);
         }
     }
     
