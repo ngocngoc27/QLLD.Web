@@ -51,6 +51,8 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.Username = model.Username;
             entity.Sex = model.Sex;
+            //string pass = model.Password;
+            //entity.Password = Security.MD5(pass);
             entity.Fullname = model.Fullname;
             entity.DateOfBirth = model.DateOfBirth;
             entity.RoleId = model.RoleId;
