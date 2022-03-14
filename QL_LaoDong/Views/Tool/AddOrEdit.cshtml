@@ -1,0 +1,51 @@
+﻿@model QL_LaoDong.Models.Tool
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Tên dụng cụ</label>
+                        <input asp-for="Tool1" class="form-control" />
+                        <span asp-validation-for="Tool1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Tổng số lượng</label>
+                        <input asp-for="Sum" class="form-control" />
+                        <span asp-validation-for="Sum" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Đơn vị tính</label>
+                        <input asp-for="Unit" class="form-control" />
+                        <span asp-validation-for="Unit" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Khóa dụng cụ</label>
+                        <input asp-for="Lock" class="form-control" />
+                        <span asp-validation-for="Lock" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
