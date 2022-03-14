@@ -15,6 +15,7 @@ namespace QL_LaoDong.Interfaces
         void Delete(Account model);
         void Lock(Account model);
         bool AccountExists(long id);
+        Account Login(Account model);
 
     }
 }

@@ -30,7 +30,7 @@ JQueryAjaxPost = form => {
                     $("#form-modal .modal-body").html('');
                     $("#form-modal .modal-title").html('');
                     $("#form-modal").modal('hide');
-                    $.notify('submitted successfully', { globalPosition: 'top center', className: 'success' })
+                    /*$.notify('submitted successfully', { globalPosition: 'top center', className: 'success' })*/
                     window.location.reload();
 
                 }
@@ -64,7 +64,7 @@ JQueryAjaxDelete = form => {
                 processData: false,
                 success: function (res) {
                     $("#view-all").html(res.html);
-                    $.notify('delete successfully', { globalPosition: 'top center', className: 'success' })
+                  /*  $.notify('delete successfully', { globalPosition: 'top center', className: 'success' })*/
                     window.location.reload();
                 },
                 error: function (err) {
@@ -79,4 +79,25 @@ JQueryAjaxDelete = form => {
     }
     //to prevent submit form event
     return false;
+}
+
+const rmCheck = document.getElementById("rememberMe"),
+    emailInput = document.getElementById("username");
+
+if (localStorage.checkbox && localStorage.checkbox !== "") {
+    rmCheck.setAttribute("checked", "checked");
+    emailInput.value = localStorage.username;
+} else {
+    rmCheck.removeAttribute("checked");
+    emailInput.value = "";
+}
+
+function lsRememberMe() {
+    if (rmCheck.checked && emailInput.value !== "") {
+        localStorage.username = emailInput.value;
+        localStorage.checkbox = rmCheck.value;
+    } else {
+        localStorage.username = "";
+        localStorage.checkbox = "";
+    }
 }

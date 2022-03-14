@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using static QL_LaoDong.Helpers.Helper;
 
@@ -26,6 +30,7 @@ namespace QL_LaoDong.Controllers
             this._AccountService = accountService;
             this._RoleService = roleService;
         }
+       
         public IActionResult Index()
         {
             var data = _AccountService.Get();
@@ -49,6 +54,7 @@ namespace QL_LaoDong.Controllers
             return _AccountService.AccountExists(id);
         }
         [NoDirectAccess]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddOrEdit(int id = 0)
         {
             RoleList();
@@ -110,6 +116,42 @@ namespace QL_LaoDong.Controllers
         {
             _AccountService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _AccountService.Get()) });
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(Account model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _AccountService.Login(model);
+                if (user != null)
+                {
+                    //A claim is a statement about a subject by an issuer and    
+                    //represent attributes of the subject that are useful in the context of authentication and authorization operations.
+                    var claims = new List<Claim>() {
+                        new Claim(ClaimTypes.Name, user.Username),
+                        new Claim(ClaimTypes.Role, user.Role.NameRole),
+                    };
+                    //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    //Initialize a new instance of the ClaimsPrincipal with ClaimsIdentity    
+                    var principal = new ClaimsPrincipal(identity);
+                    //SignInAsync is a Extension method for Sign in a principal for the specified scheme.    
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Message = "Invalid Credential";
+                    return View(user);
+                }
+               
+            }
+            return View();
+            
         }
     }
 }

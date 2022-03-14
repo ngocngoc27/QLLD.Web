@@ -83,6 +83,14 @@ namespace QL_LaoDong.Services
             _context.Account.Update(entity);
             _context.SaveChanges();
         }
+        public Account Login(Account model)
+        {
+            string pass = model.Password;
+            string pas = Security.MD5(pass);
+            string user = model.Username;
+            var acc= _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
+            return acc;
+        }
 
     }
 }
