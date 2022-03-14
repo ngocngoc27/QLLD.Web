@@ -67,5 +67,9 @@ namespace QL_LaoDong.Services
             _context.Job.Update(entity);
             _context.SaveChanges();
         }
+        public bool JobExists(long id)
+        {
+            return _context.Job.Any(x => x.Id == id);
+        }
     }
 }

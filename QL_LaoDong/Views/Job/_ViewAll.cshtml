@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QL_LaoDong.Models.Account>
+﻿@model IEnumerable<QL_LaoDong.Models.Job>
 
 <div class="page-header">
     <div class="page-block">
@@ -9,21 +9,20 @@
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Danh mục tài khoản</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Danh mục công việc</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header">
-                <h5>DANH MỤC TÀI KHOẢN NGƯỜI DÙNG</h5>
+                <h5>DANH MỤC CÔNG VIỆC</h5>
             </div>
             <div class="btn-addoredit">
-                <a onclick="showInPopup('@Url.Action("AddOrEdit","Home",new {id=0},Context.Request.Scheme)', 'New Account')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
+                <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {id=0},Context.Request.Scheme)', 'New Job')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
             </div>
             <div class="card-body table-border-style">
                 <div class="table-responsive">
@@ -31,19 +30,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Tên tài khoản
+                                    Tên công việc
                                 </th>
                                 <th>
-                                    Họ tên đầy đủ
+                                    Mô tả công việc
                                 </th>
                                 <th>
-                                    Ngày sinh
+                                    Vị trí
                                 </th>
                                 <th>
-                                    Giới tính
-                                </th>
-                                <th>
-                                    Quyền
+                                    Khóa công việc
                                 </th>
                                 <th></th>
                             </tr>
@@ -53,23 +49,19 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Username)
+                                        @Html.DisplayFor(modelItem => item.Job1)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Fullname)
+                                        @Html.DisplayFor(modelItem => item.Description)
                                     </td>
                                     <td>
-                                        @*@Html.DisplayFor(modelItem => item.DateOfBirth)*@
-                                        @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                                        @Html.DisplayFor(modelItem => item.Locate)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Sex)
+                                        @Html.DisplayFor(modelItem => item.Lock)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Role.NameRole)
-                                    </td>
-                                    <td>
-                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Home",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
+                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {id=item.Id },Context.Request.Scheme)', 'Update Job')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
                                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                             <input type="submit" value="Xóa" class="btn btn-danger" />
                                         </form>
@@ -83,4 +75,3 @@
         </div>
     </div>
 </div>
-

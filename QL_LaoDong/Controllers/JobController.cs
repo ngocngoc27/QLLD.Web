@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static QL_LaoDong.Helpers.Helper;
 
 namespace QL_LaoDong.Controllers
 {
@@ -20,27 +23,65 @@ namespace QL_LaoDong.Controllers
             var job = _jobService.Get();
             return View(job);
         }
-        public IActionResult Create()
+        private bool JobExists(long id)
         {
-            return View();
+            return _jobService.JobExists(id);
+        }
+        [NoDirectAccess]
+        public IActionResult AddOrEdit(int id = 0)
+        {
+            if (id == 0)
+            {
+                return View(new Job());
+            }
+            else
+            {
+                var data = _jobService.GetById(id);
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                return View(data);
+            }
         }
         [HttpPost]
-        public IActionResult Create(Job model)
+        [ValidateAntiForgeryToken]
+        public IActionResult AddOrEdit(Job model)
         {
-            _jobService.Create(model);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                if (model.Id == 0)
+                {
+                    _jobService.Create(model);
+                }
+                else
+                {
+                    try
+                    {
+                        _jobService.Edit(model);
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!JobExists(model.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _jobService.Get()) });
+            }
+            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
         }
-        public IActionResult Edit(int id)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Job model)
         {
-            //RoleList();
-            var job = _jobService.GetById(id);
-            return View(job);
-        }
-        [HttpPost]
-        public IActionResult Edit(Job model)
-        {
-            _jobService.Edit(model);
-            return RedirectToAction(nameof(Index));
+            _jobService.Delete(model);
+            return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _jobService.Get()) });
         }
         [HttpGet]
         public IActionResult Lock(Job model, int id)
