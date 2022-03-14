@@ -32,7 +32,6 @@ namespace QL_LaoDong.Controllers
         //[Authorize(Roles = "Admin")]
         public IActionResult AddOrEdit(int id = 0)
         {
-            //RoleList();
             if (id == 0)
             {
                 return View(new Menus());
@@ -53,12 +52,10 @@ namespace QL_LaoDong.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddOrEdit(Menus model)
         {
-
             if (ModelState.IsValid)
             {
                 if (model.IdMn == 0)
                 {
-
                     _menusService.Create(model);
                 }
                 else
