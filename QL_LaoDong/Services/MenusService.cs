@@ -23,17 +23,16 @@ namespace QL_LaoDong.Services
             entity.UrlLink = model.UrlLink;
             entity.OrderKey = model.OrderKey;
             entity.UserAdd = model.UserAdd;
-            entity.Hide = false;
+            entity.Hide = model.Hide;
             _context.Menus.Add(entity);
             _context.SaveChanges();
         }
 
         public void Delete(Menus model)
         {
-            var entity = _context.Menus.Where(x => x.IdMn == model.IdMn).FirstOrDefault();
+            var entity = _context.Menus.Where(x =>x.IdMn == model.IdMn).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
             _context.Menus.Remove(entity);
             _context.SaveChanges();
         }
@@ -48,7 +47,7 @@ namespace QL_LaoDong.Services
             entity.UrlLink = model.UrlLink;
             entity.OrderKey = model.OrderKey;
             entity.UserAdd = model.UserAdd;
-            entity.Hide = false;
+            entity.Hide = model.Hide;
             _context.Menus.Update(entity);
             _context.SaveChanges();
         }
@@ -61,6 +60,10 @@ namespace QL_LaoDong.Services
         public Menus GetById(int id)
         {
             return _context.Menus.Where(x => x.IdMn == id).FirstOrDefault();
+        }
+        public bool MenusExists(long id)
+        {
+            return _context.Menus.Any(x => x.IdMn == id);
         }
     }
     

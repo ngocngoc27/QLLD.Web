@@ -13,5 +13,6 @@ namespace QL_LaoDong.Interfaces
         void Create(Menus model);
         void Edit(Menus model);
         void Delete(Menus model);
+        bool MenusExists(long id);
     }
 }

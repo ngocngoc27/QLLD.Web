@@ -1,0 +1,72 @@
+﻿@model QL_LaoDong.Models.Menus
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.IdMn" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class=" row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Label" class="control-label"></label>
+                        <input asp-for="Label" class="form-control" />
+                        <span asp-validation-for="Label" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Parent" class="control-label"></label>
+                        <input asp-for="Parent" class="form-control" />
+                        <span asp-validation-for="Parent" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UrlLink" class="control-label"></label>
+                        <input asp-for="UrlLink" class="form-control" />
+                        <span asp-validation-for="UrlLink" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="OrderKey" class="control-label"></label>
+                        <input asp-for="OrderKey" class="form-control" />
+                        <span asp-validation-for="OrderKey" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UserAdd" class="control-label"></label>
+                        <select asp-for="UserAdd" class="form-control" asp-items="ViewBag.UserAdd"></select>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Hide" class="control-label"></label>
+                        <select asp-for="Hide" class="form-control">
+                            <option>---Vui lòng chọn----</option>
+                            <option value="True">Ẩn</option>
+                            <option value="False">Hiện</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
