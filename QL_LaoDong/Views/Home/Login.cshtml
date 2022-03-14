@@ -3,34 +3,75 @@
     ViewData["Title"] = "Login";
     Layout = null;
 }
+<link href="~/assets/css/style.css" rel="stylesheet" />
+<link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <h3>Login</h3>
-            <form asp-action="Login" method="post">
-                <div class="form-group">
-                    <label>UserName</label>
-                    <input type="text" class="form-control" id="username" name="username" />
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" id="password" name="password" />
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
-                        </label>
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="card">
+            <div class="row align-items-center text-center">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <img src="assets/images/dthu.png" style="width: 100px;" alt="" class="img-fluid mb-4">
+                        <h4 class="mb-3 f-w-400">HỆ THỐNG<br>QUẢN LÝ LAO ĐỘNG</h4>
+                        <div class="form-group mb-3">
+                            <label>Tên tài khoản</label>
+                            <input type="text" class="form-control" id="username" name="username" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" name="password" />
+                        </div>
+                        <div class="custom-control custom-checkbox text-left mb-4 mt-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Ghi nhớ đăng nhập</label>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-primary mb-4">ĐĂNG NHẬP</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label></label>
-                    <input type="submit" class="btn btn-primary" value="Login" onclick="lsRememberMe()" />
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
+@*<script src="~/assets/js/vendor-all.min.js"></script>
+<script src="~/assets/js/plugins/bootstrap.min.js"></script>
+<script src="~/assets/js/ripple.js"></script>
+<script src="~/assets/js/pcoded.js"></script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+@*<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>Login</h3>
+                <form asp-action="Login" method="post">
+                    <div class="form-group">
+                        <label>UserName</label>
+                        <input type="text" class="form-control" id="username" name="username" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" id="password" name="password" />
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label></label>
+                        <input type="submit" class="btn btn-primary" value="Login" onclick="lsRememberMe()" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
 
 
