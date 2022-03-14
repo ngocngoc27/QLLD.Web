@@ -23,7 +23,7 @@
                 <h5>DANH MỤC TÀI KHOẢN NGƯỜI DÙNG</h5>
             </div>
             <div class="btn-addoredit">
-                <a onclick="showInPopup('@Url.Action("AddOrEdit","Home",new {id=0},Context.Request.Scheme)', 'New Account')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
+                <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=0},Context.Request.Scheme)', 'New Account')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
             </div>
             <div class="card-body table-border-style">
                 <div class="table-responsive">
@@ -69,7 +69,7 @@
                                         @Html.DisplayFor(modelItem => item.Role.NameRole)
                                     </td>
                                     <td>
-                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Home",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
+                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
                                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                             <input type="submit" value="Xóa" class="btn btn-danger" />
                                         </form>
