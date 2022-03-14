@@ -78,7 +78,6 @@ namespace QL_LaoDong.Controllers
         [ValidateAntiForgeryToken]
         public  IActionResult AddOrEdit(Account model)
         {
-
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)

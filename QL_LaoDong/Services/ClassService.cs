@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -59,12 +60,16 @@ namespace QL_LaoDong.Services
 
         public List<Class> Get()
         {
-            return _context.Class.ToList();
+            return _context.Class.Include(x=>x.Faculty).ToList();
         }
 
         public Class GetById(int id)
         {
             return _context.Class.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public bool ClassExists(long id)
+        {
+            return _context.Class.Any(x => x.Id == id);
         }
     }
 }
