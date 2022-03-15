@@ -1,0 +1,8 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Calendar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("_ViewAll", Model)

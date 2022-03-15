@@ -57,5 +57,9 @@ namespace QL_LaoDong.Services
         {
             return _context.Calendar.Where(x => x.Id == id).FirstOrDefault();
         }
+        public bool CalendarExists(long id)
+        {
+            return _context.Calendar.Any(x => x.Id == id);
+        }
     }
 }
