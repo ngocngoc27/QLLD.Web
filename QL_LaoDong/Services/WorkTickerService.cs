@@ -55,5 +55,9 @@ namespace QL_LaoDong.Services
         {
             return _context.Workticker.Where(x => x.Id == id).FirstOrDefault();
         }
+        public bool TickerExists(long id)
+        {
+            return _context.Workticker.Any(x => x.Id == id);
+        }
     }
 }
