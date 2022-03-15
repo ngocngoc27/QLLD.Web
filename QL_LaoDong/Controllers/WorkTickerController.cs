@@ -91,5 +91,16 @@ namespace QL_LaoDong.Controllers
             _worktickerService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Workticker model)
+        {
+            _worktickerService.Create(model);
+            return View();
+        }
+       
     }
 }
