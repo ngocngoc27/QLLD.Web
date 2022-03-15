@@ -80,4 +80,7 @@ JQueryAjaxDelete = form => {
     //to prevent submit form event
     return false;
 }
+$(document).ready(function () {
+    $('#example').DataTable();
+});
 
