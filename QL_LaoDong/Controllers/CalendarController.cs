@@ -61,7 +61,7 @@ namespace QL_LaoDong.Controllers
                     {
                         _CalendarService.Edit(model);
                     }
-                    catch (DbUpdateConcurrencyException ex)
+                    catch (DbUpdateConcurrencyException)
                     {
                         if (!CalendarExists(model.Id))
                         {
