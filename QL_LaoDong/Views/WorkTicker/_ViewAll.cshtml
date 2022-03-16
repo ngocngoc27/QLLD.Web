@@ -1,0 +1,73 @@
+﻿@model List<QL_LaoDong.Models.Workticker>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                        <li class="breadcrumb-item active">Datatable</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Datatable</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <h4 class="header-title"><b>DANH MỤC DỤNG CỤ LAO ĐỘNG</b></h4>
+                <div class="btn-addoredit">
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=0},Context.Request.Scheme)', 'New Tool')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
+                </div>
+                <br />
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Buổi trong ngày
+                            </th>
+                            <th>
+                                Thứ trong tuần
+                            </th>
+                            <th>
+                                Ngày
+                            </th>
+                            <th>
+                               Trạng thái
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Calendar.Day)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Job.Job1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'Update Tool')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i></a>
+                                <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                                </form>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

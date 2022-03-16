@@ -1,0 +1,55 @@
+﻿@model QL_LaoDong.Models.Calendar
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SessionOfDay" class="control-label"></label>
+                        <select asp-for="SessionOfDay" class="form-control">
+                            <option>---Chọn buổi----</option>
+                            <option value="Sáng">Sáng</option>
+                            <option value="Chiều">Chiều</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Weekdays" class="control-label"></label>
+                        <select asp-for="Weekdays" class="form-control">
+                            <option>---Chọn thứ----</option>
+                            <option value="Thứ Hai">Thứ Hai</option>
+                            <option value="Thứ Ba">Thứ Ba</option>
+                            <option value="Thứ Tư">Thứ Tư</option>
+                            <option value="Thứ Năm">Thứ Năm</option>
+                            <option value="Thứ Sáu">Thứ Sáu</option>
+                            <option value="Thứ Bảy">Thứ Bảy</option>
+                            <option value="Chủ Nhật">Chủ Nhật</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Day" class="control-label"></label>
+                        <input asp-for="Day" class="form-control" />
+                        <span asp-validation-for="Day" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary" data-dismiss="modal">Đóng</button>
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
