@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace QL_LaoDong.Controllers
        
         public IActionResult Index()
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             var data = _AccountService.Get();
             return View(data);
         }
@@ -140,6 +142,8 @@ namespace QL_LaoDong.Controllers
                     var principal = new ClaimsPrincipal(identity);
                     //SignInAsync is a Extension method for Sign in a principal for the specified scheme.    
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    HttpContext.Session.SetString("user", model.Username);
+                    //HttpContext.Session.SetString("role", user.Country);
                     return RedirectToAction(nameof(Index));
                 }
                 else

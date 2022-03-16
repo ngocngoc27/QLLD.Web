@@ -51,6 +51,10 @@ namespace QL_LaoDong
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +74,7 @@ namespace QL_LaoDong
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseCookiePolicy();
             app.UseAuthentication();
