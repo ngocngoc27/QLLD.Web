@@ -3,6 +3,7 @@
 html {
     position: relative;
     min-height: 100%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 body {
@@ -81,7 +82,7 @@ body {
 }
 
 .content-page {
-    margin-left: 230px;
+    margin-left: 260px;
     overflow: hidden;
     padding: 0 15px 5px 15px;
     min-height: 80vh;
@@ -89,7 +90,7 @@ body {
 }
 
 .left-side-menu {
-    width: 230px;
+    width: 260px;
     background: #191970;
     bottom: 0;
     padding: 20px 0;
@@ -108,7 +109,6 @@ body {
     position: relative;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
-    font-family: "Source Sans Pro", sans-serif;
     font-size: 16px;
 }
 
@@ -953,7 +953,7 @@ a:hover {
     position: absolute;
     right: 0;
     color: #6c757d;
-    left: 230px;
+    left: 260px;
     background-color: #f3f3f3;
 }
 
