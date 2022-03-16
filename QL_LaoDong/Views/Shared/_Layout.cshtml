@@ -4,11 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QL_LaoDong</title>
-    <link rel="shortcut icon" href="~\assets\images\favicon.ico">
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/assets/css/icons.min.css" rel="stylesheet" />
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
-    @*<link href="~/assets/css/app.min.css" rel="stylesheet" />*@
     <!-- Table datatable css -->
     <link href="~/assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
@@ -39,11 +38,6 @@
                             <span>Thông tin cá nhân</span>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-settings-outline"></i>
-                            <span>Cài đặt</span>
-                        </a>
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
@@ -53,11 +47,6 @@
                         </a>
 
                     </div>
-                </li>
-                <li class="dropdown notification-list">
-                    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                        <i class="mdi mdi-settings-outline noti-icon"></i>
-                    </a>
                 </li>
             </ul>
             <!-- LOGO -->
@@ -81,7 +70,7 @@
                     <form class="app-search">
                         <div class="app-search-box">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fas fa-search"></i>
@@ -98,7 +87,7 @@
                 <div id="sidebar-menu">
                     <ul class="metismenu" id="side-menu">
                         <li>
-                            <a href="index.html" class="waves-effect waves-light">
+                            <a href="https://localhost:44379/Home/Index" class="waves-effect waves-light">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span>Trang chủ</span>
                             </a>
@@ -140,7 +129,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="index.html" class="waves-effect waves-light">
+                            <a href="https://localhost:44379/workticker/Index" class="waves-effect waves-light">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span>Quản lý đăng ký</span>
                             </a>
@@ -210,16 +199,11 @@
 
 
     <script src="~/assets/js/vendor.min.js"></script>
-    @*<script src="~/assets/libs/morris-js/morris.min.js"></script>*@
     <script src="~/assets/libs/raphael/raphael.min.js"></script>
-    @*<script src="~/assets/js/pages/dashboard.init.js"></script>*@
     <!-- App js -->
     <script src="~/assets/js/app.min.js"></script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
 
     <!-- Datatable plugin js -->
     <script src="~/assets/libs/datatables/jquery.dataTables.min.js"></script>
@@ -237,7 +221,6 @@
     <script src="~/assets/libs/datatables/dataTables.keyTable.min.js"></script>
     <script src="~/assets/libs/datatables/dataTables.fixedHeader.min.js"></script>
     <script src="~/assets/libs/datatables/dataTables.scroller.min.js"></script>
-    @*<script src="~/assets/libs/datatables/dataTables.fixedColumns.min.js"></script>*@
     <script src="~/lib/FixedColumns-4.0.2/js/dataTables.fixedColumns.min.js"></script>
 
     <script src="~/assets/libs/jszip/jszip.min.js"></script>
