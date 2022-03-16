@@ -4,111 +4,236 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QL_LaoDong</title>
-    <link href="~/assets/css/style.css" rel="stylesheet" />
-    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~\assets\images\favicon.ico">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" />
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+    <!-- Table datatable css -->
+    <link href="~/assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/assets/libs/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/assets/libs/datatables/fixedHeader.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/assets/libs/datatables/scroller.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/assets/libs/datatables/dataTables.colVis.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="loader-bg">
-        <div class="loader-track">
-            <div class="loader-fill"></div>
+    <div id="wrapper">
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="~/assets/images/1.jpg" alt="user-image" class="rounded-circle">
+                        <span class="d-none d-sm-inline-block ml-1">Hong Ngoc</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Xin chào !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-account-outline"></i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-settings-outline"></i>
+                            <span>Cài đặt</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-logout-variant"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+
+                    </div>
+                </li>
+            </ul>
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center">
+                    <span class="logo-lg">
+                        <img src="~/assets/images/logo.png" alt="" height="18">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="~/assets/images/logo.png" alt="" height="18">
+                    </span>
+                </a>
+            </div>
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile waves-effect">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
+                <li class="d-none d-sm-block">
+                    <form class="app-search">
+                        <div class="app-search-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <div class="input-group-append">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>
         </div>
-    </div>
-    <nav class="pcoded-navbar menu-light ">
-        <div class="navbar-wrapper">
-            <div class="navbar-content scroll-div ">
-                <div class="">
-                    <div class="main-menu-header">
-                        <img class="img-radius" src="assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
-                        <div class="user-details">
-                            <div id="more-details">HongNgoc<i class="fa fa-caret-down"></i></div>
+        <div class="left-side-menu">
+            <div class="slimscroll-menu">
+                <div id="sidebar-menu">
+                    <ul class="metismenu" id="side-menu">
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Trang chủ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Lịch lao động</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Đăng ký lao động</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Điểm danh</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Thông tin lớp sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Quản lý tài khoản</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Quản lý lớp sinh viên</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Quản lý đăng ký</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Danh mục công việc</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Danh mục dụng cụ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="waves-effect waves-light">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span>Quản lý danh mục</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="content">
+                @RenderBody()
+            </div>
+            <div class="modal" tabindex="-1" role="dialog" id="form-modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end content -->
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            2021 - 2022 &copy; by Hong Ngoc + Thanh Duy <a href="">Hệ thống quản lý lao động DThU</a>
                         </div>
                     </div>
-                    <div class="collapse" id="nav-user-link">
-                        <ul class="list-unstyled">
-                            <li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Thông tin cá nhân</a></li>
-                            <li class="list-group-item"><a href="auth-signin.html"><i class="feather icon-log-out m-r-5"></i>Đăng xuất</a></li>
-                        </ul>
-                    </div>
                 </div>
-                <ul class="nav pcoded-inner-navbar">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="lichlaodong.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Lịch lao động</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="dangky.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Đăng ký lao động</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="diemdanh.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Điểm danh</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="qlsinhvien.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-text"></i></span><span class="pcoded-mtext">Thông tin lớp sinh viên</span></a>
-                    </li>
-                    <li class="nav-item pcoded-menu-caption">
-                        <label>Quản lý chung</label>
-                    </li>
-                    <li class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Cán bộ quán lý</span></a>
-                        <ul class="pcoded-submenu">
-                            <li><a href="qltaikhoan.html">Quản lý tài khoản</a></li>
-                            <li><a href="qlthongtinlop.html">Quản lý thông tin các lớp</a></li>
-                            <li><a href="qldangky.html">Quản lý đăng ký</a></li>
-                            <li><a href="qlcongviec.html">Danh mục công việc</a></li>
-                            <li><a href="qldungcu.html">Danh mục dụng cụ</a></li>
-                            <li><a href="qldanhmuc.html">Quản lý danh mục</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-        <div class="m-header">
-            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-            <a href="#!" class="b-brand">
-                <img class="img-radius" src="assets/images/dthu.png" style="width:50px">
-                <span style="padding: 5px;">HỆ THỐNG <br> QUẢN LÝ LAO ĐỘNG DTHU</span>
-            </a>
-            <a href="#!" class="mob-toggler">
-                <i class="feather icon-more-vertical"></i>
-            </a>
-        </div>
-    </header>
-    <!-- [ Header ] end -->
-    <!-- [ Main Content ] start -->
-    <div class="pcoded-main-container">
-        <div class="pcoded-content">
-            @RenderBody()
-        </div>
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" id="form-modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                </div>
-
-            </div>
+            </footer>
+            <!-- end Footer -->
         </div>
     </div>
 
-    <script src="~/assets/js/vendor-all.min.js"></script>
-    <script src="~/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="~/assets/js/ripple.js"></script>
-    <script src="~/assets/js/pcoded.js"></script>
+
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/libs/morris-js/morris.min.js"></script>
+    <script src="~/assets/libs/raphael/raphael.min.js"></script>
+    <script src="~/assets/js/pages/dashboard.init.js"></script>
+    <!-- App js -->
+    <script src="~/assets/js/app.min.js"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Datatable plugin js -->
+    <script src="~/assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="~/assets/libs/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script src="~/assets/libs/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+
+    <script src="~/assets/libs/datatables/buttons.html5.min.js"></script>
+    <script src="~/assets/libs/datatables/buttons.print.min.js"></script>
+
+    <script src="~/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/assets/libs/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/assets/libs/datatables/dataTables.scroller.min.js"></script>
+    <script src="~/assets/libs/datatables/dataTables.fixedColumns.min.js"></script>
+
+    <script src="~/assets/libs/jszip/jszip.min.js"></script>
+    <script src="~/assets/libs/pdfmake/pdfmake.min.js"></script>
+    <script src="~/assets/libs/pdfmake/vfs_fonts.js"></script>
+
+    <!-- Datatables init -->
+    <script src="~/assets/js/pages/datatables.init.js"></script>
 </body>
 </html>
 

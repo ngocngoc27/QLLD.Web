@@ -1,86 +1,81 @@
 ﻿@model IEnumerable<QL_LaoDong.Models.Account>
 
-<div class="page-header">
-    <div class="page-block">
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <div class="page-header-title">
-                    <h5 class="m-b-10">Dashboard Analytics</h5>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                        <li class="breadcrumb-item active">Datatable</li>
+                    </ol>
                 </div>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Danh mục tài khoản</a></li>
-                </ul>
+                <h4 class="page-title">Datatable</h4>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-header">
-                <h5>DANH MỤC TÀI KHOẢN NGƯỜI DÙNG</h5>
-            </div>
-            <div class="btn-addoredit">
-                <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=0},Context.Request.Scheme)', 'New Account')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
-            </div>
-            <div class="card-body table-border-style">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <h4 class="header-title"><b>DANH MỤC TÀI KHOẢN NGƯỜI DÙNG</b></h4>
+                <div class="btn-addoredit">
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=0},Context.Request.Scheme)', 'New Account')" class="btn btn-success text-white"><i class="fas fa-random"></i> Thêm mới</a>
+                </div>
+                <br />
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tên tài khoản
+                            </th>
+                            <th>
+                                Họ tên đầy đủ
+                            </th>
+                            <th>
+                                Ngày sinh
+                            </th>
+                            <th>
+                                Giới tính
+                            </th>
+                            <th>
+                                Quyền
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
-                                <th>
-                                    Tên tài khoản
-                                </th>
-                                <th>
-                                    Họ tên đầy đủ
-                                </th>
-                                <th>
-                                    Ngày sinh
-                                </th>
-                                <th>
-                                    Giới tính
-                                </th>
-                                <th>
-                                    Quyền
-                                </th>
-                                <th></th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fullname)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.DateOfBirth)*@
+                                    @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sex)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Role.NameRole)
+                                </td>
+                                <td>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i></a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                        <input type="submit" value=" "  class=" btn btn-danger" /> <i class="fas fa-pencil-alt"></i>
+                                    </form>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Username)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Fullname)
-                                    </td>
-                                    <td>
-                                        @*@Html.DisplayFor(modelItem => item.DateOfBirth)*@
-                                        @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Sex)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Role.NameRole)
-                                    </td>
-                                    <td>
-                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
-                                        <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                            <input type="submit" value="Xóa" class="btn btn-danger" />
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-
