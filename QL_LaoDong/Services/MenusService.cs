@@ -28,7 +28,9 @@ namespace QL_LaoDong.Services
             entity.Parent = model.Parent;
             entity.UrlLink = model.UrlLink;
             entity.OrderKey = model.OrderKey;
-            entity.UserAdd = model.UserAdd;
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            entity.UserAdd = id;
             entity.Hide = model.Hide;
             _context.Menus.Add(entity);
             _context.SaveChanges();

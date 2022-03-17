@@ -5,8 +5,7 @@
 }
 <link href="~/css/StyleLogin.css" rel="stylesheet" />
 <div class="wrapper">
-    <div class="logo"> <img src="~/assets/images/dthu.png" alt=""> </div>
-    @*<div class="text-center mt-4 name"> QUẢN LÝ LAO ĐỘNG - DTHU </div>*@
+    <div class="logo"> <img src="~/assets/images/logo.png" alt=""> </div>
     <br />
     <br />
     <form class="p-3 mt-3" asp-action="Login" method="post">
@@ -20,41 +19,6 @@
         <button type="submit" class="btn mt-3">Đăng nhập</button>
     </form>
 </div>
-
-@*<body class="bg-dthu">
-    <div class="auth-wrapper">
-        <form asp-action="Login" method="post">
-            <div class="auth-content">
-                <div class="card">
-                    <div class="row align-items-center text-center">
-                        <div class="col-md-12">
-                            <div class="card-body">
-                                <img src="assets/images/dthu.png" style="width: 100px;" alt="" class="img-fluid mb-4">
-                                <h4 class="mb-3 f-w-400">ĐĂNG NHẬP</h4>
-                                <div class="form-group mb-2">
-                                    <label>Tên tài khoản</label>
-                                    <input type="text" class="form-control" id="username" name="username" />
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label>Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password" name="password" />
-                                </div>
-                                <div class="custom-control custom-checkbox text-left mb-4 mt-2">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Ghi nhớ đăng nhập</label>
-                                        </label>
-                                    </div>
-                                </div>
-                                <input type="submit" class="btn btn-primary" value="Login" onclick="lsRememberMe()" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</body>*@
 
 <script>
     const rmCheck = document.getElementById("rememberMe"),
