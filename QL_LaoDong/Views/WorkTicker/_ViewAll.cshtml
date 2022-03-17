@@ -36,7 +36,10 @@
                                 Ngày
                             </th>
                             <th>
-                               Trạng thái
+                                Công việc
+                            </th>
+                            <th>
+                                Trạng thái
                             </th>
                             <th></th>
                         </tr>
@@ -47,6 +50,9 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Calendar.Day)

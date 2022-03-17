@@ -49,7 +49,7 @@ namespace QL_LaoDong.Services
 
         public List<Workticker> Get()
         {
-            return _context.Workticker.ToList();
+            return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Job).ToList();
         }
 
         public Workticker GetById(int id)
