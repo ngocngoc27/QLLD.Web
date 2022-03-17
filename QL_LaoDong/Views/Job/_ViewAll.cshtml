@@ -62,6 +62,7 @@
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                     </form>
+                                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Details</a>
                                 </td>
                             </tr>
                         }

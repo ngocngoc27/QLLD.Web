@@ -90,5 +90,10 @@ namespace QL_LaoDong.Controllers
             _jobService.Lock(job);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Details(int id)
+        {
+            var a=_jobService.GetById(id);
+            return View(a);
+        }
     }
 }
