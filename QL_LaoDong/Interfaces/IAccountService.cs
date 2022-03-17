@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace QL_LaoDong.Interfaces
         void Delete(Account model);
         void Lock(Account model);
         bool AccountExists(long id);
-        Account Login(Account model);
+        AppUser Login(Account model);
 
     }
 }

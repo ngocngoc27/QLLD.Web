@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using QL_LaoDong.ViewModels;
 
-namespace QL_LaoDong.Services
+ namespace QL_LaoDong.Services
 {
     public class AccountService:IAccountService
     {
@@ -85,13 +86,33 @@ namespace QL_LaoDong.Services
             _context.Account.Update(entity);
             _context.SaveChanges();
         }
-        public Account Login(Account model)
+        public AppUser Login(Account model)
         {
+            var AppUser = new AppUser();
+
             string pass = model.Password;
             string pas = Security.MD5(pass);
             string user = model.Username;
-            var acc= _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
-            return acc;
+            var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
+
+            if(acc != default)
+            {
+                var query = from students in _context.Student
+                            join classes in _context.Class on students.ClassId equals classes.Id
+                            where students.AccountId == acc.Id
+                            select new AppUser()
+                            {
+                                AccountId = acc.Id,
+                                Username = acc.Username,
+                                FullName = acc.Fullname,
+                                RoleId = acc.Role.Id,
+                                RoleName = acc.Role.NameRole,
+                                ClassId = classes.Id,
+                                ClassName = classes.ClassName
+                            };
+                AppUser = query.FirstOrDefault();
+            }
+            return AppUser;
         }
 
     }

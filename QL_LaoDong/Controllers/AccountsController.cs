@@ -133,7 +133,7 @@ namespace QL_LaoDong.Controllers
                     //represent attributes of the subject that are useful in the context of authentication and authorization operations.
                     var claims = new List<Claim>() {
                         new Claim(ClaimTypes.Name, user.Username),
-                        new Claim(ClaimTypes.Role, user.Role.NameRole),
+                        new Claim(ClaimTypes.Role, user.RoleName),
                     };
                     //Initialize a new instance of the ClaimsIdentity with the claims and authentication scheme    
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -142,7 +142,9 @@ namespace QL_LaoDong.Controllers
                     //SignInAsync is a Extension method for Sign in a principal for the specified scheme.    
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                     HttpContext.Session.SetString("user", user.Username);
-                    HttpContext.Session.SetString("id",user.Id.ToString());
+                    HttpContext.Session.SetString("id",user.AccountId.ToString());
+                    HttpContext.Session.SetString("username",user.Username);
+                    HttpContext.Session.SetString("classname",user.ClassName);
                     //HttpContext.Session.SetString("role", user.Country);
                     return RedirectToAction(nameof(Index));
                 }
