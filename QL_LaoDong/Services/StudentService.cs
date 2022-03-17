@@ -61,7 +61,6 @@ namespace QL_LaoDong.Services
 
         public List<Student> Get()
         {
-            
             var student = _context.Student.Include(x=>x.Account).Include(x=>x.Class).Where(x => x.Lock != true).ToList();
             return student;
         }
