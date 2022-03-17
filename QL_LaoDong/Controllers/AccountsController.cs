@@ -64,7 +64,6 @@ namespace QL_LaoDong.Controllers
             {
                 return View(new Account());
             }
-
             else
             {
                 var Acc = _AccountService.GetById(id);
