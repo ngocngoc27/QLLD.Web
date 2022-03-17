@@ -4,11 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QL_LaoDong</title>
-    <link rel="shortcut icon" href="~\assets\images\favicon.ico">
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/assets/css/icons.min.css" rel="stylesheet" />
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
-    @*<link href="~/assets/css/app.min.css" rel="stylesheet" />*@
     <!-- Table datatable css -->
     <link href="~/assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
@@ -39,11 +38,6 @@
                             <span>Thông tin cá nhân</span>
                         </a>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-settings-outline"></i>
-                            <span>Cài đặt</span>
-                        </a>
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
@@ -51,10 +45,16 @@
                             <i class="mdi mdi-logout-variant"></i>
                             <span>Đăng xuất</span>
                         </a>
+<<<<<<< HEAD
                 
                    </div>
                 </li>
                 
+=======
+
+                    </div>
+                </li>
+>>>>>>> bb63246133a3a038e7cb11da409b4e92903e44d5
             </ul>
             <!-- LOGO -->
             <div class="logo-box">
@@ -77,7 +77,7 @@
                     <form class="app-search">
                         <div class="app-search-box">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
                                         <i class="fas fa-search"></i>
@@ -94,7 +94,7 @@
                 <div id="sidebar-menu">
                     <ul class="metismenu" id="side-menu">
                         <li>
-                            <a href="index.html" class="waves-effect waves-light">
+                            <a href="https://localhost:44379/Home/Index" class="waves-effect waves-light">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span>Trang chủ</span>
                             </a>
@@ -113,7 +113,7 @@
                         </li>
                         <li>
                             <a href="index.html" class="waves-effect waves-light">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class="mdi-checkbox-marked-circle-outline"></i>
                                 <span>Điểm danh</span>
                             </a>
                         </li>
@@ -125,25 +125,25 @@
                         </li>
                         <li>
                             <a href="https://localhost:44379/Accounts/Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class=" mdi-account-key"></i>
                                 <span>Quản lý tài khoản</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://localhost:44379/class/Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class=" mdi-account-multiple"></i>
                                 <span>Quản lý lớp sinh viên</span>
                             </a>
                         </li>
                         <li>
-                            <a href="index.html" class="waves-effect waves-light">
-                                <i class="mdi mdi-view-dashboard"></i>
+                            <a href="https://localhost:44379/workticker/Index" class="waves-effect waves-light">
+                                <i class="fa-light fa-ballot-check"></i>
                                 <span>Quản lý đăng ký</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://localhost:44379/calendar/Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class=" mdi-calendar-clock"></i>
                                 <span>Quản lý thời gian đăng ký</span>
                             </a>
                         </li>
@@ -183,9 +183,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -193,7 +191,7 @@
             <!-- Footer Start -->
             <footer class="footer">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
                         <div class="col-md-12">
                             @DateTime.Now.Year &copy; by Hong Ngoc + Thanh Duy <a href="">Hệ thống quản lý lao động DThU</a>
                         </div>
@@ -206,18 +204,22 @@
 
 
     <script src="~/assets/js/vendor.min.js"></script>
-    @*<script src="~/assets/libs/morris-js/morris.min.js"></script>*@
     <script src="~/assets/libs/raphael/raphael.min.js"></script>
-    @*<script src="~/assets/js/pages/dashboard.init.js"></script>*@
     <!-- App js -->
     <script src="~/assets/js/app.min.js"></script>
 
+<<<<<<< HEAD
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
 
     <!--<!-- Datatable plugin js -->
+=======
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Datatable plugin js -->
+>>>>>>> bb63246133a3a038e7cb11da409b4e92903e44d5
     <script src="~/assets/libs/datatables/jquery.dataTables.min.js"></script>
     <script src="~/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
 
