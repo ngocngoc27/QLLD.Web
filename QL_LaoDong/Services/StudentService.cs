@@ -1,4 +1,6 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -11,9 +13,11 @@ namespace QL_LaoDong.Services
     public class StudentService:IStudentService
     {
         public DataContext _context;
-        public StudentService(DataContext context)
+        private IHttpContextAccessor _httpContextAccessor;
+        public StudentService(DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
         public void Create(Student model)
         {
@@ -57,7 +61,8 @@ namespace QL_LaoDong.Services
 
         public List<Student> Get()
         {
-            var student = _context.Student.Where(x => x.Lock != true).ToList();
+            
+            var student = _context.Student.Include(x=>x.Account).Include(x=>x.Class).Where(x => x.Lock != true).ToList();
             return student;
         }
 
