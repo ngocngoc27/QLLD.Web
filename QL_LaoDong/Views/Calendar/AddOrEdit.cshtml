@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-for="SessionOfDay" class="control-label"></label>
+                        <label class="control-label">Buổi trong ngày</label>
                         <select asp-for="SessionOfDay" class="form-control">
                             <option>---Chọn buổi----</option>
                             <option value="Sáng">Sáng</option>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-for="Weekdays" class="control-label"></label>
+                        <label class="control-label">Thứ trong tuần</label>
                         <select asp-for="Weekdays" class="form-control">
                             <option>---Chọn thứ----</option>
                             <option value="Thứ Hai">Thứ Hai</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label asp-for="Day" class="control-label"></label>
+                        <label class="control-label">Ngày lao động</label>
                         <input asp-for="Day" class="form-control" />
                         <span asp-validation-for="Day" class="text-danger"></span>
                     </div>
