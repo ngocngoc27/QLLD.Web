@@ -68,17 +68,8 @@
                                 <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=item.Id },Context.Request.Scheme)', 'Update Account')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i></a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-<<<<<<< HEAD
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-=======
-
-                                        <input type="submit" value="Xóa"  class=" btn btn-danger" /> 
-
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-pencil-alt"></i></button>
-
->>>>>>> c4009495c7f6948d61b5825db26bef3a3b045a45
-                                    </form>
-                                    
+                                    </form>                                    
                                 </td>
                             </tr>
                         }
