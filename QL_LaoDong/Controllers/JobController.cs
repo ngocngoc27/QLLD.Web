@@ -92,8 +92,8 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Details(int id)
         {
-            var a=_jobService.GetById(id);
-            return View(a);
+            var data=_jobService.GetById(id);
+            return View(data);
         }
     }
 }
