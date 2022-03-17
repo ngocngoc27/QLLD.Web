@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             var data = _menusService.Get();
             return View(data);
         }

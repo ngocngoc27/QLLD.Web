@@ -141,7 +141,8 @@ namespace QL_LaoDong.Controllers
                     var principal = new ClaimsPrincipal(identity);
                     //SignInAsync is a Extension method for Sign in a principal for the specified scheme.    
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                    HttpContext.Session.SetString("user", model.Username);
+                    HttpContext.Session.SetString("user", user.Username);
+                    HttpContext.Session.SetString("id",user.Id.ToString());
                     //HttpContext.Session.SetString("role", user.Country);
                     return RedirectToAction(nameof(Index));
                 }
