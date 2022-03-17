@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
@@ -7,14 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace QL_LaoDong.Services
 {
     public class MenusService : IMenusService
     {
         public DataContext _context;
-        public MenusService(DataContext context)
+        private IHttpContextAccessor _httpContextAccessor;
+        public MenusService(DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public void Create(Menus model)
@@ -56,7 +60,9 @@ namespace QL_LaoDong.Services
 
         public List<Menus> Get()
         {
-            var menu = _context.Menus.Include(x => x.UserAddNavigation).ToList();
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var menu = _context.Menus.Include(x => x.UserAddNavigation).Where(x=>x.UserAdd==id).ToList();
             return menu;
         }
 
