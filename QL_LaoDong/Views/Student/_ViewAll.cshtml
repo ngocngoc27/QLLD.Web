@@ -29,17 +29,15 @@
                                 <th>
                                     MSSV
                                 </th>
-                                <th>
-                                    Số ngày lao động
-                                </th>
-                                <th>
-                                    Khóa sinh viên
-                                </th>
+
                                 <th>
                                     @Html.DisplayNameFor(model => model.Account)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Class)
+                                </th>
+                                <th>
+                                    Số ngày lao động
                                 </th>
                                 <th></th>
                             </tr>
@@ -47,29 +45,27 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Mssv)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NumberOfWork)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Lock)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Account.Password)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Class.ClassCode)
-                                    </td>
-                                    <td>
-                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'Update Student')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
-                                        <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                            <input type="submit" value="Xóa" class="btn btn-danger" />
-                                        </form>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mssv)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Account.Username)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Class.ClassName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberOfWork)
+                                </td>
+                                <td>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'Update Student')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                                    </form>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

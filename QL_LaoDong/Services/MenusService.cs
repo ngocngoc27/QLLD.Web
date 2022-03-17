@@ -62,7 +62,7 @@ namespace QL_LaoDong.Services
         {
             string data = _httpContextAccessor.HttpContext.Session.GetString("id");
             int id = Convert.ToInt32(data);
-            var menu = _context.Menus.Include(x => x.UserAddNavigation).Where(x=>x.UserAdd==id).ToList();
+            var menu = _context.Menus.Include(x => x.UserAddNavigation).ToList();
             return menu;
         }
 
