@@ -36,7 +36,7 @@ namespace QL_LaoDong.Controllers
         [HttpPost]
         public IActionResult Create(Workticker model)
         {
-            model.Status = "Chờ duyệt";
+            //model.Status = "Chờ duyệt";
             _worktickerService.Create(model);
             return View();
         }

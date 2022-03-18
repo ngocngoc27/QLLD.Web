@@ -20,8 +20,10 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Status" class="control-label"></label>
-                        <input asp-for="Status" class="form-control" />
-                        <span asp-validation-for="Status" class="text-danger"></span>
+                        <select asp-for="Status" class="form-control">
+                            <option value="Đã duyệt">Đã duyệt</option>
+                            <option value="Đã hủy">Đã hủy</option>
+                        </select>
                     </div>
                 </div>
             </div>

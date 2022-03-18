@@ -20,8 +20,8 @@ namespace QL_LaoDong.Services
         {
             var entity = new Workticker();
             entity.CalendarId = model.CalendarId;
-            entity.JobId = model.JobId;
-            entity.Status = model.Status;
+            entity.JobId = 6;
+            entity.Status = "Chờ duyệt";
             _context.Workticker.Add(entity);
             _context.SaveChanges();
         }
