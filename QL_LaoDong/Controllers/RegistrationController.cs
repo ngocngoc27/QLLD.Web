@@ -42,7 +42,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult Create(Workticker model)
         {
             
-               _worktickerService.Create(model);
+             _worktickerService.Create(model);
             return View();
            
         }
