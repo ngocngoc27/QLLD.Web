@@ -42,6 +42,7 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.CalendarId = model.CalendarId;
             entity.JobId = model.JobId;
+            entity.Calendar.Id = model.CalendarId;
             entity.Status = model.Status;
             _context.Workticker.Update(entity);
             _context.SaveChanges();
