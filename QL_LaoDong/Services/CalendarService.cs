@@ -45,8 +45,11 @@ namespace QL_LaoDong.Services
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.SessionOfDay = model.SessionOfDay;
-            entity.Weekdays = model.Weekdays;
             entity.Day = model.Day;
+            var days = Convert.ToDateTime(model.Day);
+            DayOfWeek week = days.DayOfWeek;
+            var thu = Convert.ToString(week);
+            entity.Weekdays = thu;
             _context.Calendar.Update(entity);
             _context.SaveChanges();
         }
