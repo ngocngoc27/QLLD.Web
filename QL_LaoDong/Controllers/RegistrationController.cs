@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static QL_LaoDong.Helpers.Helper;
 
 namespace QL_LaoDong.Controllers
 {
@@ -22,23 +24,27 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var data = _worktickerService.Get();
+            return View(data);
         }
         private void CalendarList(object selectCalendar = null)
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
         }
+        [NoDirectAccess]
         public IActionResult Create()
         {
             CalendarList();
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Workticker model)
         {
-            //model.Status = "Chờ duyệt";
-            _worktickerService.Create(model);
+            
+               _worktickerService.Create(model);
             return View();
+           
         }
     }
 }
