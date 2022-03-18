@@ -145,7 +145,7 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("id",user.AccountId.ToString());
                     HttpContext.Session.SetString("username",user.Username);
                     HttpContext.Session.SetString("classname",user.ClassName);
-                    //HttpContext.Session.SetString("role", user.Country);
+                    
                     return RedirectToAction(nameof(Index));
                 }
                 else

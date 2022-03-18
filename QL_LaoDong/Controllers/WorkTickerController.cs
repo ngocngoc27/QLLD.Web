@@ -34,11 +34,11 @@ namespace QL_LaoDong.Controllers
 
         private void CalendarList(object selectCalendar = null)
         {
-            ViewBag.CalendarId = new SelectList(_calendarService.Get(), "Id", "CalendarId", selectCalendar);
+            ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Weekdays", selectCalendar);
         }
-        private void JobList(object selectCalendar = null)
+        private void JobList(object selectJob = null)
         {
-            ViewBag.JobId = new SelectList(_calendarService.Get(), "Id", "Job1", selectCalendar);
+            ViewBag.job = new SelectList(_jobService.Get(), "Id", "Job1", selectJob);
         }
         private bool TickerExists(long id)
         {
