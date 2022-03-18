@@ -29,7 +29,9 @@ namespace QL_LaoDong.Services
             var entity = new Student();
             entity.Mssv = model.Mssv;
             entity.NumberOfWork = model.NumberOfWork;
-            entity.ClassId = model.ClassId;
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            entity.ClassId = id;
             entity.AccountId = model.AccountId;
             entity.Lock = false;
             _context.Student.Add(entity);
@@ -52,7 +54,9 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Mssv = model.Mssv;
             entity.NumberOfWork = model.NumberOfWork;
-            entity.ClassId = model.ClassId;
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            entity.ClassId = id;
             entity.AccountId = model.AccountId;
             entity.Lock = false;
             _context.Student.Update(entity);
@@ -68,6 +72,10 @@ namespace QL_LaoDong.Services
         public Student GetById(int id)
         {
             return _context.Student.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public bool StudentExists(long Id)
+        {
+            return _context.Student.Any(x => x.Id == Id);
         }
     }
 }
