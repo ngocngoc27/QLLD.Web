@@ -20,8 +20,11 @@ namespace QL_LaoDong.Services
           
             var entity = new Calendar();
             entity.SessionOfDay = model.SessionOfDay;
-            entity.Weekdays = model.Weekdays;
             entity.Day = model.Day;
+            var days =Convert.ToDateTime( model.Day);
+            DayOfWeek week = days.DayOfWeek;
+            var thu = Convert.ToString(week);
+            entity.Weekdays = thu;
             _context.Calendar.Add(entity);
             _context.SaveChanges();
         }

@@ -34,7 +34,7 @@ namespace QL_LaoDong.Controllers
 
         private void CalendarList(object selectCalendar = null)
         {
-            ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Weekdays", selectCalendar);
+            ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
         }
         private void JobList(object selectJob = null)
         {
