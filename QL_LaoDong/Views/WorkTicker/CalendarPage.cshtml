@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Workticker>
+
+@{
+    ViewData["Title"] = "CalendarPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xl-9">
+    <div id="calendar"></div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calendar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calendar.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

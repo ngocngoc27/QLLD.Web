@@ -31,6 +31,12 @@ namespace QL_LaoDong.Controllers
             var data = _worktickerService.Get();
             return View(data);
         }
+        public IActionResult CalendarPage()
+        {
+            var data = _worktickerService.Get();
+            return View(data);
+        }
+
 
         private void CalendarList(object selectCalendar = null)
         {
