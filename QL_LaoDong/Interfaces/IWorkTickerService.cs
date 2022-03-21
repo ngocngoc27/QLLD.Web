@@ -9,6 +9,7 @@ namespace QL_LaoDong.Interfaces
     public interface IWorkTickerService
     {
         List<Workticker> Get();
+        List<Workticker> GetCalen();
         Workticker GetById(int id);
         void Create(Workticker model);
         void Edit(Workticker model);

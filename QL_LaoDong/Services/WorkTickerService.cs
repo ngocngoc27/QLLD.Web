@@ -52,6 +52,10 @@ namespace QL_LaoDong.Services
         {
             return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Job).ToList();
         }
+        public List<Workticker> GetCalen()
+        {
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Job).Where(x => x.Status == "Duyệt").ToList();
+        }
 
         public Workticker GetById(int id)
         {

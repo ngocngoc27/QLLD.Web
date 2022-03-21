@@ -4,43 +4,199 @@
     ViewData["Title"] = "CalendarPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="col-xl-9">
-    <div id="calendar"></div>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calendar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Job)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calendar.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Job.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>LỊCH LAO ĐỘNG</h5>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>BUỔI</th>
+                                <th>THỨ HAI</th>
+                                <th>THỨ BA</th>
+                                <th>THỨ TƯ</th>
+                                <th>THỨ NĂM</th>
+                                <th>THỨ SÁU</th>
+                                <th>THỨ BẢY</th>
+                                <th>CHỦ NHẬT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: rgb(255, 255, 255);">
+                                <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Sáng</td>
+                                <!-- SÁNG/THỨ HAI -->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- SÁNG/THỨ BA -->
+                                <td>
+                                </td>
+                                <!-- SÁNG/THỨ TƯ -->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- SÁNG/THỨ NĂM -->
+                                <td>
+                                </td>
+                                <!-- SÁNG/THỨ SÁU-->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- SÁNG/THỨ THỨ-->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- SÁNG/CHỦ NHẬT-->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="background-color: rgb(255, 255, 255);">
+                                <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Chiều</td>
+                                <!-- CHIỀU/THỨ HAI -->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- CHIỀU/THỨ BA -->
+                                <td>
+                                </td>
+                                <!-- CHIỀU/THỨ TƯ -->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp C1-C2</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                            <div class="font-size13 text-light-gray">Dọn dẹp đường ống</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- CHIỀU/THỨ NĂM -->
+                                <td>
+                                </td>
+                                <!-- CHIỀU/THỨ SÁU-->
+                                <td>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [39]</a>
+                                            <div class="font-size13 text-light-gray">Dọn cỏ sân banh</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [20]</a>
+                                            <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
+                                        </div>
+                                    </div>
+                                    <div class="tkb">
+                                        <div class="tkb-contents">
+                                            <a href="#" class="margin-10px-top font-size14">ĐHSTIN20A [14]</a>
+                                            <div class="font-size13 text-light-gray">Vệ sinh phòng học</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- CHIỀU/THỨ THỨ-->
+                                <td>
+                                </td>
+                                <!-- CHIỀU/CHỦ NHẬT-->
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calendar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Job)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job.Id)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
