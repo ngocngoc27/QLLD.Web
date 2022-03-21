@@ -10,6 +10,8 @@ namespace QL_LaoDong.Interfaces
     {
         List<Workticker> Get();
         List<Workticker> GetCalen();
+        List<Workticker> GetSundayAfter();
+        List<Workticker> GetSundayMor();
         Workticker GetById(int id);
         void Create(Workticker model);
         void Edit(Workticker model);

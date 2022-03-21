@@ -32,10 +32,12 @@ namespace QL_LaoDong.Controllers
             return View(data);
         }
         public IActionResult CalendarPage()
-        {
-            var data = _worktickerService.GetCalen();
-            
-            return View(data);
+        {            
+            var data1 = _worktickerService.GetSundayAfter();
+            ViewBag.sundayafter = data1;
+            var data2 = _worktickerService.GetSundayMor();
+            ViewBag.sundaymor = data2;
+            return View();
         }
 
 
