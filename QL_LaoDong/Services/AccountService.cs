@@ -75,7 +75,7 @@ namespace QL_LaoDong.Services
         }
         public Account GetById(int id)
         {
-            return _context.Account.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Account.Include(x=>x.Role).Where(x => x.Id == id).FirstOrDefault();
         }
         public bool AccountExists(long id)
         {

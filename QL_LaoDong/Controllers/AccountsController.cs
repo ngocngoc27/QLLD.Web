@@ -169,5 +169,11 @@ namespace QL_LaoDong.Controllers
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Accounts");
         }
+        public IActionResult Details()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
+            var data = _AccountService.GetById(id);
+            return View(data);
+        }
     }
 }
