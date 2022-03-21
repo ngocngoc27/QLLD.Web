@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
@@ -23,6 +24,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             var data = _classService.Get();
             return View(data);
         }

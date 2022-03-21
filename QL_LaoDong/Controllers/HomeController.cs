@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace QL_LaoDong.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             return View();
         }
     }

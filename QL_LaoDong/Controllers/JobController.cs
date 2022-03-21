@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -20,6 +21,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             var job = _jobService.Get();
             return View(job);
         }
