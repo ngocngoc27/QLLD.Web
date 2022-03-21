@@ -7,15 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using QL_LaoDong.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
- namespace QL_LaoDong.Services
+namespace QL_LaoDong.Services
 {
     public class AccountService:IAccountService
     {
         public DataContext _context;
+       
         public AccountService(DataContext context)
         {
             _context = context;
+          
         }
 
         public void Create(Account model)

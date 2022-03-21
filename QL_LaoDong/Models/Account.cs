@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QL_LaoDong.Models
 {
@@ -22,6 +24,8 @@ namespace QL_LaoDong.Models
         public string Sex { get; set; }
         public string Picture { get; set; }
         public bool? Lock { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
         public virtual Role Role { get; set; }
         public virtual ICollection<Menus> Menus { get; set; }

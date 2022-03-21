@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +17,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using static QL_LaoDong.Helpers.Helper;
+using System.IO;
 
 namespace QL_LaoDong.Controllers
 {
@@ -24,12 +26,14 @@ namespace QL_LaoDong.Controllers
         private readonly ILogger<AccountsController> _logger;
         private readonly IAccountService _AccountService;
         private readonly IRoleService _RoleService;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public AccountsController(ILogger<AccountsController> logger, IAccountService accountService, IRoleService roleService)
+        public AccountsController(ILogger<AccountsController> logger, IAccountService accountService, IRoleService roleService, IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
             this._AccountService = accountService;
             this._RoleService = roleService;
+            this._hostEnvironment = hostEnvironment;
         }
        
         public IActionResult Index()
@@ -158,6 +162,12 @@ namespace QL_LaoDong.Controllers
             }
             return View();
             
+        }
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Accounts");
         }
     }
 }
