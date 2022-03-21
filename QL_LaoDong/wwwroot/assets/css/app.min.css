@@ -6581,3 +6581,19 @@ ul.sitemap-icon ul li a {
     }
 }
 /*# sourceMappingURL=app.min.css.map */
+.tkb {
+    background-color: rgb(158 177 255);
+    /* background-color: #002c31; */
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 10px 10px 20px var(--secondary);
+    display: flex;
+    justify-content: center;
+}
+
+.tkb-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -32,11 +32,21 @@ namespace QL_LaoDong.Controllers
             return View(data);
         }
         public IActionResult CalendarPage()
-        {            
-            var data1 = _worktickerService.GetSundayAfter();
-            ViewBag.sundayafter = data1;
-            var data2 = _worktickerService.GetSundayMor();
-            ViewBag.sundaymor = data2;
+        {
+            ViewBag.sundayafter = _worktickerService.GetSundayAfter();
+            ViewBag.sundaymor = _worktickerService.GetSundayMor();
+            ViewBag.mondayafter = _worktickerService.GetMondayAfter();
+            ViewBag.mondaymor = _worktickerService.GetMondayMor();
+            ViewBag.tuesdayafter = _worktickerService.GetTuesdayAfter();
+            ViewBag.tuesdaymor = _worktickerService.GetTuesdayMor();
+            ViewBag.wednesdayafter = _worktickerService.GetWednesdayAfter();
+            ViewBag.wednesdaymor = _worktickerService.GetWednesdayMor();
+            ViewBag.thursdayafter = _worktickerService.GetThursdayAfter();
+            ViewBag.thursdaymor = _worktickerService.GetThursdayMor();
+            ViewBag.fridayafter = _worktickerService.GetFridayAfter();
+            ViewBag.fridaymor = _worktickerService.GetFridayMor();
+            ViewBag.saturdayafter = _worktickerService.GetSaturdayAfter();
+            ViewBag.saturdaymor = _worktickerService.GetSaturdayMor();
             return View();
         }
 

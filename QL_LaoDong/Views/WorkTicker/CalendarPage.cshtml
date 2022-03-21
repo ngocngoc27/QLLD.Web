@@ -4,176 +4,245 @@
     ViewData["Title"] = "CalendarPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row">
-    <div class="col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                <h5>LỊCH LAO ĐỘNG</h5>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                        <li class="breadcrumb-item active">LỊCH LAO ĐỘNG</li>
+                    </ol>
+                </div>
+                @*<h4 class="page-title">Datatable</h4>*@
             </div>
-            <div class="card-body table-border-style">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>BUỔI</th>
-                                <th>THỨ HAI</th>
-                                <th>THỨ BA</th>
-                                <th>THỨ TƯ</th>
-                                <th>THỨ NĂM</th>
-                                <th>THỨ SÁU</th>
-                                <th>THỨ BẢY</th>
-                                <th>CHỦ NHẬT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="background-color: rgb(255, 255, 255);">
-                                <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Sáng</td>
-                                <!-- SÁNG/THỨ HAI -->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- SÁNG/THỨ BA -->
-                                <td>
-                                </td>
-                                <!-- SÁNG/THỨ TƯ -->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- SÁNG/THỨ NĂM -->
-                                <td>
-                                </td>
-                                <!-- SÁNG/THỨ SÁU-->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- SÁNG/THỨ THỨ-->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- SÁNG/CHỦ NHẬT-->
-                                <td>
-                                    @foreach (Workticker item in ((ViewBag.sundaymor) as IEnumerable<Workticker>))
-                                    {
-                                        <div class="tkb">
-                                            <div class="tkb-contents">
-                                                <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                                <div class="font-size13 text-light-gray">
-                                                    @Html.DisplayFor(modelItem => item.Job.Job1)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>BUỔI</th>
+                                    <th>THỨ HAI</th>
+                                    <th>THỨ BA</th>
+                                    <th>THỨ TƯ</th>
+                                    <th>THỨ NĂM</th>
+                                    <th>THỨ SÁU</th>
+                                    <th>THỨ BẢY</th>
+                                    <th>CHỦ NHẬT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: rgb(255, 255, 255);">
+                                    <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Sáng</td>
+                                    <!-- SÁNG/THỨ HAI -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.mondaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                </td>
-                            </tr>
-                            <tr style="background-color: rgb(255, 255, 255);">
-                                <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Chiều</td>
-                                <!-- CHIỀU/THỨ HAI -->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H2</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- CHIỀU/THỨ BA -->
-                                <td>
-                                </td>
-                                <!-- CHIỀU/THỨ TƯ -->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp H1</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp C1-C2</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                            <div class="font-size13 text-light-gray">Dọn dẹp đường ống</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- CHIỀU/THỨ NĂM -->
-                                <td>
-                                </td>
-                                <!-- CHIỀU/THỨ SÁU-->
-                                <td>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [39]</a>
-                                            <div class="font-size13 text-light-gray">Dọn cỏ sân banh</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [20]</a>
-                                            <div class="font-size13 text-light-gray">Lau dọn hành lang</div>
-                                        </div>
-                                    </div>
-                                    <div class="tkb">
-                                        <div class="tkb-contents">
-                                            <a href="#" class="margin-10px-top font-size14">ĐHSTIN20A [14]</a>
-                                            <div class="font-size13 text-light-gray">Vệ sinh phòng học</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <!-- CHIỀU/THỨ THỨ-->
-                                <td>
-                                <td>
-                                    @foreach (Workticker item in ((ViewBag.sundayafter) as IEnumerable<Workticker>))
-                                    {
-                                        <div class="tkb">
-                                            <div class="tkb-contents">
-                                                <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
-                                                <div class="font-size13 text-light-gray">
-                                                    @Html.DisplayFor(modelItem => item.Job.Job1)
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ BA -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.tuesdaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                </td>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ TƯ -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.wednesdaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ NĂM -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.thursdaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ SÁU-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.fridaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ BẢY-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.saturdaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/CHỦ NHẬT-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.sundaymor) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr style="background-color: rgb(255, 255, 255);">
+                                    <td class="align-middle" style="background-color: rgb(45 84 133); color: white">Chiều</td>
+                                    <!-- CHIỀU/THỨ HAI -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.mondayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ BA -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.tuesdayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ TƯ -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.wednesdayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ NĂM -->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.thursdayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ SÁU-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.fridayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ BẢY-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.saturdayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/CHỦ NHẬT-->
+                                    <td>
+                                        @foreach (Workticker item in ((ViewBag.sundayafter) as IEnumerable<Workticker>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="#" class="margin-10px-top font-size14">ĐHCNTT18A [14]</a>
+                                                    <div class="font-size13 text-light-gray">
+                                                        @Html.DisplayFor(modelItem => item.Job.Job1)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
