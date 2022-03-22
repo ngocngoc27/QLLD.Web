@@ -91,7 +91,7 @@ body {
 
 .left-side-menu {
     width: 260px;
-    background: #191970;
+    background: #357EC7;
     bottom: 0;
     padding: 20px 0;
     position: fixed;
@@ -669,9 +669,9 @@ a:hover {
     }
 
 .logo-box {
-   /* background-color: #36404e;*/
+    background-color: #357EC7;
     height: 70px;
-    width: 230px;
+    width: 260px;
     float: left;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;

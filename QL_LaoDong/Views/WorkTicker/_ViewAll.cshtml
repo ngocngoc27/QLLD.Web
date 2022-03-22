@@ -64,7 +64,8 @@
                                 @Html.DisplayFor(modelItem => item.Status)
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'Update Tool')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i></a>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'Phân công công việc')" class="btn btn-info text-white"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'Phân công dụng cụ')" class="btn btn-success text-white"><i class="fa fa-wrench"></i></a>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>
