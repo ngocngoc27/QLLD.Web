@@ -20,7 +20,7 @@
             <div class="card-box table-responsive">
                 <h4 class="header-title"><b>DANH MỤC CÔNG VIỆC</b></h4>
                 <div class="btn-addoredit">
-                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {IdMn=0},Context.Request.Scheme)', 'Thêm công việc')" class="btn btn-success text-white"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {IdMn=0},Context.Request.Scheme)', 'Thêm công việc')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                 </div>
                 <br />
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -58,11 +58,11 @@
                                     @Html.DisplayFor(modelItem => item.Lock)
                                 </td>
                                 <td>
-                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {id=item.Id },Context.Request.Scheme)', 'Cập nhật công việc')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i></a>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {id=item.Id },Context.Request.Scheme)', 'Cập nhật công việc')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                     </form>
-                                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i>Details</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i>Details</a>
                                 </td>
                             </tr>
                         }
