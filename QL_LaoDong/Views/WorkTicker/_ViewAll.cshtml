@@ -55,7 +55,7 @@
                                 @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Calendar.Day)
+                                @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Job.Job1)
