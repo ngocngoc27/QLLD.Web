@@ -118,6 +118,30 @@ namespace QL_LaoDong.Services
             }
             return AppUser;
         }
-
+        public Profile Details(long id)
+        {
+            var Profile = new Profile();
+            var query = from students in _context.Student
+                        join classes in _context.Class on students.ClassId equals classes.Id
+                        join account in _context.Account on students.AccountId equals account.Id
+                        join role in _context.Role on account.RoleId equals role.Id
+                        join faculty in _context.Faculty on classes.FacultyId equals faculty.Id
+                        where students.AccountId == id
+                        select new Profile()
+                        {
+                            Mssv = students.Mssv,
+                            FullName = account.Fullname,
+                            DateOfBirth = account.DateOfBirth,
+                            Sex = account.Sex,
+                            RoleName = role.NameRole,
+                            ClassName = classes.ClassName,
+                            Training = classes.Training,
+                            TypeOfEducation = classes.TypeOfEducation,
+                            FacultyName = faculty.FacultyName,
+                            NumberOfWork = students.NumberOfWork
+                        };
+            Profile = query.FirstOrDefault();
+            return Profile;
+        }
     }
 }
