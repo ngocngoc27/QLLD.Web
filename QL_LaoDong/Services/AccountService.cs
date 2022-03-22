@@ -98,6 +98,8 @@ namespace QL_LaoDong.Services
             string pas = Security.MD5(pass);
             string user = model.Username;
             var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
+            if (acc.Lock != false)
+                throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
 
             if(acc != default)
             {
