@@ -53,7 +53,7 @@ namespace QL_LaoDong
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddDistributedMemoryCache();
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+                options.IdleTimeout = TimeSpan.FromMinutes(20);//You can set Time   
             });
             services.AddHttpContextAccessor();
         }
