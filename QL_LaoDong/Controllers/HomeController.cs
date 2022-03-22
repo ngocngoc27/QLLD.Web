@@ -14,5 +14,6 @@ namespace QL_LaoDong.Controllers
             ViewBag.usename = HttpContext.Session.GetString("user");
             return View();
         }
+
     }
 }

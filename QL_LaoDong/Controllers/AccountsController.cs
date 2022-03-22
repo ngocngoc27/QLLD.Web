@@ -172,7 +172,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult Details()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
-            var data = _AccountService.GetById(id);
+            var data = _AccountService.Details(id);
             return View(data);
         }
     }

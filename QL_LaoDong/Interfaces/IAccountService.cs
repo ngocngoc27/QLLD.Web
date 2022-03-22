@@ -18,5 +18,6 @@ namespace QL_LaoDong.Interfaces
         bool AccountExists(long id);
         AppUser Login(Account model);
 
+        Profile Details(long id);
     }
 }
