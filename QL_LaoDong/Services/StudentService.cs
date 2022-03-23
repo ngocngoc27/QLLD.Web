@@ -56,7 +56,7 @@ namespace QL_LaoDong.Services
             entity.NumberOfWork = model.NumberOfWork;
             string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
             long id = Convert.ToInt64(data);
-            entity.ClassId = id;
+            entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.Lock = false;
             _context.Student.Update(entity);
@@ -68,7 +68,13 @@ namespace QL_LaoDong.Services
             var student = _context.Student.Include(x=>x.Account).Include(x=>x.Class).Where(x => x.Lock != true).ToList();
             return student;
         }
-
+        public List<Student> GetClass()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            var student = _context.Student.Include(x => x.Account).Include(x => x.Class).Where(x=>x.ClassId == id).ToList();
+            return student;
+        }
         public Student GetById(int id)
         {
             return _context.Student.Where(x => x.Id == id).FirstOrDefault();

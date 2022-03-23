@@ -66,13 +66,13 @@
                     <div class="form-group">
                         <label class="control-label">Hình ảnh</label>
                         <br />
-                        <input asp-for="ImageFile" accept="image/*" type="file" onchange="previewFile(this)" onclick="changeImage()"/>
+                        <input asp-for="ImageFile" accept="Image/*" type="file" onchange="previewFile(this)" onclick="changeImage()"/>
                         <span asp-validation-for="ImageFile" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div id="preview">
-                        <img src="@("~/image/"+Model.Picture)" asp-append-version="true" id="myImage" width="100px" height="100px" />
+                        <img src="@("~/Image"+Model.Picture)" asp-append-version="true" id="myImage" width="100px" height="100px" />
                     </div>
                 </div>
             </div>

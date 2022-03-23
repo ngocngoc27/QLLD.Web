@@ -20,6 +20,7 @@ namespace QL_LaoDong.Models
         public string Password { get; set; }
         public long RoleId { get; set; }
         public string Fullname { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? DateOfBirth { get; set; }

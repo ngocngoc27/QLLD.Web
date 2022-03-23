@@ -18,16 +18,24 @@ namespace QL_LaoDong.Controllers
         private readonly IStudentService _studentService;
         private readonly IAccountService _accountService;
         private readonly IClassService _classService;
-        public StudentController(IStudentService studentService, IAccountService accountService, IClassService classService)
+        private IHttpContextAccessor _httpContextAccessor;
+        public StudentController(IStudentService studentService, IAccountService accountService, IClassService classService, IHttpContextAccessor httpContextAccessor)
         {
             _studentService = studentService;
             _accountService = accountService;
             _classService = classService;
+            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
             var data = _studentService.Get();
+            return View(data);
+        }
+        public IActionResult StudentClass()
+        {
+            ViewBag.usename = HttpContext.Session.GetString("user");
+            var data = _studentService.GetClass();
             return View(data);
         }
         private bool StudentExists(long Id)

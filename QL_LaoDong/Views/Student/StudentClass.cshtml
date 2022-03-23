@@ -1,0 +1,72 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Student>
+
+@{
+    ViewData["Title"] = "StudentClass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Thông tin</a></li>
+                        <li class="breadcrumb-item active">Lớp sinh viên</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">DANH SÁCH LỚP SINH VIÊN</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                MSSV
+                            </th>
+                            <th>
+                                Họ tên
+                            </th>                                
+                            <th>
+                                Ngày sinh
+                            </th>
+                            <th>
+                                Giới tính
+                            </th>
+                            <th>
+                                Số ngày lao động
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mssv)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.DateOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.Sex)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumberOfWork)
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
