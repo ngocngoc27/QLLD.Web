@@ -81,11 +81,11 @@ namespace QL_LaoDong.Services
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
-            if (System.IO.File.Exists(imagePath))
-            {
-                System.IO.File.Delete(imagePath);
-            }
+            //var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
+            //if (System.IO.File.Exists(imagePath))
+            //{
+            //    System.IO.File.Delete(imagePath);
+            //}
             _context.Account.Remove(entity);
             _context.SaveChanges();
         }
