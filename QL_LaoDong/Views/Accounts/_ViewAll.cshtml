@@ -42,6 +42,9 @@
                             <th>
                                 Quyền
                             </th>
+                            <th>
+                                Hình ảnh
+                            </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -57,13 +60,16 @@
                                 </td>
                                 <td>
                                     @*@Html.DisplayFor(modelItem => item.DateOfBirth)*@
-                                    @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                                    @Convert.ToDateTime(item.DateOfBirth).ToString("MM/dd/yyyy")
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Sex)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Role.NameRole)
+                                </td>
+                                <td>
+                                    <img src="@("~/image/"+item.Picture)" asp-append-version="true" width="30px" height="30px" />
                                 </td>
                                 <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Accounts",new {id=item.Id },Context.Request.Scheme)', 'Cập nhật tài khoản')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>

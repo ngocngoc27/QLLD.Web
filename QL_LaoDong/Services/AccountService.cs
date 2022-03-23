@@ -15,10 +15,12 @@ namespace QL_LaoDong.Services
     public class AccountService:IAccountService
     {
         public DataContext _context;
-       
-        public AccountService(DataContext context)
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public AccountService(DataContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
           
         }
 
@@ -39,6 +41,16 @@ namespace QL_LaoDong.Services
             entity.RoleId = model.RoleId;
             entity.DateOfBirth = model.DateOfBirth;
             entity.Lock = false;
+            //Save image to wwwroot/image
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+            string extension = Path.GetExtension(model.ImageFile.FileName);
+            entity.Picture = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                model.ImageFile.CopyToAsync(fileStream);
+            }
             _context.Account.Add(entity);
             _context.SaveChanges();
 
@@ -69,7 +81,11 @@ namespace QL_LaoDong.Services
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
             _context.Account.Remove(entity);
             _context.SaveChanges();
         }

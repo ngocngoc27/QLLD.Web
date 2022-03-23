@@ -83,4 +83,22 @@ JQueryAjaxDelete = form => {
 $(document).ready(function () {
     $('#example').DataTable();
 });
+function previewFile(input) {
+    const [file] = input.files
+    const preview = document.getElementById('preview')
+    const reader = new FileReader()
 
+    reader.onload = e => {
+        const img = document.createElement('img')
+        img.src = e.target.result
+        img.width = 100
+        img.height = 100
+        img.alt = 'file'
+
+        preview.appendChild(img)
+    }
+    reader.readAsDataURL(file)
+}
+function changeImage() {
+    document.getElementById('myImage').style.display = "none";
+}
