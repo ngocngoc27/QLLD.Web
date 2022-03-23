@@ -22,7 +22,7 @@ namespace QL_LaoDong.Models
         public string Fullname { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{MM/dd/yyyy}")]
         public DateTime? DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string Picture { get; set; }

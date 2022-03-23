@@ -31,7 +31,7 @@
                                 Tên tài khoản
                             </th>
                             <th>
-                                Họ tên đầy đủ
+                                Họ tên
                             </th>
                             <th>
                                 Ngày sinh
@@ -59,7 +59,6 @@
                                     @Html.DisplayFor(modelItem => item.Fullname)
                                 </td>
                                 <td>
-                                    @*@Html.DisplayFor(modelItem => item.DateOfBirth)*@
                                     @Convert.ToDateTime(item.DateOfBirth).ToString("MM/dd/yyyy")
                                 </td>
                                 <td>
