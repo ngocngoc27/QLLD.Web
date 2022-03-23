@@ -7,19 +7,18 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Datatable</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Danh mục</a></li>
+                        <li class="breadcrumb-item active">Dụng cụ lao động</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Datatable</h4>
+                <h4 class="page-title">DANH MỤC DỤNG CỤ LAO ĐỘNG</h4>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <div class="card-box table-responsive">
-                <h4 class="header-title"><b>DANH MỤC DỤNG CỤ LAO ĐỘNG</b></h4>
+            <div class="card-box table-responsive">                
                 <div class="btn-addoredit">
                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Tool",new {IdMn=0},Context.Request.Scheme)', 'Thêm dụng cụ')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                 </div>
@@ -39,9 +38,6 @@
                             <th>
                                 Số lượng hiện có
                             </th>
-                            <th>
-                                Khóa dụng cụ
-                            </th>
                             <th></th>
                         </tr>
                     </thead>
@@ -60,9 +56,6 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Available)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Lock)
                                 </td>
                                 <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Tool",new {id=item.Id },Context.Request.Scheme)', 'Cập nhật dụng cụ')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>

@@ -6,19 +6,19 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                        <li class="breadcrumb-item active">Datatable</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Danh mục</a></li>
+                        <li class="breadcrumb-item active">Công việc</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Datatable</h4>
+                <h4 class="page-title">DANH MỤC CÔNG VIỆC </h4>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
-                <h4 class="header-title"><b>DANH MỤC CÔNG VIỆC</b></h4>
+                @*<h4 class="header-title"><b>DANH MỤC CÔNG VIỆC</b></h4>*@
                 <div class="btn-addoredit">
                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {IdMn=0},Context.Request.Scheme)', 'Thêm công việc')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                 </div>
@@ -34,9 +34,6 @@
                             </th>
                             <th>
                                 Vị trí
-                            </th>
-                            <th>
-                                Khóa công việc
                             </th>
                             <th></th>
                         </tr>
@@ -55,14 +52,10 @@
                                     @Html.DisplayFor(modelItem => item.Locate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Lock)
-                                </td>
-                                <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Job",new {id=item.Id },Context.Request.Scheme)', 'Cập nhật công việc')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
-                                    </form>
-                                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i>Details</a>
+                                    </form>                                    
                                 </td>
                             </tr>
                         }
