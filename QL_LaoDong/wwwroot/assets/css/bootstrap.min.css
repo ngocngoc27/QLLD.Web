@@ -1924,7 +1924,8 @@ pre {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #797979;
+    color: #700;
+    background: antiquewhite;
 }
 
     .table td,

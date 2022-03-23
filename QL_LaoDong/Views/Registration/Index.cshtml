@@ -7,55 +7,69 @@
 <p>
     <a asp-action="Create">ĐĂNG KÝ LAO ĐỘNG</a>
 </p>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="card-box table-responsive">            
-            <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                <thead>
-                    <tr>
-                        <th>
-                            Buổi
-                        </th>
-                        <th>
-                            Thứ
-                        </th>
-                        <th>
-                            Ngày
-                        </th>
-                        <th>
-                            Tên công việc
-                        </th>
-                        <th>
-                            Trạng thái
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Lao động</a></li>
+                        <li class="breadcrumb-item active">Đăng ký lao động</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">DANH SÁCH ĐĂNG KÝ LAO ĐỘNG</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
-                            </td>
-                            <td>
-                                @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Job.Job1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
+                            <th>
+                                Buổi
+                            </th>
+                            <th>
+                                Thứ
+                            </th>
+                            <th>
+                                Ngày
+                            </th>
+                            <th>
+                                Tên công việc
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
+                                </td>
+                                <td>
+                                    @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Job.Job1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
 
