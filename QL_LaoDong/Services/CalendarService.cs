@@ -23,7 +23,36 @@ namespace QL_LaoDong.Services
             entity.Day = model.Day;
             var days =Convert.ToDateTime( model.Day);
             DayOfWeek week = days.DayOfWeek;
-            var thu = Convert.ToString(week);
+            var thu = "";
+            if (week == DayOfWeek.Monday)
+            {
+                thu = "Thứ hai";
+            }
+            else if (week == DayOfWeek.Tuesday)
+            {
+                thu = "Thứ ba";
+            }
+            else if (week == DayOfWeek.Wednesday)
+            {
+                thu = "Thứ tư";
+            }
+            else if (week == DayOfWeek.Thursday)
+            {
+                thu = "Thứ năm";
+            }
+            else if (week == DayOfWeek.Friday)
+            {
+                thu = "Thứ sáu";
+            }
+            else if (week == DayOfWeek.Saturday)
+            {
+                thu = "Thứ bảy";
+            }
+            else if (week == DayOfWeek.Sunday)
+            {
+                thu = "Chủ nhật";
+            }
+            //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
             _context.Calendar.Add(entity);
             _context.SaveChanges();
@@ -46,9 +75,36 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.SessionOfDay = model.SessionOfDay;
             entity.Day = model.Day;
-            var days = Convert.ToDateTime(model.Day);
-            DayOfWeek week = days.DayOfWeek;
-            var thu = Convert.ToString(week);
+            DayOfWeek week = Convert.ToDateTime(model.Day).DayOfWeek;
+            var thu = "";
+            if (week == DayOfWeek.Monday)
+            {
+                thu = "Thứ hai";
+            }
+            else if (week == DayOfWeek.Tuesday)
+            {
+                thu = "Thứ ba";
+            }
+            else if (week == DayOfWeek.Wednesday)
+            {
+                thu = "Thứ tư";
+            }
+            else if (week == DayOfWeek.Thursday)
+            {
+                thu = "Thứ năm";
+            }
+            else if (week == DayOfWeek.Friday)
+            {
+                thu = "Thứ sáu";
+            }
+            else if (week == DayOfWeek.Saturday)
+            {
+                thu = "Thứ bảy";
+            }
+            else if (week == DayOfWeek.Sunday){
+                thu = "Chủ nhật";
+            }
+            //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
             _context.Calendar.Update(entity);
             _context.SaveChanges();

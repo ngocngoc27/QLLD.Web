@@ -32,6 +32,7 @@ namespace QL_LaoDong.Controllers
         private void CalendarList(object selectCalendar = null)
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
+           
         }
         [NoDirectAccess]
         public IActionResult Create()
