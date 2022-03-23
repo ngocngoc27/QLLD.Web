@@ -147,6 +147,7 @@ namespace QL_LaoDong.Services
                         where students.AccountId == id
                         select new Profile()
                         {
+                            Picture = account.Picture,
                             Mssv = students.Mssv,
                             FullName = account.Fullname,
                             DateOfBirth = account.DateOfBirth,

@@ -7,6 +7,7 @@ namespace QL_LaoDong.ViewModels
 {
     public class Profile
     {
+        public string Picture { get; set; }
         public string Mssv { get; set; }
         public string FullName { get; set; }
         public DateTime? DateOfBirth { get; set; }

@@ -9,6 +9,7 @@ namespace QL_LaoDong.Interfaces
     public interface IStudentService
     {
         List<Student> Get();
+        List<Student> GetClass();
         Student GetById(int id);
         void Create(Student model);
         void Edit(Student model);
