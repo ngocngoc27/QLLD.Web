@@ -39,7 +39,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddOrEdit(int Id = 0)
         {
             AccountList();
-
+            ClassList();
             if (Id == 0)
             {
                 return View(new Student());
@@ -101,6 +101,10 @@ namespace QL_LaoDong.Controllers
         private void AccountList(object selectacc = null)
         {
             ViewBag.acc = new SelectList(_accountService.Get(), "Id", "Fullname", selectacc);
+        }
+        private void ClassList(object selectClass = null)
+        {
+            ViewBag.cla = new SelectList(_classService.Get(), "Id", "ClassName", selectClass);
         }
     }
 }
