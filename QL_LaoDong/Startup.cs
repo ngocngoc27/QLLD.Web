@@ -30,6 +30,7 @@ namespace QL_LaoDong
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=103.121.89.141,1433;Database=QLLD;User ID=cntt18;Password=654321;Trusted_Connection=True;Integrated Security=false"));
 
