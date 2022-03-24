@@ -41,7 +41,7 @@ namespace QL_LaoDong.Services
             entity.RoleId = model.RoleId;
             entity.DateOfBirth = model.DateOfBirth;
             entity.Lock = false;
-            entity.Picture = "user224541622.png";
+            entity.Picture = "user225026334.png";
             _context.Account.Add(entity);
             _context.SaveChanges();
 
@@ -90,14 +90,14 @@ namespace QL_LaoDong.Services
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            if (entity.Picture != null)
-            {
-                var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
-                if (System.IO.File.Exists(imagePath))
-                {
-                    System.IO.File.Delete(imagePath);
-                }
-            }
+            //if (entity.Picture != null)
+            //{
+            //    var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
+            //    if (System.IO.File.Exists(imagePath))
+            //    {
+            //        System.IO.File.Delete(imagePath);
+            //    }
+            //}
             _context.Account.Remove(entity);
             _context.SaveChanges();
         }
