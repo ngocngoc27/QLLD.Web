@@ -15,13 +15,9 @@ namespace QL_LaoDong.Models
         public string SessionOfDay { get; set; }
         public string Weekdays { get; set; }
         [DataType(DataType.Date)]
-<<<<<<< HEAD
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-=======
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 
->>>>>>> d500ce276cf83405ba621cba9cf38805ca3fd45b
         public DateTime? Day { get; set; }
 
         public virtual ICollection<Workticker> Workticker { get; set; }
