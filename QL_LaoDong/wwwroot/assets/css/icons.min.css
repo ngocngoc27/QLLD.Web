@@ -1,7 +1,7 @@
 ﻿@charset "UTF-8";
 
 @font-face {
-    /*font-family: "Material Design Icons";*/
+    font-family: "Material Design Icons";
     src: url(../fonts/materialdesignicons-webfont.bin);
     src: url(../fonts/materialdesignicons-webfont-1.bin) format("embedded-opentype"), url(../fonts/materialdesignicons-webfont-2.bin) format("woff2"), url(../fonts/materialdesignicons-webfont-3.bin) format("woff"), url(../fonts/materialdesignicons-webfont-4.bin) format("truetype");
     font-weight: 400;

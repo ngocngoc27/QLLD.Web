@@ -1924,8 +1924,9 @@ pre {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #700;
-    background: antiquewhite;
+    color: #011140;
+    background: #E0EDF485;
+    text-align: center;
 }
 
     .table td,
@@ -14582,3 +14583,7 @@ h6 {
     font-size: 30px !important;
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+thead {
+    background: #38c2f9;
+    color: white;
+}
