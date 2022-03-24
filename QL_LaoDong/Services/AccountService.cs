@@ -41,16 +41,7 @@ namespace QL_LaoDong.Services
             entity.RoleId = model.RoleId;
             entity.DateOfBirth = model.DateOfBirth;
             entity.Lock = false;
-            //Save image to wwwroot/image
-            string wwwRootPath = _hostEnvironment.WebRootPath;
-            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
-            string extension = Path.GetExtension(model.ImageFile.FileName);
-            entity.Picture = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                model.ImageFile.CopyToAsync(fileStream);
-            }
+            entity.Picture = "user224541622.png";
             _context.Account.Add(entity);
             _context.SaveChanges();
 
@@ -73,19 +64,40 @@ namespace QL_LaoDong.Services
             entity.Fullname = model.Fullname;
             entity.DateOfBirth = model.DateOfBirth;
             entity.RoleId = model.RoleId;
+            if (model.ImageFile != null)
+            {
+                ////Save image to wwwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                string extension = Path.GetExtension(model.ImageFile.FileName);
+                entity.Picture = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    model.ImageFile.CopyToAsync(fileStream);
+                }
+            }
+            else
+            {
+                entity.Picture = entity.Picture;
+            }
             _context.Account.Update(entity);
             _context.SaveChanges();
+
         }
         public void Delete(Account model)
         {
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            //var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
-            //if (System.IO.File.Exists(imagePath))
-            //{
-            //    System.IO.File.Delete(imagePath);
-            //}
+            if (entity.Picture != null)
+            {
+                var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", entity.Picture);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
             _context.Account.Remove(entity);
             _context.SaveChanges();
         }
