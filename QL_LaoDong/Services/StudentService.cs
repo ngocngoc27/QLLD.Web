@@ -70,6 +70,12 @@ namespace QL_LaoDong.Services
         }
         public List<Student> GetClass()
         {
+            int num = Convert.ToInt32(from Student in _context.Student select Student.NumberOfWork);
+            int sum = 0;
+            foreach(int x in num)
+            {
+                sum += num;
+            }    
             string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
             long id = Convert.ToInt64(data);
             var student = _context.Student.Include(x => x.Account).Include(x => x.Class).Where(x=>x.ClassId == id).ToList();
