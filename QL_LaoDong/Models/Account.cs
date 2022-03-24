@@ -24,6 +24,10 @@ namespace QL_LaoDong.Models
         [DataType(DataType.Date)]
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26f71339fc0c17931963d51868af7ad77a80c88b
         public DateTime? DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string Picture { get; set; }
