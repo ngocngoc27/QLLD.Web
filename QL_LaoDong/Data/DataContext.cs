@@ -11,8 +11,10 @@ namespace QL_LaoDong.Data
         public virtual DbSet<Calendar> Calendar { get; set; }
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Faculty> Faculty { get; set; }
+        public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Job> Job { get; set; }
         public virtual DbSet<Menus> Menus { get; set; }
+        public virtual DbSet<MenusRole> MenusRole { get; set; }
         public virtual DbSet<Muster> Muster { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Student> Student { get; set; }
@@ -38,9 +40,7 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Fullname).HasMaxLength(50);
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Password).HasMaxLength(50);
 
                 entity.Property(e => e.Picture).HasColumnType("ntext");
 
@@ -49,14 +49,12 @@ namespace QL_LaoDong.Data
                 entity.Property(e => e.Sex).HasMaxLength(5);
 
                 entity.Property(e => e.Username)
-                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.Account)
                     .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TAIKHOAN_QUYEN");
             });
 
@@ -70,6 +68,8 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.SessionOfDay).HasMaxLength(10);
 
+                entity.Property(e => e.Status).HasMaxLength(50);
+
                 entity.Property(e => e.Weekdays).HasMaxLength(20);
             });
 
@@ -80,7 +80,6 @@ namespace QL_LaoDong.Data
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.ClassCode)
-                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -99,7 +98,6 @@ namespace QL_LaoDong.Data
                 entity.HasOne(d => d.Faculty)
                     .WithMany(p => p.Class)
                     .HasForeignKey(d => d.FacultyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CLASS_FACULTY");
             });
 
@@ -109,9 +107,34 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.FacultyName)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.FacultyName).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Groups>(entity =>
+            {
+                entity.ToTable("GROUPS");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.GroupsName).HasMaxLength(50);
+
+                entity.Property(e => e.JobId).HasColumnName("JobID");
+
+                entity.Property(e => e.Leader).HasMaxLength(50);
+
+                entity.Property(e => e.Status).HasMaxLength(50);
+
+                entity.Property(e => e.WorkTickerId).HasColumnName("WorkTickerID");
+
+                entity.HasOne(d => d.Job)
+                    .WithMany(p => p.Groups)
+                    .HasForeignKey(d => d.JobId)
+                    .HasConstraintName("FK_GROUPS_JOB");
+
+                entity.HasOne(d => d.WorkTicker)
+                    .WithMany(p => p.Groups)
+                    .HasForeignKey(d => d.WorkTickerId)
+                    .HasConstraintName("FK_GROUPS_WORKTICKER");
             });
 
             modelBuilder.Entity<Job>(entity =>
@@ -122,9 +145,7 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Description).HasColumnType("ntext");
 
-                entity.Property(e => e.Job1)
-                    .HasMaxLength(100)
-                    .HasColumnName("Job");
+                entity.Property(e => e.JobName).HasMaxLength(100);
 
                 entity.Property(e => e.Locate).HasMaxLength(50);
             });
@@ -143,11 +164,27 @@ namespace QL_LaoDong.Data
                 entity.Property(e => e.UrlLink)
                     .HasMaxLength(200)
                     .IsUnicode(false);
+            });
 
-                entity.HasOne(d => d.UserAddNavigation)
-                    .WithMany(p => p.Menus)
-                    .HasForeignKey(d => d.UserAdd)
-                    .HasConstraintName("FK_DANHMUC_TAIKHOAN");
+            modelBuilder.Entity<MenusRole>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("MENUS_ROLE");
+
+                entity.Property(e => e.IdMn).HasColumnName("ID_MN");
+
+                entity.Property(e => e.RoleId).HasColumnName("RoleID");
+
+                entity.HasOne(d => d.IdMnNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdMn)
+                    .HasConstraintName("FK_MENUS_ROLE_MENUS");
+
+                entity.HasOne(d => d.Role)
+                    .WithMany()
+                    .HasForeignKey(d => d.RoleId)
+                    .HasConstraintName("FK_MENUS_ROLE_ROLE");
             });
 
             modelBuilder.Entity<Muster>(entity =>
@@ -156,23 +193,19 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.AccountId).HasColumnName("AccountID");
+                entity.Property(e => e.GroupsId).HasColumnName("GroupsID");
 
-                entity.Property(e => e.Status).HasMaxLength(50);
+                entity.Property(e => e.StudentId).HasColumnName("StudentID");
 
-                entity.Property(e => e.WorkTickerId).HasColumnName("WorkTickerID");
-
-                entity.HasOne(d => d.Account)
+                entity.HasOne(d => d.Groups)
                     .WithMany(p => p.Muster)
-                    .HasForeignKey(d => d.AccountId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MUSTER_ACCOUNT");
+                    .HasForeignKey(d => d.GroupsId)
+                    .HasConstraintName("FK_MUSTER_GROUPS");
 
-                entity.HasOne(d => d.WorkTicker)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.Muster)
-                    .HasForeignKey(d => d.WorkTickerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MUSTER_WORKTICKER");
+                    .HasForeignKey(d => d.StudentId)
+                    .HasConstraintName("FK_MUSTER_STUDENT");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -181,9 +214,7 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.NameRole)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.NameRole).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Student>(entity =>
@@ -197,7 +228,6 @@ namespace QL_LaoDong.Data
                 entity.Property(e => e.ClassId).HasColumnName("ClassID");
 
                 entity.Property(e => e.Mssv)
-                    .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("MSSV");
@@ -205,13 +235,11 @@ namespace QL_LaoDong.Data
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Student)
                     .HasForeignKey(d => d.AccountId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SINHVIEN_TAIKHOAN");
 
                 entity.HasOne(d => d.Class)
                     .WithMany(p => p.Student)
                     .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SINHVIEN_LOP");
             });
 
@@ -234,23 +262,21 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.GroupsId).HasColumnName("GroupsID");
+
                 entity.Property(e => e.Notes).HasColumnType("ntext");
 
                 entity.Property(e => e.ToolId).HasColumnName("ToolID");
 
-                entity.Property(e => e.WorkTickerId).HasColumnName("WorkTickerID");
+                entity.HasOne(d => d.Groups)
+                    .WithMany(p => p.Toolticker)
+                    .HasForeignKey(d => d.GroupsId)
+                    .HasConstraintName("FK_TOOLTICKER_GROUPS");
 
                 entity.HasOne(d => d.Tool)
                     .WithMany(p => p.Toolticker)
                     .HasForeignKey(d => d.ToolId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PHIEUDUNGCU_DUNGCULAODONG");
-
-                entity.HasOne(d => d.WorkTicker)
-                    .WithMany(p => p.Toolticker)
-                    .HasForeignKey(d => d.WorkTickerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PHIEUDUNGCU_PHIEULAODONG");
             });
 
             modelBuilder.Entity<Workticker>(entity =>
@@ -259,23 +285,25 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.AccountId).HasColumnName("AccountID");
+
                 entity.Property(e => e.CalendarId).HasColumnName("CalendarID");
 
-                entity.Property(e => e.JobId).HasColumnName("JobID");
+                entity.Property(e => e.Note).HasMaxLength(100);
+
+                entity.Property(e => e.RegistrationForm).HasMaxLength(50);
 
                 entity.Property(e => e.Status).HasMaxLength(50);
+
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Workticker)
+                    .HasForeignKey(d => d.AccountId)
+                    .HasConstraintName("FK_WORKTICKER_ACCOUNT");
 
                 entity.HasOne(d => d.Calendar)
                     .WithMany(p => p.Workticker)
                     .HasForeignKey(d => d.CalendarId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PHIEULAODONG_LICHLAODONG");
-
-                entity.HasOne(d => d.Job)
-                    .WithMany(p => p.Workticker)
-                    .HasForeignKey(d => d.JobId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PHIEULAODONG_CONGVIEC");
             });
 
             OnModelCreatingPartial(modelBuilder);

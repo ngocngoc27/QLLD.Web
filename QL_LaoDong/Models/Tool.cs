@@ -15,7 +15,7 @@ namespace QL_LaoDong.Models
         public int? Sum { get; set; }
         public string Unit { get; set; }
         public int? Available { get; set; }
-        public bool? Lock { get; set; }
+        public bool? IsDelete { get; set; }
 
         public virtual ICollection<Toolticker> Toolticker { get; set; }
     }

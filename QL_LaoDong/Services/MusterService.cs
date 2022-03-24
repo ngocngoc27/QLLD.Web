@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -18,10 +19,10 @@ namespace QL_LaoDong.Services
         public void Create(Muster model)
         {
             var entity = new Muster();
-            entity.WorkTickerId = model.WorkTickerId;
-            entity.AccountId = model.AccountId;
-            entity.Present = model.Present;
-            entity.Status = model.Status;
+            entity.StudentId = model.StudentId;
+            entity.GroupsId = model.GroupsId;
+            entity.RollUp = model.RollUp;
+            entity.IsDelete = false;
             _context.Muster.Add(entity);
             _context.SaveChanges();
         }
@@ -41,17 +42,16 @@ namespace QL_LaoDong.Services
             var entity = _context.Muster.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            entity.WorkTickerId = model.WorkTickerId;
-            entity.AccountId = model.AccountId;
-            entity.Present = model.Present;
-            entity.Status = model.Status;
+            entity.StudentId = model.StudentId;
+            entity.GroupsId = model.GroupsId;
+            entity.RollUp = model.RollUp;
             _context.Muster.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Muster> Get()
         {
-            return _context.Muster.ToList();
+            return _context.Muster.Include(x=>x.Student).Include(x => x.Groups).Where(x => x.IsDelete != true).ToList();
         }
 
         public Muster GetById(int id)

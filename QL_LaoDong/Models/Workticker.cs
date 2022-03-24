@@ -7,18 +7,20 @@ namespace QL_LaoDong.Models
     {
         public Workticker()
         {
-            Muster = new HashSet<Muster>();
-            Toolticker = new HashSet<Toolticker>();
+            Groups = new HashSet<Groups>();
         }
 
         public long Id { get; set; }
-        public long CalendarId { get; set; }
-        public long JobId { get; set; }
-        public string Status { get; set; }
+        public long? CalendarId { get; set; }
+        public long? AccountId { get; set; }
+        public int? Status { get; set; }
+        public string RegistrationForm { get; set; }
+        public bool? IsDelete { get; set; }
+        public string Note { get; set; }
+        public int? RegistrationNumber { get; set; }
 
+        public virtual Account Account { get; set; }
         public virtual Calendar Calendar { get; set; }
-        public virtual Job Job { get; set; }
-        public virtual ICollection<Muster> Muster { get; set; }
-        public virtual ICollection<Toolticker> Toolticker { get; set; }
+        public virtual ICollection<Groups> Groups { get; set; }
     }
 }

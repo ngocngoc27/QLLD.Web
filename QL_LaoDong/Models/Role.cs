@@ -12,7 +12,8 @@ namespace QL_LaoDong.Models
 
         public long Id { get; set; }
         public string NameRole { get; set; }
-        public bool? Lock { get; set; }
+        public bool? IsDelete { get; set; }
+        public int? Code { get; set; }
 
         public virtual ICollection<Account> Account { get; set; }
     }

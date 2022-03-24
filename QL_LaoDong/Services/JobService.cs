@@ -18,10 +18,11 @@ namespace QL_LaoDong.Services
         public void Create(Job model)
         {
             var entity = new Job();
-            entity.Job1 = model.Job1;
+            entity.JobName = model.JobName;
             entity.Description = model.Description;
             entity.Locate = model.Locate;
-            entity.Lock = false;
+            entity.IsDelete = false;
+            entity.BenefitOfDay = model.BenefitOfDay;
             _context.Job.Add(entity);
             _context.SaveChanges();
         }
@@ -41,17 +42,18 @@ namespace QL_LaoDong.Services
             var entity = _context.Job.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            entity.Job1 = model.Job1;
+            entity.JobName = model.JobName;
             entity.Description = model.Description;
             entity.Locate = model.Locate;
-            entity.Lock = model.Lock;
+            entity.IsDelete = model.IsDelete;
+            entity.BenefitOfDay = model.BenefitOfDay;
             _context.Job.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Job> Get()
         {
-            return _context.Job.Where(x=>x.Lock!=true).ToList();
+            return _context.Job.Where(x=>x.IsDelete!=true).ToList();
         }
 
         public Job GetById(int id)
@@ -63,7 +65,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Job.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            entity.Lock = true;
+            entity.IsDelete = true;
             _context.Job.Update(entity);
             _context.SaveChanges();
         }

@@ -20,6 +20,7 @@ namespace QL_LaoDong.Services
         {
             var entity = new Faculty();
             entity.FacultyName = model.FacultyName;
+            entity.IsDelete = false;
             _context.Faculty.Add(entity);
             _context.SaveChanges();
         }
@@ -46,7 +47,7 @@ namespace QL_LaoDong.Services
 
         public List<Faculty> Get()
         {
-            return _context.Faculty.ToList();
+            return _context.Faculty.Where(x=>x.IsDelete != true).ToList();
         }
 
         public Faculty GetById(int id)

@@ -12,7 +12,5 @@ namespace QL_LaoDong.Models
         public long? OrderKey { get; set; }
         public long? UserAdd { get; set; }
         public bool? Hide { get; set; }
-
-        public virtual Account UserAddNavigation { get; set; }
     }
 }

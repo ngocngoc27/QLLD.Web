@@ -21,6 +21,7 @@ namespace QL_LaoDong.Services
             var entity = new Calendar();
             entity.SessionOfDay = model.SessionOfDay;
             entity.Day = model.Day;
+            entity.IsDelete = false;
             var days =Convert.ToDateTime( model.Day);
             DayOfWeek week = days.DayOfWeek;
             var thu = "";
@@ -112,7 +113,7 @@ namespace QL_LaoDong.Services
 
         public List<Calendar> Get()
         {
-            return _context.Calendar.ToList();
+            return _context.Calendar.Where(x => x.IsDelete != true).ToList();
         }
 
         public Calendar GetById(int id)

@@ -19,7 +19,8 @@ namespace QL_LaoDong.Services
         {
             var entity = new Role();
             entity.NameRole = model.NameRole;
-            entity.Lock = false;
+            entity.IsDelete = false;
+            entity.Code = model.Code;
             _context.Role.Add(entity);
             _context.SaveChanges();
         }
@@ -40,14 +41,15 @@ namespace QL_LaoDong.Services
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.NameRole = model.NameRole;
-            entity.Lock = model.Lock;
+            entity.IsDelete = model.IsDelete;
+            entity.Code = model.Code;
             _context.Role.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Role> Get()
         {
-            return _context.Role.ToList();
+            return _context.Role.Where(x => x.IsDelete != true).ToList();
         }
 
         public Role GetById(int id)

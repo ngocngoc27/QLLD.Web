@@ -17,8 +17,9 @@ namespace QL_LaoDong.Models
         public string TypeOfEducation { get; set; }
         public int? Total { get; set; }
         public int? TotalOfWork { get; set; }
-        public string Status { get; set; }
-        public long FacultyId { get; set; }
+        public int? Status { get; set; }
+        public long? FacultyId { get; set; }
+        public bool? IsDelete { get; set; }
 
         public virtual Faculty Faculty { get; set; }
         public virtual ICollection<Student> Student { get; set; }

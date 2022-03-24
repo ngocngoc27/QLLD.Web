@@ -21,7 +21,7 @@ namespace QL_LaoDong.Services
         }
         public void Create(Student model)
         {
-            var check = _context.Student.Where(x => x.Mssv == model.Mssv).FirstOrDefault();
+            var check = _context.Student.Where(x => x.Mssv == model.Mssv || x.AccountId == model.AccountId).FirstOrDefault();
             if(check != default(Student))
             {
                 throw new Exception("Tài khoản đã tồn tại!!!");
@@ -33,7 +33,7 @@ namespace QL_LaoDong.Services
             long id = Convert.ToInt64(data);
             entity.ClassId = id;
             entity.AccountId = model.AccountId;
-            entity.Lock = false;
+            entity.IsDelete = false;
             _context.Student.Add(entity);
             _context.SaveChanges();
         }
@@ -58,15 +58,14 @@ namespace QL_LaoDong.Services
             long id = Convert.ToInt64(data);
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
-            entity.Lock = false;
+            entity.IsDelete = false;
             _context.Student.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Student> Get()
         {
-            var student = _context.Student.Include(x=>x.Account).Include(x=>x.Class).Where(x => x.Lock != true).ToList();
-            return student;
+            return _context.Student.Include(x => x.Account).Include(x => x.Class).Where(x => x.IsDelete != true).ToList();
         }
         public List<Student> GetClass()
         {

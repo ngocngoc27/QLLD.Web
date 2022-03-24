@@ -17,7 +17,7 @@ namespace QL_LaoDong.Services
         }
         public List<Tool> Get()
         {
-            return _context.Tool.ToList();
+            return _context.Tool.Where(x => x.IsDelete != true).ToList();
         }
 
         public Tool GetById(int id)
@@ -32,7 +32,7 @@ namespace QL_LaoDong.Services
             entity.Sum = model.Sum;
             entity.Unit = model.Unit;
             entity.Available = model.Available;
-            entity.Lock = false;
+            entity.IsDelete = false;
             _context.Tool.Add(entity);
             _context.SaveChanges();
         }
@@ -46,7 +46,7 @@ namespace QL_LaoDong.Services
             entity.Sum = model.Sum;
             entity.Unit = model.Unit;
             entity.Available = model.Available;
-            entity.Lock = model.Lock;
+            entity.IsDelete = model.IsDelete;
             _context.Tool.Update(entity);
             _context.SaveChanges();
         }
@@ -66,7 +66,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Tool.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            entity.Lock = true;
+            entity.IsDelete = true;
             _context.Tool.Update(entity);
             _context.SaveChanges();
         }

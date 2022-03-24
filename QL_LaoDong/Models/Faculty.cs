@@ -12,6 +12,7 @@ namespace QL_LaoDong.Models
 
         public long Id { get; set; }
         public string FacultyName { get; set; }
+        public bool? IsDelete { get; set; }
 
         public virtual ICollection<Class> Class { get; set; }
     }

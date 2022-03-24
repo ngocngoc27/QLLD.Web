@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -19,10 +20,9 @@ namespace QL_LaoDong.Services
         {
             var entity = new Toolticker();
             entity.ToolId = model.ToolId;
-            entity.WorkTickerId = model.WorkTickerId;
+            entity.GroupsId= model.GroupsId;
             entity.Amount = model.Amount;
             entity.Notes = model.Notes;
-           
             _context.Toolticker.Add(entity);
             _context.SaveChanges();
         }
@@ -43,7 +43,7 @@ namespace QL_LaoDong.Services
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.ToolId = model.ToolId;
-            entity.WorkTickerId = model.WorkTickerId;
+            entity.GroupsId = model.GroupsId;
             entity.Amount = model.Amount;
             entity.Notes = model.Notes;
             _context.Toolticker.Update(entity);
@@ -52,7 +52,7 @@ namespace QL_LaoDong.Services
 
         public List<Toolticker> Get()
         {
-            return _context.Toolticker.ToList();
+            return _context.Toolticker.Include(x=>x.Tool).Include(x => x.Groups).ToList();
         }
 
         public Toolticker GetById(int id)

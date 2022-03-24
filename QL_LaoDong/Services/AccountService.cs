@@ -40,7 +40,7 @@ namespace QL_LaoDong.Services
             entity.Sex = model.Sex;
             entity.RoleId = model.RoleId;
             entity.DateOfBirth = model.DateOfBirth;
-            entity.Lock = false;
+            entity.IsDelete = false;
             entity.Picture = "user225026334.png";
             _context.Account.Add(entity);
             _context.SaveChanges();
@@ -49,8 +49,7 @@ namespace QL_LaoDong.Services
 
         public List<Account> Get()
         {
-            var account = _context.Account.Include(x => x.Role).Where(x => x.Lock != true).ToList();
-            return account;
+            return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true).ToList();
         }
         public void Edit(Account model)
         {
@@ -114,7 +113,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-            entity.Lock = true;
+            entity.IsDelete = true;
             _context.Account.Update(entity);
             _context.SaveChanges();
         }
@@ -126,7 +125,7 @@ namespace QL_LaoDong.Services
             string pas = Security.MD5(pass);
             string user = model.Username;
             var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
-            if (acc.Lock != false)
+            if (acc.IsDelete != false)
                 throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
 
             if(acc != default)
