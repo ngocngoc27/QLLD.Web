@@ -30,6 +30,9 @@
                                 Tiêu đề
                             </th>
                             <th>
+                                Danh mục cha
+                            </th>
+                            <th>
                                 Đường dẫn
                             </th>
                             <th>
@@ -48,7 +51,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Label)
                                 </td>
-
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Parent)
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.UrlLink)
                                 </td>
