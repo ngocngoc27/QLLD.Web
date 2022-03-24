@@ -6,21 +6,20 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Datatable</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Quản lý chung</a></li>
+                            <li class="breadcrumb-item active">Sinh viên</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Datatable</h4>
+                    <h4 class="page-title">DANH SÁCH SINH VIÊN</h4>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-box table-responsive">
-                    <h4 class="header-title"><b>THÔNG TIN SINH VIÊN</b></h4>
                     <div class="btn-addoredit">
-                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {Id=0},Context.Request.Scheme)', 'New student')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {Id=0},Context.Request.Scheme)', 'THÊM SINH VIÊN MỚI')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                     </div>
                     <br />
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -29,12 +28,11 @@
                                 <th>
                                     MSSV
                                 </th>
-
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Account)
+                                    Họ tên
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Class)
+                                    Tên lớp
                                 </th>
                                 <th>
                                     Số ngày lao động
@@ -50,7 +48,7 @@
                                     @Html.DisplayFor(modelItem => item.Mssv)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Account.Username)
+                                    @Html.DisplayFor(modelItem => item.Account.Fullname)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Class.ClassName)
@@ -59,7 +57,7 @@
                                     @Html.DisplayFor(modelItem => item.NumberOfWork)
                                 </td>
                                 <td>
-                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'Update Student')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT SINH VIÊN')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i> Cập nhật</a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                     </form>
