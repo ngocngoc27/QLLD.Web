@@ -56,7 +56,7 @@ namespace QL_LaoDong.Services
             entity.Weekdays = thu;
             entity.LimitsNumber = model.LimitsNumber;
             entity.RegistrationTotal = 0;
-            entity.Status = 1; //1 = còn trống
+            entity.Status = 1; //1 = còn trống, 2 = đã đăng ký
             entity.IsDelete = false;
             _context.Calendar.Add(entity);
             _context.SaveChanges();

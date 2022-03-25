@@ -34,9 +34,9 @@ namespace QL_LaoDong.Services
 
             string total = _httpContextAccessor.HttpContext.Session.GetString("total");
             int num = Convert.ToInt32(total);
-            //sử dụng if (nếu cá nhân thì lấy acc, gán sl=1 / nếu lớp thì lấy acc làm leader, lấy tên lớp và sl=sỉ số lớp)
+            
             if (entity.RegistrationForm == "Cá nhân")
-                entity.RegistrationNumber = 1;
+                entity.RegistrationNumber = 1; //gán số lượng là một
             else if (entity.RegistrationForm == "Lớp")
                 entity.RegistrationNumber = num; //lấy sỉ số lớp của session
 
@@ -63,6 +63,7 @@ namespace QL_LaoDong.Services
             entity.Note = model.Note;
             if (entity.Status == 2)
                 entity.Calendar.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
+            //ràng buộc với số lượng giới hạn***
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }

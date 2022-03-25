@@ -18,12 +18,10 @@ namespace QL_LaoDong.Controllers
     {
         private readonly IWorkTickerService _worktickerService;
         private readonly ICalendarService _calendarService;
-        private readonly IJobService _jobService;
-        public WorkTickerController(IWorkTickerService worktickerService, ICalendarService calendarService, IJobService jobService)
+        public WorkTickerController(IWorkTickerService worktickerService, ICalendarService calendarService)
         {
             _worktickerService = worktickerService;
             _calendarService = calendarService;
-            _jobService = jobService;
         }
         public IActionResult Index()
         {
@@ -54,10 +52,10 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
         }
-        private void JobList(object selectJob = null)
-        {
-            ViewBag.job = new SelectList(_jobService.Get(), "Id", "Job1", selectJob);
-        }
+        //private void JobList(object selectJob = null)
+        //{
+        //    ViewBag.job = new SelectList(_jobService.Get(), "Id", "Job1", selectJob);
+        //}
         private bool TickerExists(long id)
         {
             return _worktickerService.TickerExists(id);
@@ -66,7 +64,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             CalendarList();
-            JobList();
+            //JobList();
             if (id == 0)
             {
                 return View(new Workticker());
