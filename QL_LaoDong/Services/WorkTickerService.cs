@@ -29,15 +29,18 @@ namespace QL_LaoDong.Services
             int id = Convert.ToInt32(data);
             entity.AccountId = id;
 
-            entity.Status = 1; //1 = Chờ duyệt
+            entity.Status = 1; //1 = Chờ duyệt, 2 = Đã duyệt
             entity.RegistrationForm = model.RegistrationForm;
+
+            string total = _httpContextAccessor.HttpContext.Session.GetString("total");
+            int num = Convert.ToInt32(total);
             //sử dụng if (nếu cá nhân thì lấy acc, gán sl=1 / nếu lớp thì lấy acc làm leader, lấy tên lớp và sl=sỉ số lớp)
             if (entity.RegistrationForm == "Cá nhân")
                 entity.RegistrationNumber = 1;
             else if (entity.RegistrationForm == "Lớp")
-                entity.RegistrationNumber = 0; //lấy sỉ số lớp của session
+                entity.RegistrationNumber = num; //lấy sỉ số lớp của session
 
-
+            
             _context.Workticker.Add(entity);
             _context.SaveChanges();
         }
@@ -53,11 +56,13 @@ namespace QL_LaoDong.Services
 
         public void Edit(Workticker model)
         {
-            var entity = _context.Workticker.Where(x => x.Id == model.Id).FirstOrDefault();
+            var entity = _context.Workticker.Include(x=>x.Calendar).Where(x => x.Id == model.Id).FirstOrDefault();
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Status = model.Status;
             entity.Note = model.Note;
+            if (entity.Status == 2)
+                entity.Calendar.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }

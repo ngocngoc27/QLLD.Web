@@ -22,16 +22,22 @@
                     <thead>
                         <tr>
                             <th>
-                                Buổi trong ngày
+                                Buổi 
                             </th>
                             <th>
-                                Thứ trong tuần
+                                Thứ 
                             </th>
                             <th>
                                 Ngày
                             </th>
                             <th>
-                                Công việc
+                                Người đăng ký
+                            </th>
+                            <th>
+                                Hình thức đăng ký
+                            </th>
+                            <th>
+                                Số lượng đăng ký
                             </th>
                             <th>
                                 Trạng thái
@@ -53,7 +59,13 @@
                                 @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Job.Job1)
+                                @Html.DisplayFor(modelItem => item.Account.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationForm)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)

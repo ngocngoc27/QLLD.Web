@@ -13,8 +13,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Tên công việc</label>
-                        <input asp-for="Job1" class="form-control" />
-                        <span asp-validation-for="Job1" class="text-danger"></span>
+                        <input asp-for="JobName" class="form-control" />
+                        <span asp-validation-for="JobName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -24,8 +24,6 @@
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Vị trí</label>
@@ -33,10 +31,19 @@
                         <span asp-validation-for="Locate" class="text-danger"></span>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Số ngày thụ hưởng</label>
+                        <input asp-for="BenefitOfDay" class="form-control" />
+                        <span asp-validation-for="BenefitOfDay" class="text-danger"></span>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Khóa công việc</label>
-                        <select asp-for="Lock" class="form-control">
+                        <select asp-for="IsDelete" class="form-control">
                             <option>---Chọn khóa----</option>
                             <option value="False">Mở khóa</option>
                             <option value="True">Khóa</option>

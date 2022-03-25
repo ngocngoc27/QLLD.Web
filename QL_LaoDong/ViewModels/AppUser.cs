@@ -14,5 +14,6 @@ namespace QL_LaoDong.ViewModels
         public string RoleName { get; set; }
         public long ClassId { get; set; }
         public string ClassName { get; set; }
+        public int? Total { get; set; }
     }
 }

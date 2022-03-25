@@ -150,6 +150,7 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("username",user.Username);
                     HttpContext.Session.SetString("classname",user.ClassName);
                     HttpContext.Session.SetString("idclass", user.ClassId.ToString());
+                    HttpContext.Session.SetString("total", user.Total.ToString());
 
                     return RedirectToAction(nameof(Index),"Home");
                 }

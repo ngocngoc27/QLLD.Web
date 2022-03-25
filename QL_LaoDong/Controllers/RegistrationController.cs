@@ -37,7 +37,7 @@ namespace QL_LaoDong.Controllers
         [NoDirectAccess]
         public IActionResult Create()
         {
-            CalendarList();
+            CalendarList();            
             return View();
         }
         [HttpPost]
@@ -46,8 +46,8 @@ namespace QL_LaoDong.Controllers
         {
             
              _worktickerService.Create(model);
-            return View();
-           
+            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
+
         }
     }
 }

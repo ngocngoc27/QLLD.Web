@@ -26,13 +26,22 @@
                     <thead>
                         <tr>
                             <th>
-                                Buổi trong ngày
+                                Buổi
                             </th>
                             <th>
-                                Thứ trong tuần
+                                Thứ 
                             </th>
                             <th>
-                                Ngày tháng năm
+                                Ngày
+                            </th>
+                            <th>
+                                Số lượng giới hạn
+                            </th>
+                            <th>
+                                Số lượng đã đăng ký
+                            </th>
+                            <th>
+                                Trạng thái
                             </th>
                             <th></th>
                         </tr>
@@ -40,23 +49,32 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SessionOfDay)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Weekdays)
-                                </td>
-                                <td>
-                                    @Convert.ToDateTime(item.Day).ToString("MM/dd/yyyy")
-                                </td>
-                                <td>
-                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SessionOfDay)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Weekdays)
+                            </td>
+                            <td>
+                                @Convert.ToDateTime(item.Day).ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LimitsNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationTotal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

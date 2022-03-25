@@ -141,7 +141,8 @@ namespace QL_LaoDong.Services
                                 RoleId = acc.Role.Id,
                                 RoleName = acc.Role.NameRole,
                                 ClassId = classes.Id,
-                                ClassName = classes.ClassName
+                                ClassName = classes.ClassName,
+                                Total = classes.Total
                             };
                 AppUser = query.FirstOrDefault();
             }

@@ -21,7 +21,6 @@ namespace QL_LaoDong.Services
             var entity = new Calendar();
             entity.SessionOfDay = model.SessionOfDay;
             entity.Day = model.Day;
-            entity.IsDelete = false;
             var days =Convert.ToDateTime( model.Day);
             DayOfWeek week = days.DayOfWeek;
             var thu = "";
@@ -55,6 +54,10 @@ namespace QL_LaoDong.Services
             }
             //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
+            entity.LimitsNumber = model.LimitsNumber;
+            entity.RegistrationTotal = 0;
+            entity.Status = 1; //1 = còn trống
+            entity.IsDelete = false;
             _context.Calendar.Add(entity);
             _context.SaveChanges();
         }

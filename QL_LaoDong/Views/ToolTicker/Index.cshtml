@@ -20,9 +20,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Tool)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkTicker)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -37,9 +34,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tool.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkTicker.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
