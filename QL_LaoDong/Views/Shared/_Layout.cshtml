@@ -44,7 +44,7 @@
                         <!-- item-->
                         <a asp-area="" asp-controller="Accounts" asp-action="LogOut" class="dropdown-item notify-item">
                             <i class="fas fa-sign-out-alt"></i>
-                            <span>Đăng xuất</span>                           
+                            <span>Đăng xuất</span>
                         </a>
                     </div>
                 </li>
@@ -166,7 +166,7 @@
                                 <li><a href="/tool/Index">Dụng cụ lao động</a></li>
                             </ul>
                         </li>
-                    </ul>                    
+                    </ul>
                 </div>
             </div>
         </div>
@@ -213,6 +213,8 @@
     <script src="~/assets/libs/datatables/jquery.dataTables.min.js"></script>
     <script src="~/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <script src="~/assets/libs/datatables/Language.js"></script>
+
     <script src="~/assets/libs/datatables/dataTables.responsive.min.js"></script>
     <script src="~/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
 
@@ -233,6 +235,7 @@
 
     <!-- Datatables init -->
     <script src="~/assets/js/pages/datatables.init.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
