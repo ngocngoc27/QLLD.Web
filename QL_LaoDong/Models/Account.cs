@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QL_LaoDong.Models
@@ -18,6 +19,8 @@ namespace QL_LaoDong.Models
         public string Password { get; set; }
         public long? RoleId { get; set; }
         public string Fullname { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string Picture { get; set; }
