@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace QL_LaoDong.Models
 {
@@ -13,6 +14,8 @@ namespace QL_LaoDong.Models
         public long Id { get; set; }
         public string SessionOfDay { get; set; }
         public string Weekdays { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Day { get; set; }
         public int? LimitsNumber { get; set; }
         public int? RegistrationTotal { get; set; }
