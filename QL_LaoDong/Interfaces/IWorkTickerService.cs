@@ -8,6 +8,7 @@ namespace QL_LaoDong.Interfaces
 {
     public interface IWorkTickerService
     {
+        List<Calendar> GetCalendar();
         List<Workticker> Get();
         List<Workticker> GetSundayAfter();
         List<Workticker> GetSundayMor();

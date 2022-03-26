@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -22,14 +23,14 @@ namespace QL_LaoDong.Services
         public void Create(Workticker model)
         {
             var entity = new Workticker();
-            entity.CalendarId = model.CalendarId;
+            entity.CalendarId = model.Id;
             entity.Note = model.Note;
 
             string data = _httpContextAccessor.HttpContext.Session.GetString("id");
             int id = Convert.ToInt32(data);
             entity.AccountId = id;
 
-            entity.Status = 1; //1 = Chờ duyệt, 2 = Đã duyệt
+            entity.Status = (int) WorkTickerEnum.ChoDuyet; //1 = Chờ duyệt, 2 = Đã duyệt
             entity.RegistrationForm = model.RegistrationForm;
 
             string total = _httpContextAccessor.HttpContext.Session.GetString("total");
@@ -68,6 +69,10 @@ namespace QL_LaoDong.Services
             _context.SaveChanges();
         }
 
+        public List<Calendar> GetCalendar()
+        {
+            return _context.Calendar.Where(x => x.IsDelete != true).ToList();
+        }
         public List<Workticker> Get()
         {
             return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Groups).Include(x => x.Account).ToList();

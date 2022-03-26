@@ -68,9 +68,9 @@
                                 @Html.DisplayFor(modelItem => item.RegistrationNumber)
                             </td>
                             <td>
-                                @*@Html.DisplayFor(modelItem => item.Status)*@
+                                @Html.DisplayFor(modelItem => item.Status)
 
-                                @if (item.Status == 1)
+                                @*@if (item.Status == 1)
                                 {
                                     @Html.FormatValue(item.Status, "Chờ duyệt")
                                 }
@@ -81,7 +81,7 @@
                                 else
                                 {
                                     @Html.FormatValue(item.Status, "Hoàn thành")
-                                }
+                                }*@
                             </td>
                             <td>
                                 <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i></a>

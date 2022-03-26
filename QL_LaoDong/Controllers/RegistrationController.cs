@@ -29,6 +29,12 @@ namespace QL_LaoDong.Controllers
             var data = _worktickerService.Get();
             return View(data);
         }
+        public IActionResult CalendarTable()
+        {
+            ViewBag.usename = HttpContext.Session.GetString("user");
+            var data = _worktickerService.GetCalendar();
+            return View(data);
+        }
         private void CalendarList(object selectCalendar = null)
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
@@ -37,7 +43,7 @@ namespace QL_LaoDong.Controllers
         [NoDirectAccess]
         public IActionResult Create()
         {
-            CalendarList();            
+            //CalendarList();            
             return View();
         }
         [HttpPost]
