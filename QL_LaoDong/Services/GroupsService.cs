@@ -48,19 +48,18 @@ namespace QL_LaoDong.Services
             entity.JobId = model.JobId;
             entity.Leader = model.Leader;
             entity.Status = model.Status;
-            entity.WorkTickerId = model.WorkTickerId;
             _context.Groups.Update(entity);
             _context.SaveChanges();
         }
 
         public List<Groups> Get()
         {
-            return _context.Groups.Include(x => x.WorkTicker).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
+            return _context.Groups.Include(x => x.WorkTicker.Calendar).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
         }
 
         public Groups GetById(int id)
         {
-            return _context.Groups.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Groups.Include(x => x.WorkTicker).Include(x => x.Job).Where(x => x.Id == id).FirstOrDefault();
         }
 
         public bool GroupsExists(long id)

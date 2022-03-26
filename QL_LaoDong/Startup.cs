@@ -43,6 +43,7 @@ namespace QL_LaoDong
             services.AddScoped<IJobService, JobService>();
             services.AddScoped<IMenusService, MenusService>();
             services.AddScoped<IMusterService, MusterService>();
+            services.AddScoped<IGroupsService, GroupsService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IToolService, ToolService>();
             services.AddScoped<ITooltickerService, TooltickerService>();

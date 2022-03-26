@@ -134,10 +134,5 @@ namespace QL_LaoDong.Controllers
             _worktickerService.CreateGroups(model);
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
-        public IActionResult Details(int id)
-        {
-            var data = _worktickerService.GetById(id);
-            return View(data);
-        }
     }
 }
