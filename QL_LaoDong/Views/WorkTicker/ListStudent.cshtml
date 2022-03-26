@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Student>
+
+@{
+    ViewData["Title"] = "ListStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mssv)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Account.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class.ClassName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mssv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.ClassName)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
