@@ -1,5 +1,5 @@
 ﻿@model List<QL_LaoDong.Models.Workticker>
-
+@using QL_LaoDong.Helpers;
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -68,24 +68,20 @@
                                 @Html.DisplayFor(modelItem => item.RegistrationNumber)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                                @*@Html.DisplayFor(modelItem => item.Status)*@
 
-                                @*@if (item.Status == 1)
+                                @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
                                 {
                                     @Html.FormatValue(item.Status, "Chờ duyệt")
                                 }
-                                else if (item.Status == 2)
+                                else if (item.Status == (int)WorkTickerEnum.DaDuyet)
                                 {
                                     @Html.FormatValue(item.Status, "Đã duyệt")
                                 }
-                                else
-                                {
-                                    @Html.FormatValue(item.Status, "Hoàn thành")
-                                }*@
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i></a>
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'PHÂN CÔNG DỤNG CỤ')" class="btn btn-success text-white btn-sm"><i class="fa fa-wrench"></i></a>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'DUYỆT VÀ GHI CHÚ')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                <a onclick="showInPopup('@Url.Action("CreateGroups","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'PHÂN NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fa fa-wrench"></i></a>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>

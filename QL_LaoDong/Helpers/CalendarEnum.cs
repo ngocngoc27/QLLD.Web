@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace QL_LaoDong.Helpers
 {
-    public enum WorkTickerEnum
+    public enum CalendarEnum
     {
-        ChoDuyet = 1,
-        DaDuyet = 2,
-        BaoBan = 3
+        ChoPhepDangKy = 1,
+        HetLuotDangKy = 2
     }
 }

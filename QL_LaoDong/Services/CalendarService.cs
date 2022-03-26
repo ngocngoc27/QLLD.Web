@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -56,7 +57,7 @@ namespace QL_LaoDong.Services
             entity.Weekdays = thu;
             entity.LimitsNumber = model.LimitsNumber;
             entity.RegistrationTotal = 0;
-            entity.Status = 1; //1 = còn trống, 2 = đã đăng ký
+            entity.Status = (int)CalendarEnum.ChoPhepDangKy; 
             entity.IsDelete = false;
             _context.Calendar.Add(entity);
             _context.SaveChanges();
@@ -110,6 +111,7 @@ namespace QL_LaoDong.Services
             }
             //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
+            entity.LimitsNumber = model.LimitsNumber;            
             _context.Calendar.Update(entity);
             _context.SaveChanges();
         }

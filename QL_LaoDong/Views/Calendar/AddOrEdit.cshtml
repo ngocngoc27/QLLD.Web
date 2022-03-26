@@ -9,29 +9,23 @@
         <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Buổi trong ngày</label>
-                        <select asp-for="SessionOfDay" class="form-control">
-                            <option>---Chọn buổi----</option>
-                            <option value="Sáng">Sáng</option>
-                            <option value="Chiều">Chiều</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Buổi trong ngày</label>
+                    <select asp-for="SessionOfDay" class="form-control">
+                        <option>---Chọn buổi----</option>
+                        <option value="Sáng">Sáng</option>
+                        <option value="Chiều">Chiều</option>
+                    </select>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Ngày lao động</label>
-                        <input asp-for="Day" class="form-control" />
-                        <span asp-validation-for="Day" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Ngày lao động</label>
+                    <input asp-for="Day" class="form-control" />
+                    <span asp-validation-for="Day" class="text-danger"></span>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Số lượng giới hạn</label>
-                        <input asp-for="LimitsNumber" class="form-control" />
-                        <span asp-validation-for="LimitsNumber" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Số lượng giới hạn</label>
+                    <input asp-for="LimitsNumber" class="form-control" />
+                    <span asp-validation-for="LimitsNumber" class="text-danger"></span>
                 </div>
             </div>
             <div class="modal-footer">

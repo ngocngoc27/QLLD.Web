@@ -8,20 +8,24 @@
     <div class="col-md-12">
         <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class=" row">
-                <div class=" col-md-6">
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Trạng thái</label>
                         <select asp-for="Status" class="form-control">
-                            <option value="2">Đã duyệt</option>
                             <option value="1">Chờ duyệt</option>
+                            <option value="2">Đã duyệt</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Trạng thái</label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn  btn-secondary btn-sm" data-dismiss="modal">Đóng</button>
-                <input type="submit" value="Lưu" class="btn btn-primary btn-sm" />
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary btn-sm" data-dismiss="modal">Đóng</button>
+                    <input type="submit" value="Lưu" class="btn btn-primary btn-sm" />
+                </div>
             </div>
         </form>
     </div>

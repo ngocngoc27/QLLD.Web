@@ -35,15 +35,10 @@ namespace QL_LaoDong.Controllers
             var data = _worktickerService.GetCalendar();
             return View(data);
         }
-        private void CalendarList(object selectCalendar = null)
-        {
-            ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
-           
-        }
+        
         [NoDirectAccess]
         public IActionResult Create()
-        {
-            //CalendarList();            
+        {         
             return View();
         }
         [HttpPost]
@@ -54,6 +49,13 @@ namespace QL_LaoDong.Controllers
              _worktickerService.Create(model);
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
 
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Workticker model)
+        {
+            _worktickerService.Delete(model);
+            return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
     }
 }

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace QL_LaoDong.Helpers
 {
-    public enum WorkTickerEnum
+    public enum GroupsEnum
     {
-        ChoDuyet = 1,
-        DaDuyet = 2,
-        BaoBan = 3
+        ChuaDiemDanh = 1,
+        NhomTruongDaDiemDanh = 2,
+        CanBoDaXacNhan = 3
     }
 }

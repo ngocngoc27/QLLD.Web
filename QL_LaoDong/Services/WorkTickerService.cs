@@ -30,7 +30,7 @@ namespace QL_LaoDong.Services
             int id = Convert.ToInt32(data);
             entity.AccountId = id;
 
-            entity.Status = (int) WorkTickerEnum.ChoDuyet; //1 = Chờ duyệt, 2 = Đã duyệt
+            entity.Status = (int) WorkTickerEnum.ChoDuyet;
             entity.RegistrationForm = model.RegistrationForm;
 
             string total = _httpContextAccessor.HttpContext.Session.GetString("total");
@@ -45,10 +45,22 @@ namespace QL_LaoDong.Services
             _context.Workticker.Add(entity);
             _context.SaveChanges();
         }
+        public void CreateGroups(Groups model)
+        {
+            var entity = new Groups();
+            entity.WorkTickerId = model.Id;
+            entity.Leader = model.Leader;
+            entity.GroupsName = model.GroupsName;
+            entity.JobId = model.JobId;
+            entity.IsDelete = false;
+            entity.Status = (int)GroupsEnum.ChuaDiemDanh;
+            _context.Groups.Add(entity);
+            _context.SaveChanges();
+        }
 
         public void Delete(Workticker model)
         {
-            var entity = _context.Workticker.Where(x => x.Id == model.Id).FirstOrDefault();
+            var entity = _context.Workticker.Where(x => x.Id == model.Id && x.Status != (int)WorkTickerEnum.DaDuyet).FirstOrDefault();
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             _context.Workticker.Remove(entity);
@@ -62,28 +74,33 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Status = model.Status;
             entity.Note = model.Note;
-            if (entity.Status == 2)
+            if (entity.Status == (int)WorkTickerEnum.DaDuyet)
                 entity.Calendar.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
-            //ràng buộc với số lượng giới hạn***
+            if (entity.Calendar.RegistrationTotal >= entity.Calendar.LimitsNumber)
+                entity.Calendar.Status = (int)CalendarEnum.HetLuotDangKy;
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }
-
+        public void Cancle(Workticker model)
+        {
+            var entity = _context.Workticker.Include(x => x.Calendar).Where(x => x.Id == model.Id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu!!!");
+            entity.Status = (int)WorkTickerEnum.BaoBan;
+            _context.Workticker.Update(entity);
+            _context.SaveChanges();
+        }
         public List<Calendar> GetCalendar()
         {
-            return _context.Calendar.Where(x => x.IsDelete != true).ToList();
+            return _context.Calendar.Where(x => x.IsDelete != true && x.Status == (int)CalendarEnum.ChoPhepDangKy).ToList();
         }
         public List<Workticker> Get()
         {
             return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Groups).Include(x => x.Account).ToList();
         }
-        public List<Workticker> GetCalen()
-        {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Status == 2).ToList(); //2= Đã duyệt
-        }       
         public Workticker GetById(int id)
         {
-            return _context.Workticker.Where(x => x.Id == id).FirstOrDefault();
+            return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Groups).Where(x => x.Id == id).FirstOrDefault();
         }
         public bool TickerExists(long id)
         {
