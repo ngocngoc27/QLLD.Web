@@ -95,11 +95,11 @@ namespace QL_LaoDong.Services
         }
         public List<Workticker> Get()
         {
-            return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Groups).Include(x => x.Account).ToList();
+            return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).ToList();
         }
         public Workticker GetById(int id)
         {
-            return _context.Workticker.Include(x=>x.Calendar).Include(x=>x.Groups).Where(x => x.Id == id).FirstOrDefault();
+            return _context.Workticker.Include(x=>x.Calendar).Where(x => x.Id == id).FirstOrDefault();
         }
         public bool TickerExists(long id)
         {
@@ -108,59 +108,59 @@ namespace QL_LaoDong.Services
         /*-----------------------------------------------------------*/
         public List<Workticker> GetSundayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == 2).ToList();
         }
         public List<Workticker> GetSundayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == 2).ToList();
         }
         public List<Workticker> GetMondayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ hai" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ hai" && x.Status == 2).ToList();
         }
         public List<Workticker> GetMondayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ hai" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ hai" && x.Status == 2).ToList();
         }
         public List<Workticker> GetTuesdayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ ba" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ ba" && x.Status == 2).ToList();
         }
         public List<Workticker> GetTuesdayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ ba" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ ba" && x.Status == 2).ToList();
         }
         public List<Workticker> GetWednesdayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ tư" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ tư" && x.Status == 2).ToList();
         }
         public List<Workticker> GetWednesdayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ tư" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ tư" && x.Status == 2).ToList();
         }
         public List<Workticker> GetThursdayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ năm" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ năm" && x.Status == 2).ToList();
         }
         public List<Workticker> GetThursdayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ năm" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ năm" && x.Status == 2).ToList();
         }
         public List<Workticker> GetFridayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == 2).ToList();
         }
         public List<Workticker> GetFridayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == 2).ToList();
         }
         public List<Workticker> GetSaturdayAfter()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
         }
         public List<Workticker> GetSaturdayMor()
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Groups).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
         }
     }
 }
