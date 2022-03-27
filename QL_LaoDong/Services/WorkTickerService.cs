@@ -57,7 +57,6 @@ namespace QL_LaoDong.Services
             _context.Groups.Add(entity);
             _context.SaveChanges();
         }
-
         public void Delete(Workticker model)
         {
             var entity = _context.Workticker.Where(x => x.Id == model.Id && x.Status != (int)WorkTickerEnum.DaDuyet).FirstOrDefault();

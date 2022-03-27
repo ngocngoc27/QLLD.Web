@@ -1,4 +1,5 @@
-﻿using QL_LaoDong.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
@@ -120,7 +121,6 @@ namespace QL_LaoDong.Services
         {
             return _context.Calendar.Where(x => x.IsDelete != true).ToList();
         }
-
         public Calendar GetById(int id)
         {
             return _context.Calendar.Where(x => x.Id == id).FirstOrDefault();
