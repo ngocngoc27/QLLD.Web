@@ -84,7 +84,8 @@ namespace QL_LaoDong.Services
             var entity = _context.Workticker.Include(x => x.Calendar).Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
-            entity.Status = (int)WorkTickerEnum.BaoBan;
+            entity.Status = model.Status;
+            entity.Note = model.Note;
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<QL_LaoDong.Models.Workticker>
-
+@using QL_LaoDong.Helpers
 
 <div class="container-fluid">
     <div class="row">
@@ -66,10 +66,21 @@
                                 @Html.DisplayFor(modelItem => item.RegistrationNumber)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Status)
+                                @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
+                                {
+                                    @Html.FormatValue(item.Status, "Chờ duyệt")
+                                }
+                                else if (item.Status == (int)WorkTickerEnum.DaDuyet)
+                                {
+                                    @Html.FormatValue(item.Status, "Đã duyệt")
+                                }
+                                else if (item.Status == (int)WorkTickerEnum.BaoBan)
+                                {
+                                    @Html.FormatValue(item.Status, "Báo bận")
+                                }
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i> Báo bận</a>
+                                <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'BÁO BẬN')" class="btn btn-info text-white btn-sm"><i class="mdi mdi-alert-circle-outline"></i> Báo bận</a>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>

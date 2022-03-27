@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
@@ -50,6 +51,48 @@ namespace QL_LaoDong.Controllers
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
 
         }
+
+        [NoDirectAccess]
+        public IActionResult Cancle(int id)
+        {
+            var data = _worktickerService.GetById(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return View(data);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Cancle(Workticker model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _worktickerService.Cancle(model);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TickerExists(model.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
+            }
+            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "Cancle", model) });
+        }
+
+        private bool TickerExists(long id)
+        {
+            return _worktickerService.TickerExists(id);
+        }
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(Workticker model)
