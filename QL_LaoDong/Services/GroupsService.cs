@@ -23,7 +23,6 @@ namespace QL_LaoDong.Services
             entity.JobId = model.JobId;
             entity.Leader = model.Leader;
             entity.Status = model.Status;
-            entity.WorkTickerId = model.WorkTickerId;
             entity.IsDelete = false;
             _context.Groups.Add(entity);
             _context.SaveChanges();
@@ -54,12 +53,12 @@ namespace QL_LaoDong.Services
 
         public List<Groups> Get()
         {
-            return _context.Groups.Include(x => x.WorkTicker.Calendar).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
+            return _context.Groups.Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
         }
 
         public Groups GetById(int id)
         {
-            return _context.Groups.Include(x => x.WorkTicker).Include(x => x.Job).Where(x => x.Id == id).FirstOrDefault();
+            return _context.Groups.Include(x => x.Job).Where(x => x.Id == id).FirstOrDefault();
         }
 
         public bool GroupsExists(long id)

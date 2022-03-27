@@ -68,8 +68,6 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.SessionOfDay).HasMaxLength(10);
 
-                entity.Property(e => e.Status).HasMaxLength(50);
-
                 entity.Property(e => e.Weekdays).HasMaxLength(20);
             });
 
@@ -88,8 +86,6 @@ namespace QL_LaoDong.Data
                     .HasColumnName("CLassName");
 
                 entity.Property(e => e.FacultyId).HasColumnName("FacultyID");
-
-                entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.Property(e => e.Training).HasMaxLength(20);
 
@@ -122,19 +118,10 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.Leader).HasMaxLength(50);
 
-                entity.Property(e => e.Status).HasMaxLength(50);
-
-                entity.Property(e => e.WorkTickerId).HasColumnName("WorkTickerID");
-
                 entity.HasOne(d => d.Job)
                     .WithMany(p => p.Groups)
                     .HasForeignKey(d => d.JobId)
                     .HasConstraintName("FK_GROUPS_JOB");
-
-                entity.HasOne(d => d.WorkTicker)
-                    .WithMany(p => p.Groups)
-                    .HasForeignKey(d => d.WorkTickerId)
-                    .HasConstraintName("FK_GROUPS_WORKTICKER");
             });
 
             modelBuilder.Entity<Job>(entity =>
@@ -289,11 +276,11 @@ namespace QL_LaoDong.Data
 
                 entity.Property(e => e.CalendarId).HasColumnName("CalendarID");
 
+                entity.Property(e => e.GroupsId).HasColumnName("GroupsID");
+
                 entity.Property(e => e.Note).HasMaxLength(100);
 
                 entity.Property(e => e.RegistrationForm).HasMaxLength(50);
-
-                entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.HasOne(d => d.Account)
                     .WithMany(p => p.Workticker)
@@ -304,6 +291,11 @@ namespace QL_LaoDong.Data
                     .WithMany(p => p.Workticker)
                     .HasForeignKey(d => d.CalendarId)
                     .HasConstraintName("FK_PHIEULAODONG_LICHLAODONG");
+
+                entity.HasOne(d => d.Groups)
+                    .WithMany(p => p.Workticker)
+                    .HasForeignKey(d => d.GroupsId)
+                    .HasConstraintName("FK_WORKTICKER_GROUPS");
             });
 
             OnModelCreatingPartial(modelBuilder);

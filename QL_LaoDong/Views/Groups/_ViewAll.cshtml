@@ -22,9 +22,6 @@
                     <thead>
                         <tr>
                             <th>
-                                Ngày
-                            </th>
-                            <th>
                                 Tên nhóm
                             </th>
                             <th>
@@ -44,9 +41,6 @@
                         {
                         <tr>
                             <td>
-                                @Convert.ToDateTime(item.WorkTicker.Calendar.Day).ToString("MM/dd/yyyy")
-                            </td>
-                            <td>
                                 @Html.DisplayFor(modelItem => item.GroupsName)
                             </td>
                             <td>
@@ -54,9 +48,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Job.JobName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WorkTicker.RegistrationNumber)
                             </td>
                             <td>
                                 @if (item.Status == (int)GroupsEnum.CanBoDaXacNhan)

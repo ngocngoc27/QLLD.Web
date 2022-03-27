@@ -48,7 +48,6 @@ namespace QL_LaoDong.Services
         public void CreateGroups(Groups model)
         {
             var entity = new Groups();
-            entity.WorkTickerId = model.Id;
             entity.Leader = model.Leader;
             entity.GroupsName = model.GroupsName;
             entity.JobId = model.JobId;
