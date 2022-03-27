@@ -69,7 +69,7 @@
                                 @Html.DisplayFor(modelItem => item.Status)
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i>Báo bận</a>
+                                <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm"><i class="fa fa-check-square" aria-hidden="true"></i> Báo bận</a>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>

@@ -9,12 +9,24 @@
         <form asp-action="Create" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class=" row">
-                <div class="form-group">
+                @*<div class="form-group">
                     <label class="control-label">Hình thức đăng ký</label>
                     <select asp-for="RegistrationForm" class="form-control">
                         <option value="Cá nhân">Cá nhân</option>
                         <option value="Lớp">Lớp</option>
                     </select>
+                </div>*@
+                <div class="form-check">
+                    <input class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios1" value="Cá nhân" checked>
+                    <label class="form-check-label" for="exampleRadios1" asp-for="RegistrationForm">
+                        Cá nhân
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios1" value="Lớp" checked>
+                    <label class="form-check-label" for="exampleRadios1" asp-for="RegistrationForm">
+                        Lớp
+                    </label>
                 </div>
             </div>
             <div class="modal-footer">
