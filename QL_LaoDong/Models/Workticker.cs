@@ -13,10 +13,8 @@ namespace QL_LaoDong.Models
         public bool? IsDelete { get; set; }
         public string Note { get; set; }
         public int? RegistrationNumber { get; set; }
-        public long? GroupsId { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual Calendar Calendar { get; set; }
-        public virtual Groups Groups { get; set; }
     }
 }

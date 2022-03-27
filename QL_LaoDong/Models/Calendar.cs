@@ -8,6 +8,7 @@ namespace QL_LaoDong.Models
     {
         public Calendar()
         {
+            Groups = new HashSet<Groups>();
             Workticker = new HashSet<Workticker>();
         }
 
@@ -22,6 +23,7 @@ namespace QL_LaoDong.Models
         public int? Status { get; set; }
         public bool? IsDelete { get; set; }
 
+        public virtual ICollection<Groups> Groups { get; set; }
         public virtual ICollection<Workticker> Workticker { get; set; }
     }
 }

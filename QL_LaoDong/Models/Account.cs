@@ -22,7 +22,6 @@ namespace QL_LaoDong.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
-
         public string Sex { get; set; }
         public string Picture { get; set; }
         public bool? IsDelete { get; set; }
