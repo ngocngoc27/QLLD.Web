@@ -176,5 +176,6 @@ namespace QL_LaoDong.Controllers
             var data = _AccountService.Details(id);
             return View(data);
         }
+       
     }
 }
