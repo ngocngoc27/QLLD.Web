@@ -14,5 +14,6 @@ namespace QL_LaoDong.Interfaces
         void Edit(Calendar model);
         void Delete(Calendar model);
         bool CalendarExists(long id);
+        void CreateGroups(Groups model);
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +15,18 @@ namespace QL_LaoDong.Controllers
 {
     public class GroupsController : Controller
     {
+        private readonly IWorkTickerService _worktickerService;
         private readonly IGroupsService _groupsService;
         private readonly ICalendarService _calendarService;
         private readonly IJobService _jobService;
         private readonly IToolService _toolService;
-        public GroupsController(IGroupsService groupsService, ICalendarService calendarService, IJobService jobService, IToolService toolService)
+        public GroupsController(IGroupsService groupsService, ICalendarService calendarService, IJobService jobService, IToolService toolService, IWorkTickerService workTickerService)
         {
             _groupsService = groupsService;
             _calendarService = calendarService;
             _jobService = jobService;
             _toolService = toolService;
+            _worktickerService = workTickerService;
         }
         public IActionResult Index()
         {
@@ -68,6 +72,24 @@ namespace QL_LaoDong.Controllers
         private bool GroupsExists(long id)
         {
             return _groupsService.GroupsExists(id);
+        }
+        /*==========================================================*/
+        private void StudentList(long id, object selectStudent = null)
+        {
+            ViewBag.student = new SelectList(_worktickerService.GetStudent(id), "Id", "Day", selectStudent);
+        }
+        [NoDirectAccess]
+        public IActionResult CreateMuster(long id)
+        {
+            StudentList(id);
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateMuster(Muster model)
+        {
+            _groupsService.CreateMuster(model);
+            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.Get()) });
         }
     }
 }

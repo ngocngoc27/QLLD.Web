@@ -8,7 +8,7 @@ namespace QL_LaoDong.Helpers
     public enum GroupsEnum
     {
         ChuaDiemDanh = 1,
-        NhomTruongDaDiemDanh = 2,
+        ChuaCoSinhVien = 2,
         CanBoDaXacNhan = 3
     }
 }

@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace QL_LaoDong.Interfaces
     {
         List<Groups> Get();
         Groups GetById(int id);
-        void Create(Groups model);
         void Edit(Groups model);
         void Delete(Groups model);
         bool GroupsExists(long id);
+        void CreateMuster(Muster model);
     }
 }

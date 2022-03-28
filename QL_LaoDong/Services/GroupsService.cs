@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +18,6 @@ namespace QL_LaoDong.Services
         {
             _context = context;
         }
-        public void Create(Groups model)
-        {
-            var entity = new Groups();
-            entity.GroupsName = model.GroupsName;
-            entity.JobId = model.JobId;
-            entity.Leader = model.Leader;
-            entity.Status = model.Status;
-            entity.IsDelete = false;
-            _context.Groups.Add(entity);
-            _context.SaveChanges();
-        }
-
         public void Delete(Groups model)
         {
             var entity = _context.Groups.Where(x => x.Id == model.Id).FirstOrDefault();
@@ -53,7 +43,7 @@ namespace QL_LaoDong.Services
 
         public List<Groups> Get()
         {
-            return _context.Groups.Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
+            return _context.Groups.Include(x => x.Calendar).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
         }
 
         public Groups GetById(int id)
@@ -64,6 +54,16 @@ namespace QL_LaoDong.Services
         public bool GroupsExists(long id)
         {
             return _context.Groups.Any(x => x.Id == id);
+        }
+        public void CreateMuster(Muster model)
+        {
+            var entity = new Muster();
+            entity.StudentId = model.StudentId;
+            entity.RollUp = false;
+            entity.GroupsId = model.Id;
+            entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
+            _context.Muster.Add(entity);
+            _context.SaveChanges();
         }
     }
 }

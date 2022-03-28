@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -15,9 +16,11 @@ namespace QL_LaoDong.Controllers
     public class CalendarController : Controller
     {
         private readonly ICalendarService _CalendarService;
-        public CalendarController(ICalendarService calendarService)
+        private readonly IJobService _jobService;
+        public CalendarController(ICalendarService calendarService, IJobService jobService)
         {
             _CalendarService = calendarService;
+            _jobService = jobService;
         }
         public IActionResult Index()
         {
@@ -86,6 +89,24 @@ namespace QL_LaoDong.Controllers
         {
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
+        }
+        /*--------------------------------------*/
+        private void JobList(object selectJob = null)
+        {
+            ViewBag.job = new SelectList(_jobService.Get(), "Id", "JobName", selectJob);
+        }
+        [NoDirectAccess]
+        public IActionResult CreateGroups()
+        {
+            JobList();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateGroups(Groups model)
+        {
+            _CalendarService.CreateGroups(model);
+            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
         }
     }
 }
