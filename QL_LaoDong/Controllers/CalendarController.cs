@@ -15,9 +15,11 @@ namespace QL_LaoDong.Controllers
     public class CalendarController : Controller
     {
         private readonly ICalendarService _CalendarService;
-        public CalendarController(ICalendarService calendarService)
+        private readonly IWorkTickerService _WorkTickerService;
+        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService)
         {
             _CalendarService = calendarService;
+            _WorkTickerService = workTickerService;
         }
         public IActionResult Index()
         {
@@ -86,6 +88,11 @@ namespace QL_LaoDong.Controllers
         {
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
+        }
+        public IActionResult StudentList(long id)
+        {
+            var data = _WorkTickerService.GetStudent(id);
+            return View(data);
         }
     }
 }

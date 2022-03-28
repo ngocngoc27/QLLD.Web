@@ -57,9 +57,9 @@
                                     @Html.DisplayFor(modelItem => item.NumberOfWork)
                                 </td>
                                 <td>
-                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT SINH VIÊN')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Student",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT SINH VIÊN')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thông tin sinh viên"><i class="fas fa-pencil-alt"></i></a>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </td>
                             </tr>
