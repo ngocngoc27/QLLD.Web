@@ -58,8 +58,15 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.Username = model.Username;
             entity.Sex = model.Sex;
-            //string pass = model.Password;
-            //entity.Password = Security.MD5(pass);
+            if (model.Password != null)
+            {
+                string pass = model.Password;
+                entity.Password = Security.MD5(pass);
+            }
+            else
+            {
+                entity.Password = entity.Password;
+            }
             entity.Fullname = model.Fullname;
             entity.DateOfBirth = model.DateOfBirth;
             entity.RoleId = model.RoleId;
@@ -174,5 +181,6 @@ namespace QL_LaoDong.Services
             Profile = query.FirstOrDefault();
             return Profile;
         }
+       
     }
 }
