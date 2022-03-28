@@ -84,13 +84,8 @@
                                 }
                             </td>
                             <td>
-<<<<<<< HEAD
                                 <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'DUYỆT VÀ GHI CHÚ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Duyệt đăng ký"><i class="mdi mdi-check-bold"></i></a>
                                 <a onclick="showInPopup('@Url.Action("CreateGroups","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'PHÂN NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân nhóm lao động"><i class="fa fa-wrench"></i></a>
-=======
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'DUYỆT VÀ GHI CHÚ')" class="btn btn-info text-white btn-sm"><i class="mdi mdi-check-bold"></i></a>
-                                
->>>>>>> 1ebc79e0a3debb4ffb4a320e93c21d64a1cb6178
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
                                 </form>

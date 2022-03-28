@@ -16,19 +16,13 @@ namespace QL_LaoDong.Controllers
     public class CalendarController : Controller
     {
         private readonly ICalendarService _CalendarService;
-<<<<<<< HEAD
         private readonly IWorkTickerService _WorkTickerService;
-        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService)
+        private readonly IJobService _jobService;
+        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService)
         {
             _CalendarService = calendarService;
             _WorkTickerService = workTickerService;
-=======
-        private readonly IJobService _jobService;
-        public CalendarController(ICalendarService calendarService, IJobService jobService)
-        {
-            _CalendarService = calendarService;
             _jobService = jobService;
->>>>>>> 1ebc79e0a3debb4ffb4a320e93c21d64a1cb6178
         }
         public IActionResult Index()
         {
@@ -98,12 +92,6 @@ namespace QL_LaoDong.Controllers
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
         }
-<<<<<<< HEAD
-        public IActionResult StudentList(long id)
-        {
-            var data = _WorkTickerService.GetStudent(id);
-            return View(data);
-=======
         /*--------------------------------------*/
         private void JobList(object selectJob = null)
         {
@@ -121,7 +109,6 @@ namespace QL_LaoDong.Controllers
         {
             _CalendarService.CreateGroups(model);
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
->>>>>>> 1ebc79e0a3debb4ffb4a320e93c21d64a1cb6178
         }
     }
 }
