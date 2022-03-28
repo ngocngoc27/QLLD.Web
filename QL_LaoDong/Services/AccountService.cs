@@ -131,27 +131,33 @@ namespace QL_LaoDong.Services
             string pass = model.Password;
             string pas = Security.MD5(pass);
             string user = model.Username;
-            var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password ==pas).FirstOrDefault();
-            if (acc.IsDelete != false)
-                throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
-
-            if(acc != default)
+            try
             {
-                var query = from students in _context.Student
-                            join classes in _context.Class on students.ClassId equals classes.Id
-                            where students.AccountId == acc.Id
-                            select new AppUser()
-                            {
-                                AccountId = acc.Id,
-                                Username = acc.Username,
-                                FullName = acc.Fullname,
-                                RoleId = acc.Role.Id,
-                                RoleName = acc.Role.NameRole,
-                                ClassId = classes.Id,
-                                ClassName = classes.ClassName,
-                                Total = classes.Total
-                            };
-                AppUser = query.FirstOrDefault();
+                var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password == pas).FirstOrDefault();
+                if (acc.IsDelete != false)
+                    throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
+                if (acc != default)
+                {
+                    var query = from students in _context.Student
+                                join classes in _context.Class on students.ClassId equals classes.Id
+                                where students.AccountId == acc.Id
+                                select new AppUser()
+                                {
+                                    AccountId = acc.Id,
+                                    Username = acc.Username,
+                                    FullName = acc.Fullname,
+                                    RoleId = acc.Role.Id,
+                                    RoleName = acc.Role.NameRole,
+                                    ClassId = classes.Id,
+                                    ClassName = classes.ClassName,
+                                    Total = classes.Total
+                                };
+                    AppUser = query.FirstOrDefault();
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
             return AppUser;
         }
