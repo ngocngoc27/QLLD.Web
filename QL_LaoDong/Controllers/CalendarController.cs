@@ -110,5 +110,10 @@ namespace QL_LaoDong.Controllers
             _CalendarService.CreateGroups(model);
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
         }
+        public IActionResult StudentList(long id)
+        {
+            var data = _WorkTickerService.GetStudent(id);
+            return View(data);
+        }
     }
 }
