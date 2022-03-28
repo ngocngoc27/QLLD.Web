@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace QL_LaoDong.Interfaces
         List<Workticker> GetFridayMor();
         List<Workticker> GetSaturdayAfter();
         List<Workticker> GetSaturdayMor();
+        List<WorkTickerVM> GetStudent(long id);
         Workticker GetById(int id);
         void Create(Workticker model);
         void CreateGroups(Groups model);

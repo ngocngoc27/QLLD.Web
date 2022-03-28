@@ -129,5 +129,6 @@ namespace QL_LaoDong.Services
         {
             return _context.Calendar.Any(x => x.Id == id);
         }
+       
     }
 }

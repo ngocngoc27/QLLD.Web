@@ -4,6 +4,7 @@ using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +162,30 @@ namespace QL_LaoDong.Services
         public List<Workticker> GetSaturdayMor()
         {
             return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
+        }
+        public List<WorkTickerVM> GetStudent(long id)
+        {
+            //string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            //int idacc = Convert.ToInt32(data);
+            var data = new WorkTickerVM();
+            var entity = _context.Workticker.Include(x => x.Calendar).Include(x=>x.Account.Student).Where(x=>x.CalendarId==id).FirstOrDefault();
+            var cla= _context.Student.Where(x => x.AccountId == entity.AccountId).Select(x => x.ClassId);
+            int lop = Convert.ToInt32(cla);
+            if (entity.RegistrationForm=="Cá nhân")
+            {
+                var query = _context.Student.Where(x => x.AccountId == entity.AccountId).ToList();
+                entity.Account.Student=
+            }
+            else if (entity.RegistrationForm == "Lớp")
+            {
+                var query = _context.Student.Include(x=>x.Class).Where(x => x.ClassId==lop).ToList();
+               
+                foreach(var x in query)
+                {
+                    data.Mssv=x.Mssv;
+                }
+            }
+
         }
     }
 }
