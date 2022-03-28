@@ -76,7 +76,7 @@ namespace QL_LaoDong.Controllers
         /*==========================================================*/
         private void StudentList(long id, object selectStudent = null)
         {
-            ViewBag.student = new SelectList(_worktickerService.GetStudent(id), "Id", "Day", selectStudent);
+            ViewBag.stu = new SelectList(_worktickerService.GetStudent(id), "Id", "MSSV", selectStudent);
         }
         [NoDirectAccess]
         public IActionResult CreateMuster(long id)
