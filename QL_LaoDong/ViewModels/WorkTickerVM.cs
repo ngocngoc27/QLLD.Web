@@ -16,7 +16,7 @@ namespace QL_LaoDong.ViewModels
         public string Mssv { get; set; }
         public string Fullname { get; set; }
         public string ClassName { get; set; }
-
-
     }
+
+
 }

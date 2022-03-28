@@ -25,5 +25,6 @@ namespace QL_LaoDong.ViewModels
         public string Mssv { get; set; }
         public int? NumberOfWork { get; set; }
         public long ClassId { get; set; }
+        public string ClassName { get; set; }
     }
 }

@@ -163,29 +163,85 @@ namespace QL_LaoDong.Services
         {
             return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == 2).ToList();
         }
-        public List<WorkTickerVM> GetStudent(long id)
+        //public List<WorkTickerVM> GetStudent(long id)
+        //{
+        //    //string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+        //    //int idacc = Convert.ToInt32(data);
+        //    var data = new WorkTickerVM();
+        //    var entity = _context.Workticker.Include(x => x.Calendar).Include(x=>x.Account.Student).Where(x=>x.CalendarId==id).FirstOrDefault();
+        //    var cla= _context.Student.Where(x => x.AccountId == entity.AccountId).Select(x => x.ClassId);
+        //    int lop = Convert.ToInt32(cla);
+        //    if (entity.RegistrationForm=="Cá nhân")
+        //    {
+        //        var query = _context.Student.Where(x => x.AccountId == entity.AccountId).ToList();
+        //        entity.Account.Student=
+        //    }
+        //    else if (entity.RegistrationForm == "Lớp")
+        //    {
+        //        var query = _context.Student.Include(x=>x.Class).Where(x => x.ClassId==lop).ToList();
+               
+        //        foreach(var x in query)
+        //        {
+        //            data.Mssv=x.Mssv;
+        //        }
+        //    }
+
+        //}
+
+        public List<StudentVM> GetStudent(long id)
         {
             //string data = _httpContextAccessor.HttpContext.Session.GetString("id");
             //int idacc = Convert.ToInt32(data);
-            var data = new WorkTickerVM();
-            var entity = _context.Workticker.Include(x => x.Calendar).Include(x=>x.Account.Student).Where(x=>x.CalendarId==id).FirstOrDefault();
-            var cla= _context.Student.Where(x => x.AccountId == entity.AccountId).Select(x => x.ClassId);
-            int lop = Convert.ToInt32(cla);
-            if (entity.RegistrationForm=="Cá nhân")
+            //var data = new WorkTickerVM();
+            var data = new List<StudentVM>();
+            var worktickers = _context.Workticker.Include(x => x.Calendar).Include(x => x.Account.Student)
+                        .Where(x => x.CalendarId == id && x.Status == (int)WorkTickerEnum.DaDuyet).ToList();
+
+
+            foreach (var wtk in worktickers)
             {
-                var query = _context.Student.Where(x => x.AccountId == entity.AccountId).ToList();
-                entity.Account.Student=
-            }
-            else if (entity.RegistrationForm == "Lớp")
-            {
-                var query = _context.Student.Include(x=>x.Class).Where(x => x.ClassId==lop).ToList();
-               
-                foreach(var x in query)
+                if(wtk.RegistrationForm == "Cá nhân")
                 {
-                    data.Mssv=x.Mssv;
+                    var student = _context.Student.Include(x => x.Class).Include(x => x.Account)
+                        .Where(x => x.AccountId == wtk.AccountId && x.IsDelete != true)
+                        .Select( x => new StudentVM()
+                        {
+                            Mssv = x.Mssv,
+                            Fullname = x.Account != default ? x.Account.Fullname: "",
+                            ClassName = x.Class != default ? x.Class.ClassName : "",
+                        })
+                        .FirstOrDefault();
+                    if(student != default)
+                    {
+                        data.Add(student);
+                    }
+
+                }
+                else
+                {
+                    var student = _context.Student.Include(x => x.Class).Include(x => x.Account)
+                         .Where(x => x.AccountId == wtk.AccountId && x.IsDelete != true)
+                         .FirstOrDefault();
+                    if(student != default)
+                    {
+                        var students = _context.Student.Include(x => x.Class).Include(x => x.Account)
+                             .Where(x => x.ClassId == student.ClassId && x.IsDelete != true)
+                             .Select(x => new StudentVM()
+                             {
+                                 Mssv = x.Mssv,
+                                 Fullname = x.Account != default ? x.Account.Fullname : "",
+                                 ClassName = x.Class != default ? x.Class.ClassName : "",
+                             })
+                             .ToList();
+                        if(students.Count > 0)
+                        {
+                            data.AddRange(students);
+                        }
+                    }
+
                 }
             }
-
+            return data;
         }
     }
 }
