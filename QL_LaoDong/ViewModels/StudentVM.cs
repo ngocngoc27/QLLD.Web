@@ -22,6 +22,7 @@ namespace QL_LaoDong.ViewModels
         public string Picture { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
+        public long? StudentId { get; set; }
         public string Mssv { get; set; }
         public int? NumberOfWork { get; set; }
         public long ClassId { get; set; }

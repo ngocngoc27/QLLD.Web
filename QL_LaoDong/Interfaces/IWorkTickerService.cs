@@ -27,8 +27,7 @@ namespace QL_LaoDong.Interfaces
         List<Workticker> GetSaturdayMor();
         List<StudentVM> GetStudent(long id);
         Workticker GetById(int id);
-        void Create(Workticker model);
-        void CreateGroups(Groups model);
+        void Create(Workticker model);        
         void Edit(Workticker model);
         void Cancle(Workticker model);
         void Delete(Workticker model);

@@ -46,17 +46,7 @@ namespace QL_LaoDong.Services
             _context.Workticker.Add(entity);
             _context.SaveChanges();
         }
-        public void CreateGroups(Groups model)
-        {
-            var entity = new Groups();
-            entity.Leader = model.Leader;
-            entity.GroupsName = model.GroupsName;
-            entity.JobId = model.JobId;
-            entity.IsDelete = false;
-            entity.Status = (int)GroupsEnum.ChuaDiemDanh;
-            _context.Groups.Add(entity);
-            _context.SaveChanges();
-        }
+        
         public void Delete(Workticker model)
         {
             var entity = _context.Workticker.Where(x => x.Id == model.Id && x.Status != (int)WorkTickerEnum.DaDuyet).FirstOrDefault();
@@ -177,6 +167,7 @@ namespace QL_LaoDong.Services
                         .Where(x => x.AccountId == wtk.AccountId && x.IsDelete != true)
                         .Select( x => new StudentVM()
                         {
+                            StudentId = x.Id,
                             Mssv = x.Mssv,
                             Fullname = x.Account != default ? x.Account.Fullname: "",
                             ClassName = x.Class != default ? x.Class.ClassName : "",
@@ -198,6 +189,7 @@ namespace QL_LaoDong.Services
                              .Where(x => x.ClassId == student.ClassId && x.IsDelete != true)
                              .Select(x => new StudentVM()
                              {
+                                 StudentId = x.Id,
                                  Mssv = x.Mssv,
                                  Fullname = x.Account != default ? x.Account.Fullname : "",
                                  ClassName = x.Class != default ? x.Class.ClassName : "",

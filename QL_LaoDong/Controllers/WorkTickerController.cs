@@ -24,7 +24,6 @@ namespace QL_LaoDong.Controllers
         {
             _worktickerService = worktickerService;
             _calendarService = calendarService;
-            _jobService = jobService;
             _studentService = studentService;
         }
         public IActionResult ListStudent()
@@ -61,10 +60,7 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
         }
-        private void JobList(object selectJob = null)
-        {
-            ViewBag.job = new SelectList(_jobService.Get(), "Id", "JobName", selectJob);
-        }
+        
         private bool TickerExists(long id)
         {
             return _worktickerService.TickerExists(id);
@@ -127,19 +123,6 @@ namespace QL_LaoDong.Controllers
             _worktickerService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
-        /*--------------------------------------*/
-        [NoDirectAccess]
-        public IActionResult CreateGroups()
-        {
-            JobList();
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateGroups(Groups model)
-        {
-            _worktickerService.CreateGroups(model);
-            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
-        }
+        
     }
 }

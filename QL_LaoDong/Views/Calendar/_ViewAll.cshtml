@@ -78,7 +78,12 @@
                                 }
                             </td>
                             <td>
+<<<<<<< HEAD
                                 <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thông tin"><i class="fas fa-pencil-alt"></i></a>
+=======
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <a onclick="showInPopup('@Url.Action("CreateGroups","Calendar",new {id=item.Id },Context.Request.Scheme)', 'PHÂN NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fa fa-wrench"></i></a>
+>>>>>>> 1ebc79e0a3debb4ffb4a320e93c21d64a1cb6178
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xóa" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>
