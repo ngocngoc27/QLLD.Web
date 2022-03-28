@@ -112,7 +112,8 @@ namespace QL_LaoDong.Services
             }
             //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
-            entity.LimitsNumber = model.LimitsNumber;            
+            entity.LimitsNumber = model.LimitsNumber;
+            entity.Status = model.Status;
             _context.Calendar.Update(entity);
             _context.SaveChanges();
         }

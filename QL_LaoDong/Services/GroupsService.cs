@@ -45,7 +45,10 @@ namespace QL_LaoDong.Services
         {
             return _context.Groups.Include(x => x.Calendar).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
         }
-
+        public List<Groups> PageGroups(long id)
+        {
+            return _context.Groups.Include(x => x.Calendar).Include(x => x.Job).Include(x => x.Muster).Where(x => x.CalendarId == id).ToList();
+        }
         public Groups GetById(int id)
         {
             return _context.Groups.Include(x => x.Job).Where(x => x.Id == id).FirstOrDefault();
@@ -55,15 +58,15 @@ namespace QL_LaoDong.Services
         {
             return _context.Groups.Any(x => x.Id == id);
         }
-        public void CreateMuster(Muster model)
-        {
-            var entity = new Muster();
-            entity.StudentId = model.StudentId;
-            entity.RollUp = false;
-            entity.GroupsId = model.Id;
-            entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
-            _context.Muster.Add(entity);
-            _context.SaveChanges();
-        }
+        //public void CreateMuster(Muster model)
+        //{
+        //    var entity = new Muster();
+        //    entity.StudentId = model.StudentId;
+        //    entity.RollUp = false;
+        //    entity.GroupsId = model.Id;
+        //    entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
+        //    _context.Muster.Add(entity);
+        //    _context.SaveChanges();
+        //}
     }
 }

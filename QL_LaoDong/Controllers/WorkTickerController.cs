@@ -18,7 +18,6 @@ namespace QL_LaoDong.Controllers
     {
         private readonly IWorkTickerService _worktickerService;
         private readonly ICalendarService _calendarService;
-        private readonly IJobService _jobService;
         private readonly IStudentService _studentService;
         public WorkTickerController(IWorkTickerService worktickerService, ICalendarService calendarService, IJobService jobService, IStudentService studentService)
         {

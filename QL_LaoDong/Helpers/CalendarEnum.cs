@@ -8,6 +8,6 @@ namespace QL_LaoDong.Helpers
     public enum CalendarEnum
     {
         ChoPhepDangKy = 1,
-        HetLuotDangKy = 2
+        KhoaDangKy = 2
     }
 }

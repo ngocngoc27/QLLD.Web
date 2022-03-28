@@ -11,6 +11,7 @@ namespace QL_LaoDong.Interfaces
     {
         List<Calendar> GetCalendar();
         List<Workticker> Get();
+        List<Workticker> PageWorkTicker(long id);
         List<Workticker> GetSundayAfter();
         List<Workticker> GetSundayMor();
         List<Workticker> GetMondayAfter();

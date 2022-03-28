@@ -1,0 +1,103 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Workticker>
+@using QL_LaoDong.Helpers;
+@{
+    ViewData["Title"] = "PageWorkTicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Lao động</a></li>
+                        <li class="breadcrumb-item active">Quản lý đăng ký</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">QUẢN LÝ ĐĂNG KÝ LAO ĐỘNG</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Buổi
+                            </th>
+                            <th>
+                                Thứ
+                            </th>
+                            <th>
+                                Ngày
+                            </th>
+                            <th>
+                                Người đăng ký
+                            </th>
+                            <th>
+                                Hình thức đăng ký
+                            </th>
+                            <th>
+                                Số lượng đăng ký
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
+                                </td>
+                                <td>
+                                    @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Account.Fullname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RegistrationForm)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                                </td>
+                                <td>
+                                    @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
+                                    {
+                                        @Html.FormatValue(item.Status, "Chờ duyệt")
+                                    }
+                                    else if (item.Status == (int)WorkTickerEnum.DaDuyet)
+                                    {
+                                        @Html.FormatValue(item.Status, "Đã duyệt")
+                                    }
+                                    else if (item.Status == (int)WorkTickerEnum.BaoBan)
+                                    {
+                                        @Html.FormatValue(item.Status, "Báo bận")
+                                    }
+                                </td>
+                                <td>
+                                    <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'DUYỆT VÀ GHI CHÚ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Duyệt đăng ký"><i class="mdi mdi-check-bold"></i></a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

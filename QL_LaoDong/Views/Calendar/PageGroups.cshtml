@@ -1,5 +1,10 @@
-﻿@model List<QL_LaoDong.Models.Workticker>
+﻿@model IEnumerable<QL_LaoDong.Models.Groups>
 @using QL_LaoDong.Helpers;
+@{
+    ViewData["Title"] = "PageGroups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -8,10 +13,10 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Lao động</a></li>
-                        <li class="breadcrumb-item active">Quản lý đăng ký</li>
+                        <li class="breadcrumb-item active">Nhóm lao động</li>
                     </ol>
                 </div>
-                <h4 class="page-title">QUẢN LÝ ĐĂNG KÝ LAO ĐỘNG</h4>
+                <h4 class="page-title">DANH SÁCH CÁC NHÓM LAO ĐỘNG</h4>
             </div>
         </div>
     </div>
@@ -22,22 +27,22 @@
                     <thead>
                         <tr>
                             <th>
-                                Buổi 
+                                Tên nhóm
                             </th>
                             <th>
-                                Thứ 
+                                Nhóm trưởng
                             </th>
                             <th>
-                                Ngày
+                                Tên công việc
                             </th>
                             <th>
-                                Người đăng ký
+                                Mô tả
                             </th>
                             <th>
-                                Hình thức đăng ký
+                                Vị trí
                             </th>
                             <th>
-                                Số lượng đăng ký
+                                Số ngày thụ hưởng
                             </th>
                             <th>
                                 Trạng thái
@@ -50,39 +55,40 @@
                         {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
+                                @Html.DisplayFor(modelItem => item.GroupsName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
+                                @Html.DisplayFor(modelItem => item.Leader)
                             </td>
                             <td>
-                                @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
+                                @Html.DisplayFor(modelItem => item.Job.JobName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Account.Fullname)
+                                @Html.DisplayFor(modelItem => item.Job.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.RegistrationForm)
+                                @Html.DisplayFor(modelItem => item.Job.Locate)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                                @Html.DisplayFor(modelItem => item.Job.BenefitOfDay)
                             </td>
                             <td>
-                                @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
+                                @if (item.Status == (int)GroupsEnum.CanBoDaXacNhan)
                                 {
-                                    @Html.FormatValue(item.Status, "Chờ duyệt")
+                                    @Html.FormatValue(item.Status, "Cán bộ đã xác nhận")
                                 }
-                                else if (item.Status == (int)WorkTickerEnum.DaDuyet)
+                                else if (item.Status == (int)GroupsEnum.ChuaCoSinhVien)
                                 {
-                                    @Html.FormatValue(item.Status, "Đã duyệt")
+                                    @Html.FormatValue(item.Status, "Chưa có sinh viên")
                                 }
-                                else if (item.Status == (int)WorkTickerEnum.BaoBan)
+                                else if (item.Status == (int)GroupsEnum.ChuaDiemDanh)
                                 {
-                                    @Html.FormatValue(item.Status, "Báo bận")
+                                    @Html.FormatValue(item.Status, "Chưa điểm danh")
                                 }
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","WorkTicker",new {id=item.Id },Context.Request.Scheme)', 'DUYỆT VÀ GHI CHÚ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Duyệt đăng ký"><i class="mdi mdi-check-bold"></i></a>
+                                <a onclick="showInPopup('@Url.Action("Edit","Groups",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                <a onclick="showInPopup('@Url.Action("CreateMuster","Groups",new {id=item.Id},Context.Request.Scheme)', 'TẠO ĐIỂM DANH')" class="btn btn-success text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Điểm danh"><i class="fa fa-wrench"></i></a>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
                                 </form>

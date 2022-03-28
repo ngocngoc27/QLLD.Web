@@ -74,22 +74,22 @@ namespace QL_LaoDong.Controllers
             return _groupsService.GroupsExists(id);
         }
         /*==========================================================*/
-        private void StudentList(long id, object selectStudent = null)
-        {
-            ViewBag.stu = new SelectList(_worktickerService.GetStudent(id), "Id", "MSSV", selectStudent);
-        }
-        [NoDirectAccess]
-        public IActionResult CreateMuster(long id)
-        {
-            StudentList(id);
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateMuster(Muster model)
-        {
-            _groupsService.CreateMuster(model);
-            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.Get()) });
-        }
+        //private void StudentList(long id, object selectStudent = null)
+        //{
+        //    ViewBag.stu = new SelectList(_worktickerService.GetStudent(id), "Id", "MSSV", selectStudent);
+        //}
+        //[NoDirectAccess]
+        //public IActionResult CreateMuster(long id)
+        //{
+        //    StudentList(id);
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult CreateMuster(Muster model)
+        //{
+        //    _groupsService.CreateMuster(model);
+        //    return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.Get()) });
+        //}
     }
 }

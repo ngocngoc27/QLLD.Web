@@ -66,7 +66,7 @@ namespace QL_LaoDong.Services
             if (entity.Status == (int)WorkTickerEnum.DaDuyet)
                 entity.Calendar.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
             if (entity.Calendar.RegistrationTotal >= entity.Calendar.LimitsNumber)
-                entity.Calendar.Status = (int)CalendarEnum.HetLuotDangKy;
+                entity.Calendar.Status = (int)CalendarEnum.KhoaDangKy;
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }
@@ -87,6 +87,10 @@ namespace QL_LaoDong.Services
         public List<Workticker> Get()
         {
             return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).ToList();
+        }
+        public List<Workticker> PageWorkTicker(long id)
+        {
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.CalendarId == id).ToList();
         }
         public Workticker GetById(int id)
         {
