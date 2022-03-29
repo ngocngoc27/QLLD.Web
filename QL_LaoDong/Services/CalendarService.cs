@@ -122,7 +122,7 @@ namespace QL_LaoDong.Services
         {
             return _context.Calendar.Where(x => x.IsDelete != true).ToList();
         }
-        public Calendar GetById(int id)
+        public Calendar GetById(long id)
         {
             return _context.Calendar.Where(x => x.Id == id).FirstOrDefault();
         }

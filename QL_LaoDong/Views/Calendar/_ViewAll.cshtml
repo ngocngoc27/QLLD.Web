@@ -57,7 +57,7 @@
                                 @Html.DisplayFor(modelItem => item.Weekdays)
                             </td>
                             <td>
-                                @Convert.ToDateTime(item.Day).ToString("MM/dd/yyyy")
+                                @Convert.ToDateTime(item.Day).ToString("dd/MM/yyyy")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.LimitsNumber)
@@ -77,8 +77,8 @@
                             </td>
                             <td>
                                 <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thời gian đăng ký"><i class="fas fa-pencil-alt"></i></a>
-                                <form asp-action="PageGroups" asp-route-id="@item.Id" class="d-inline">
-                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Nhóm lao động" class="btn btn-secondary"><i class="mdi mdi-playlist-check"></i></button>
+                                <form asp-action="PageGroups" asp-route-id="@item.Id" class="d-inline">                                 
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Nhóm lao động" class="btn btn-secondary"><i class="mdi mdi-account-group"></i></button>
                                 </form>
                                 <form asp-action="PageWorkTicker" asp-route-id="@item.Id" class="d-inline">
                                     <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách đăng ký" class="btn btn-secondary"><i class="mdi mdi-playlist-check"></i></button>
@@ -86,10 +86,7 @@
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xóa" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                 </form>
-                                @*<form asp-action="StudentList" asp-route-id="@item.Id" class="d-inline">
-                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách" class="btn btn-secondary"><i class="fa fa-th-list"></i></button>
-                                </form>*@
-                                
+                                                            
                             </td>
                         </tr>
                         }

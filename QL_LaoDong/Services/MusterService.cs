@@ -16,12 +16,11 @@ namespace QL_LaoDong.Services
         {
             _context = context;
         }
-        public void Create(Muster model)
+        public void AddStudent(Muster model, long id)
         {
             var entity = new Muster();
             entity.StudentId = model.StudentId;
-            entity.GroupsId = model.GroupsId;
-            entity.RollUp = model.RollUp;
+            entity.GroupsId = id;
             entity.IsDelete = false;
             _context.Muster.Add(entity);
             _context.SaveChanges();
@@ -53,7 +52,10 @@ namespace QL_LaoDong.Services
         {
             return _context.Muster.Include(x=>x.Student).Include(x => x.Groups).Where(x => x.IsDelete != true).ToList();
         }
-
+        public List<Muster> PageMuster(long id)
+        {
+            return _context.Muster.Include(x => x.Student).Include(x => x.Groups).Where(x => x.GroupsId == id).ToList();
+        }
         public Muster GetById(int id)
         {
             return _context.Muster.Where(x => x.Id == id).FirstOrDefault();

@@ -76,8 +76,11 @@
                                 }
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Edit","Groups",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
-                                <a onclick="showInPopup('@Url.Action("CreateMuster","Groups",new {id=item.Id},Context.Request.Scheme)', 'TẠO ĐIỂM DANH')" class="btn btn-success text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Điểm danh"><i class="fa fa-wrench"></i></a>
+                                <a onclick="showInPopup('@Url.Action("Edit","Groups",new {id=item.Id},Context.Request.Scheme)', 'CẬP NHẬT THÔNG TIN NHÓM')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                <form asp-action="PageMuster" asp-route-id="@item.Id" class="d-inline">
+                                    
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm sinh viên vào nhóm" class="btn btn-secondary"><i class="fas fa-users-cog"></i></button>
+                                </form>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
                                 </form>

@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<QL_LaoDong.ViewModels.StudentVM>
 @{
-    ViewData["Title"] = "StudentList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "AddStudent";
+    Layout = null;
 }
-
 <table class="table">
     <thead>
         <tr>
@@ -32,7 +31,7 @@
                     @Html.DisplayFor(modelItem => item.ClassName)
                 </td>
                 <td>
-                    <form asp-action="AddStudent" asp-route-id="@item.StudentId" asp-controller="Groups" class="d-inline">
+                    <form asp-action="AddStudent" asp-route-id="@item.StudentId" asp-controller="Calendar" class="d-inline">
                         <button onclick="reload();" type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm vào nhóm" class="btn btn-secondary"><i class=" ion ion-md-person-add"></i></button>
                     </form>
                 </td>
@@ -45,3 +44,4 @@
         window.location.reload();
     }
 </script>
+
