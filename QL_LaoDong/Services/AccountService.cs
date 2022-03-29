@@ -56,6 +56,11 @@ namespace QL_LaoDong.Services
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
+            var check = _context.Account.Where(x => x.Username == model.Username && x.Id!=model.Id).FirstOrDefault();
+            if (check != default)
+            {
+                throw new Exception("Tài khoản đã tồn tại!!");
+            }
             entity.Username = model.Username;
             entity.Sex = model.Sex;
             if (model.Password != null)
@@ -133,7 +138,7 @@ namespace QL_LaoDong.Services
             string user = model.Username;
             try
             {
-                var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password == pas).FirstOrDefault();
+                var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password == pas && x.IsDelete!=true).FirstOrDefault();
                 if (acc.IsDelete != false)
                     throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
                 if (acc != default)
