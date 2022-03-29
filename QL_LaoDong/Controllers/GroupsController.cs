@@ -33,6 +33,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
+           
             var data = _groupsService.Get();
             return View(data);
         }

@@ -126,6 +126,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageGroups(long id)
         {
+            var ex = Request.RouteValues.Values;
             var data = _groupsService.PageGroups(id);
             return View(data);
         }
