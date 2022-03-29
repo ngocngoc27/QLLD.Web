@@ -198,6 +198,7 @@ namespace QL_LaoDong.Services
                                  Fullname = x.Account != default ? x.Account.Fullname : "",
                                  ClassName = x.Class != default ? x.Class.ClassName : "",
                              })
+                             .Distinct()
                              .ToList();
                         if(students.Count > 0)
                         {
