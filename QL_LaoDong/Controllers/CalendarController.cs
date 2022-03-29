@@ -133,7 +133,6 @@ namespace QL_LaoDong.Controllers
         [NoDirectAccess]
         public IActionResult AddStudent(long id)
         {
-            //ViewBag.id = _groupsService.GetById(id).CalendarId;
             var data = _WorkTickerService.GetStudent(id);
             return View(data);
         }
