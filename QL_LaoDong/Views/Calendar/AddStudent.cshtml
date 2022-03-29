@@ -32,8 +32,10 @@
                 </td>
                 <td>
                     <form asp-action="AddStudent" asp-route-id="@item.StudentId" asp-controller="Calendar" class="d-inline">
+                        <input type="hidden" name="ids" value="@ViewBag.idgr" />
                         <button onclick="reload();" type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm vào nhóm" class="btn btn-secondary"><i class=" ion ion-md-person-add"></i></button>
                     </form>
+                    
                 </td>
             </tr>
         }

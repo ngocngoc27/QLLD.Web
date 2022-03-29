@@ -84,8 +84,10 @@ namespace QL_LaoDong.Controllers
         public IActionResult PageMuster(long id, long CalendarId)
         {
             ViewBag.caid = CalendarId;
-            //ViewBag.grname = _groupsService.GetById(id).GroupsName;
-            var data = _musterService.PageMuster(id);
+            ViewBag.groupID = id;
+            
+             //ViewBag.grname = _groupsService.GetById(id).GroupsName;
+             var data = _musterService.PageMuster(id);
             return View(data);
         }        
     }

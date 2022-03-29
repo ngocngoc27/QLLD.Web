@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static QL_LaoDong.Helpers.Helper;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace QL_LaoDong.Controllers
 {
@@ -20,6 +21,7 @@ namespace QL_LaoDong.Controllers
         private readonly IJobService _jobService;
         private readonly IGroupsService _groupsService;
         private readonly IMusterService _musterService;
+        
         public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService, IGroupsService groupsService, IMusterService musterService)
         {
             _CalendarService = calendarService;
@@ -27,6 +29,7 @@ namespace QL_LaoDong.Controllers
             _jobService = jobService;
             _groupsService = groupsService;
             _musterService = musterService;
+            
         }
         public IActionResult Index()
         {
@@ -126,21 +129,23 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageGroups(long id)
         {
-            var ex = Request.RouteValues.Values;
             var data = _groupsService.PageGroups(id);
             return View(data);
         }
         [NoDirectAccess]
-        public IActionResult AddStudent(long id)
+        public IActionResult AddStudent(long id, long ids)
         {
+
+            ViewBag.idgr = ids;
             var data = _WorkTickerService.GetStudent(id);
             return View(data);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddStudent(Muster model, long id)
+        public IActionResult AddStudent(Muster model, long ids)
         {
-            _musterService.AddStudent(model, id);
+           
+            _musterService.AddStudent(model, ids);
             return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _musterService.Get()) });
         }
     }

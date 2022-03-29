@@ -30,7 +30,7 @@
                     </div>
                 }
                 <div class="btn-addoredit">
-                    <a onclick="showInPopup('@Url.Action("AddStudent","Calendar", new {id=ViewBag.caid} ,Context.Request.Scheme)', 'THÊM SINH VIÊN VÀO NHÓM')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm sinh viên vào nhóm</a>
+                    <a onclick="showInPopup('@Url.Action("AddStudent","Calendar", new {id=ViewBag.caid, ids = ViewBag.groupID} ,Context.Request.Scheme)', 'THÊM SINH VIÊN VÀO NHÓM')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm sinh viên vào nhóm</a>
                 </div>
                 <br />
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -63,3 +63,6 @@
         </div>
     </div>
 </div>
+<script>
+    console.log(window.location.pathname.valueOf())
+</script>

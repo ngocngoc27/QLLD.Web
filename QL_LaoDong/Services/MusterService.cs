@@ -19,8 +19,8 @@ namespace QL_LaoDong.Services
         public void AddStudent(Muster model, long id)
         {
             var entity = new Muster();
-            entity.StudentId = id;
-            entity.GroupsId = model.Id;
+            entity.StudentId = model.Id;
+            entity.GroupsId = id;
             entity.IsDelete = false;
             _context.Muster.Add(entity);
             _context.SaveChanges();

@@ -169,11 +169,11 @@ namespace QL_LaoDong.Services
                 {
                     var student = _context.Student.Include(x => x.Class).Include(x => x.Account)
                         .Where(x => x.AccountId == wtk.AccountId && x.IsDelete != true)
-                        .Select( x => new StudentVM()
+                        .Select(x => new StudentVM()
                         {
                             StudentId = x.Id,
                             Mssv = x.Mssv,
-                            Fullname = x.Account != default ? x.Account.Fullname: "",
+                            Fullname = x.Account != default ? x.Account.Fullname : "",
                             ClassName = x.Class != default ? x.Class.ClassName : "",
                         })
                         .FirstOrDefault();
