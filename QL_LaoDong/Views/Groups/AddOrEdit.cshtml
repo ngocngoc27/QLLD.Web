@@ -1,12 +1,16 @@
 ﻿@model QL_LaoDong.Models.Groups
 
 @{
-    ViewData["Title"] = "CreateGroups";
+    ViewData["Title"] = "AddOrEdit";
     Layout = null;
 }
+
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="CreateGroups" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+            <input type="hidden" name="ids" value="@ViewBag.idca" />
+            <input type="hidden" name="caid" value="@ViewBag.caid" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col">
                 <div class="form-group">
@@ -15,13 +19,16 @@
                     <span asp-validation-for="GroupsName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Công việc</label>
+                    <label class="control-label">Tên công việc</label>
                     <select asp-for="JobId" class="form-control" asp-items="@ViewBag.job"></select>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Nhóm trưởng</label>
-                    <input asp-for="Leader" class="form-control" />
-                    <span asp-validation-for="Leader" class="text-danger"></span>
+                    <label class="control-label">Trạng thái</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="1">Chưa điểm danh</option>
+                        <option value="2">Chưa có sinh viên</option>
+                        <option value="3">Cán bộ đã xác nhận</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
@@ -31,7 +38,6 @@
         </form>
     </div>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

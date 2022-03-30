@@ -31,48 +31,66 @@ namespace QL_LaoDong.Controllers
             _musterService = musterService;
             _worktickerService = workTickerService;
         }
-        public IActionResult Index()
+        public IActionResult PageGroups(long id)
         {
-           
-            var data = _groupsService.Get();
+            ViewBag.caid = id;
+            var data = _groupsService.PageGroups(id);
+            ViewBag.content = data;
             return View(data);
         }
         [NoDirectAccess]
-        public IActionResult Edit(int id)
+        public IActionResult AddOrEdit(long ids, int id = 0)
         {
             JobList();
-            var data = _groupsService.GetById(id);
-            if (data == null)
+            ViewBag.idca = ids;
+            if (id == 0)
             {
-                return NotFound();
+                return View(new Groups());
             }
-            return View(data);
+            else
+            {
+                var data = _groupsService.GetById(id);
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                return View(data);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Groups model)
-        {            
+        public IActionResult AddOrEdit(Groups model, long ids)
+        {
+            ViewBag.idca = ids;
             if (ModelState.IsValid)
             {
-                try
+                if (model.Id == 0)
                 {
-                    _groupsService.Edit(model);
+
+                    _groupsService.CreateGroups(model, ids);
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!GroupsExists(model.Id))
+                    try
                     {
-                        return NotFound();
+                        _groupsService.Edit(model);
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!GroupsExists(model.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.Get()) });
-            }            
-            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "Edit", model) });
-        }
+                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(ids))});
+            }
+            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
+        }        
         private void JobList(object selectJob = null)
         {
             ViewBag.job = new SelectList(_jobService.Get(), "Id", "JobName", selectJob);
@@ -85,10 +103,19 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;
-            
-             //ViewBag.grname = _groupsService.GetById(id).GroupsName;
-             var data = _musterService.PageMuster(id);
+
+            ViewBag.grname = _groupsService.GetById(id).GroupsName;
+            var data = _musterService.PageMuster(id);
             return View(data);
-        }        
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Groups model, long id)
+        {
+            ViewBag.idca = id;
+            _groupsService.Delete(model);
+            return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(id)) });
+        }
     }
 }

@@ -129,18 +129,6 @@ namespace QL_LaoDong.Services
         public bool CalendarExists(long id)
         {
             return _context.Calendar.Any(x => x.Id == id);
-        }
-        public void CreateGroups(Groups model)
-        {
-            var entity = new Groups();
-            entity.Leader = model.Leader;
-            entity.CalendarId = model.Id;
-            entity.GroupsName = model.GroupsName;
-            entity.JobId = model.JobId;
-            entity.IsDelete = false;
-            entity.Status = (int)GroupsEnum.ChuaCoSinhVien;
-            _context.Groups.Add(entity);
-            _context.SaveChanges();
-        }
+        }        
     }
 }

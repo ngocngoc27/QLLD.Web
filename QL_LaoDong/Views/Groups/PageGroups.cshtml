@@ -1,0 +1,7 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Groups>
+
+    @{
+        ViewData["Title"] = "PageGroups";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @await Html.PartialAsync("_ViewAll", Model)
