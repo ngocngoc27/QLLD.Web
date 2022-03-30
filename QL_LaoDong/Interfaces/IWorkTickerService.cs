@@ -35,5 +35,7 @@ namespace QL_LaoDong.Interfaces
         bool TickerExists(long id);
         int CountsDS();
         int CountTT();
+        int CountBan();
+        int Choduyet();
     }
 }

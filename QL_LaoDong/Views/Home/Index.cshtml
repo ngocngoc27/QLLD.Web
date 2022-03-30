@@ -43,8 +43,9 @@
         </div>
     </div>*@
 <br />
+<h4 class="header-title">Thông tin cơ bản</h4>
+<br />
 <div class="row">
-
     <div class="col-xl-3 col-md-6">
         <div class="card widget-box-one border border-primary bg-soft-primary">
             <div class="card-body">
@@ -102,7 +103,7 @@
                 </div>
                 <div class="wigdet-one-content">
                     <p class="m-0 text-uppercase font-weight-bold text-muted" title="Số lượng lớp">Số lượng lớp</p>
-                    <h2><span data-plugin="counterup">@ViewBag.lop</span> <i class="mdi mdi-arrow-down text-danger font-24"></i></h2>
+                    <h2><span data-plugin="counterup">@ViewBag.lop</span> <i class="mdi mdi-arrow-up text-danger font-24"></i></h2>
                     @*<p class="text-muted m-0"><span class="font-weight-medium">Last:</span> 1250</p>*@
                 </div>
             </div>
@@ -110,23 +111,35 @@
     </div>
     <!-- end col -->
 </div>
-<div class="row">
-    <div class="col-xl-4">
-        <div class="card-box">
 
-            <h4 class="header-title mb-4">Daily Sales</h4>
+<div class="row mt-5">
+    @*<div class="col-lg-6 mt-2">
+            <div class="demo-box">
+                <h4 class="header-title">Pie Chart</h4>
+                <p class="sub-header">
+                    Pie and doughnut charts are probably the most commonly used chart there are. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
+                </p>
 
-            <div class="widget-chart text-center">
-                <div id="morris-donut-example" class="morris-charts" style="height: 245px;"></div>
-                <ul class="list-inline chart-detail-list mb-0">
-                    <li class="list-inline-item">
-                        <h6 class="text-danger"><i class="fa fa-circle mr-2"></i>Series A</h6>
-                    </li>
-                    <li class="list-inline-item">
-                        <h6 class="text-success"><i class="fa fa-circle mr-2"></i>Series B</h6>
-                    </li>
-                </ul>
+                <canvas id="pie" height="260"></canvas>
+
             </div>
+        </div>*@
+
+    <div class="col-lg-6 mt-2">
+
+        <div class="demo-box mt-5 mt-lg-0">
+            <h4 class="header-title">Trạng thái đăng ký</h4>
+            <p class="sub-header">
+                <input type="hidden" data-value="@ViewBag.daduyet" id="daduyet" />
+                <input type="hidden" data-value="@ViewBag.choduyet" id="choduyet" />
+                <input type="hidden" data-value="@ViewBag.baoban" id="baoban" />
+            </p>
+            <canvas id="doughnut" height="260"></canvas>
+
         </div>
     </div>
+
 </div>
+
+
+

@@ -14,14 +14,14 @@
                     <h4 class="page-title">DANH SÁCH CÁC NHÓM LAO ĐỘNG</h4>
                 </div>
             </div>
-        </div>@Model.Select(x=>x.Calendar.SessionOfDay) 
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-box table-responsive">
-                    @foreach (var item in Model)
-                    {                        
-                        <p class="text-muted text-overflow font-weight-bold"><i class="ion ion-md-calendar"></i> Buổi @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay), ngày @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy") (@Html.DisplayFor(modelItem => item.Calendar.Weekdays)))</p>
-                    }
+                    @*@foreach (var item in Model)*@
+                                         
+                    <p class="text-muted text-overflow font-weight-bold"><i class="ion ion-md-calendar"></i> Buổi @Model.Select(model=>model.Calendar.SessionOfDay), @*ngày @Convert.ToDateTime(@Html.DisplayNameFor(model => model.Calendar.Day)).ToString("dd/MM/yyyy")*@ (@Html.DisplayNameFor(model => model.Calendar.Weekdays)))</p>
+                    
                 <div class="d-flex justify-content-lg-between">
                     <div class="btn-addoredit">
                         <a href="/calendar/Index"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
