@@ -23,11 +23,21 @@ namespace QL_LaoDong.Services
             var entity = _context.Groups.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Groups.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
-
+        public void CreateGroups(Groups model, long ids)
+        {
+            var entity = new Groups();
+            entity.Leader = model.Leader;
+            entity.CalendarId = ids;
+            entity.GroupsName = model.GroupsName;
+            entity.JobId = model.JobId;
+            entity.IsDelete = false;
+            entity.Status = model.Status;
+            _context.Groups.Add(entity);
+            _context.SaveChanges();
+        }
         public void Edit(Groups model)
         {
             var entity = _context.Groups.Where(x => x.Id == model.Id).FirstOrDefault();
@@ -47,13 +57,12 @@ namespace QL_LaoDong.Services
         }
         public List<Groups> PageGroups(long id)
         {
-            return _context.Groups.Include(x => x.Calendar).Include(x => x.Job).Include(x => x.Muster).Where(x => x.CalendarId == id).ToList();
+            return _context.Groups.Include(x => x.Calendar).Include(x => x.Job).Include(x => x.Muster).Where(x => x.CalendarId == id && x.IsDelete != true).ToList();
         }
         public Groups GetById(long id)
         {
             return _context.Groups.Include(x => x.Job).Where(x => x.Id == id).FirstOrDefault();
         }
-
         public bool GroupsExists(long id)
         {
             return _context.Groups.Any(x => x.Id == id);
