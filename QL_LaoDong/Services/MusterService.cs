@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -22,6 +23,7 @@ namespace QL_LaoDong.Services
             entity.StudentId = model.Id;
             entity.GroupsId = id;
             entity.IsDelete = false;
+            entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
             _context.Muster.Add(entity);
             _context.SaveChanges();
         }
@@ -44,6 +46,9 @@ namespace QL_LaoDong.Services
             entity.StudentId = model.StudentId;
             entity.GroupsId = model.GroupsId;
             entity.RollUp = model.RollUp;
+            //logic cộng ngày lao động khi check điểm danh
+            if (entity.RollUp == true)
+                entity.Student.NumberOfWork += entity.Groups.Job.BenefitOfDay;
             _context.Muster.Update(entity);
             _context.SaveChanges();
         }
