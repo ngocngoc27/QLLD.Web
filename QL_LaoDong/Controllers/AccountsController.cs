@@ -151,7 +151,8 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("classname",user.ClassName);
                     HttpContext.Session.SetString("idclass", user.ClassId.ToString());
                     HttpContext.Session.SetString("total", user.Total.ToString());
-
+                    HttpContext.Session.SetString("totalwork", user.TotalOfWork.ToString());
+                    HttpContext.Session.SetString("numberwork", user.NumberWork.ToString());
                     return RedirectToAction(nameof(Index),"Home");
                 }
                 else
@@ -175,6 +176,18 @@ namespace QL_LaoDong.Controllers
             int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
             var data = _AccountService.Details(id);
             return View(data);
+        }
+        public IActionResult ChangePass()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ChangePass(Account model)
+        {
+             int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
+            _AccountService.ChangePass(model, id);
+            return RedirectToAction(nameof(Login),"Accounts");
         }
        
     }

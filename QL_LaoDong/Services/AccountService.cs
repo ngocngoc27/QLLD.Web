@@ -109,7 +109,8 @@ namespace QL_LaoDong.Services
             //        System.IO.File.Delete(imagePath);
             //    }
             //}
-            _context.Account.Remove(entity);
+            entity.IsDelete = true;
+            //_context.Account.Remove(entity);
             _context.SaveChanges();
         }
         public Account GetById(int id)
@@ -138,9 +139,11 @@ namespace QL_LaoDong.Services
             string user = model.Username;
             try
             {
-                var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password == pas && x.IsDelete!=true).FirstOrDefault();
+                var acc = _context.Account.Include(x => x.Role).Where(x => x.Username == user && x.Password == pas).FirstOrDefault();
+                if (acc==default)
+                    throw new Exception("Tên đăng nhập hoặc mật khẩu không chính xác! Vui lòng nhập lại");
                 if (acc.IsDelete != false)
-                    throw new Exception("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên");
+                    throw new Exception("Tài khoản của bạn đã bị khóa! Hãy liên hệ quản trị viên");
                 if (acc != default)
                 {
                     var query = from students in _context.Student
@@ -155,7 +158,10 @@ namespace QL_LaoDong.Services
                                     RoleName = acc.Role.NameRole,
                                     ClassId = classes.Id,
                                     ClassName = classes.ClassName,
-                                    Total = classes.Total
+                                    Total = classes.Total,
+                                    TotalOfWork=classes.TotalOfWork,
+                                    NumberWork=students.NumberOfWork
+                                    
                                 };
                     AppUser = query.FirstOrDefault();
                 }
@@ -191,6 +197,16 @@ namespace QL_LaoDong.Services
                         };
             Profile = query.FirstOrDefault();
             return Profile;
+        }
+        public void ChangePass(Account model, int id)
+        {
+            var entity = _context.Account.Where(x => x.Id == id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu.");
+            string pass = model.Password;
+            entity.Password = Security.MD5(pass);
+            _context.SaveChanges();
+
         }
        
     }

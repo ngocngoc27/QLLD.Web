@@ -54,7 +54,7 @@ JQueryAjaxPost = form => {
 
 
 JQueryAjaxDelete = form => {
-    if (confirm('Are you sure to delete this record?')) {
+    if (confirm('Dữ liệu có thể sẽ không được phục hồi! Bạn có chắc muốn xóa?')) {
         try {
             $.ajax({
                 type: 'POST',

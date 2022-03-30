@@ -19,5 +19,6 @@ namespace QL_LaoDong.Interfaces
         AppUser Login(Account model);
 
         Profile Details(long id);
+        void ChangePass(Account model, int id);
     }
 }

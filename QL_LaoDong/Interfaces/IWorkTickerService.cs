@@ -33,5 +33,7 @@ namespace QL_LaoDong.Interfaces
         void Cancle(Workticker model);
         void Delete(Workticker model);
         bool TickerExists(long id);
+        int CountsDS();
+        int CountTT();
     }
 }

@@ -209,5 +209,15 @@ namespace QL_LaoDong.Services
             }
             return data;
         }
+        public int CountsDS()
+        {
+            var data = _context.Workticker.Where(x => x.IsDelete != true).ToList();
+            return data.Count();
+        }
+        public int CountTT()
+        {
+            var data = _context.Workticker.Where(x => x.IsDelete != true && x.Status == (int)WorkTickerEnum.DaDuyet).ToList();
+            return data.Count();
+        }
     }
 }

@@ -40,6 +40,11 @@
                             <span>Thông tin cá nhân</span>
                         </a>
                         <div class="dropdown-divider"></div>
+                        <a asp-area="" asp-controller="Accounts" asp-action="ChangePass" class="dropdown-item notify-item">
+                            <i class="fas fa-user"></i>
+                            <span>Đổi mật khẩu</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
 
                         <!-- item-->
                         <a asp-area="" asp-controller="Accounts" asp-action="LogOut" class="dropdown-item notify-item">
@@ -103,7 +108,7 @@
                             <ul class="nav-second-level" aria-expanded="false">
 
                                 <li><a href="/workticker/Calendarpage">Lịch lao động</a></li>
-                                <li><a href="/Registration/Index">Đăng ký lao động</a></li>                                
+                                <li><a href="/Registration/Index">Đăng ký lao động</a></li>
                             </ul>
 
                         <li>
@@ -148,8 +153,8 @@
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="/calendar/Index">Thời gian đăng ký</a></li>
                                 @*<li><a href="/workticker/Index">Quản lý đăng ký</a></li>
-                                <li><a href="/groups/Index">Nhóm lao động</a></li>
-                                <li><a href="#">Điểm danh</a></li>*@
+                                    <li><a href="/groups/Index">Nhóm lao động</a></li>
+                                    <li><a href="#">Điểm danh</a></li>*@
                             </ul>
                         </li>
 
@@ -202,6 +207,7 @@
 
     <script src="~/assets/js/vendor.min.js"></script>
     <script src="~/assets/libs/raphael/raphael.min.js"></script>
+   
     <!-- App js -->
     <script src="~/assets/js/app.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -71,5 +71,10 @@ namespace QL_LaoDong.Services
         {
             return _context.Class.Any(x => x.Id == id);
         }
+        public int CountClass()
+        {
+            var data = _context.Class.Where(x => x.IsDelete != true).ToList();
+            return data.Count();
+        }
     }
 }
