@@ -20,17 +20,31 @@ namespace QL_LaoDong.Controllers
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
-            int total = Convert.ToInt32( HttpContext.Session.GetString("totalwork"));
-            int numberwork = Convert.ToInt32(HttpContext.Session.GetString("numberwork"));
-            if (numberwork == default)
+            var totalw = HttpContext.Session.GetString("totalwork");
+            int total;
+            if (totalw != default)
             {
-                ViewBag.numwork = 0;
+                total = Convert.ToInt32(totalw);
             }
-            ViewBag.numwork = numberwork;
+            else
+            {
+                total = 0;
+            }
+           
+            var numw = HttpContext.Session.GetString("numberwork");
+            int numbw;
+            if (numw == default)
+            {
+                numbw = 0;
+            }
+            numbw = Convert.ToInt32(numw);
+            ViewBag.numwork = numbw;
             ViewBag.totalwork = total;
             ViewBag.ds = _workTickerService.CountsDS();
             ViewBag.lop = _classService.CountClass();
             ViewBag.daduyet = _workTickerService.CountTT();
+            ViewBag.baoban = _workTickerService.CountBan();
+            ViewBag.choduyet = _workTickerService.Choduyet();
             return View();
         }
 
