@@ -86,7 +86,9 @@ namespace QL_LaoDong.Services
         }
         public List<Workticker> Get()
         {
-            return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).Where(x=>x.IsDelete != true).ToList();
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).Where(x=>x.AccountId==id && x.IsDelete != true).ToList();
         }
         public List<Workticker> PageWorkTicker(long id)
         {

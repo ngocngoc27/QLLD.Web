@@ -80,7 +80,10 @@
                                 }
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'BÁO BẬN')" class="btn btn-info text-white btn-sm" ><i class="mdi mdi-alert-circle-outline"></i> Báo bận</a>
+                                @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
+                                {
+                                    <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'BÁO BẬN')" class="btn btn-info text-white btn-sm"><i class="mdi mdi-alert-circle-outline"></i> Báo bận</a>
+                                }
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
                                 </form>

@@ -25,7 +25,11 @@ namespace QL_LaoDong.Services
             entity.TypeOfEducation = model.TypeOfEducation;
             entity.Total = model.Total;
             entity.TotalOfWork = model.TotalOfWork;
+<<<<<<< HEAD
             entity.Status = model.Status;
+=======
+            entity.Status = model.Status; //1 = Chưa hoàn thành
+>>>>>>> 6ca1f91c9c61829edc4b462a338ab73fbf374a04
             entity.FacultyId = model.FacultyId;
             entity.IsDelete = false;
             _context.Class.Add(entity);
