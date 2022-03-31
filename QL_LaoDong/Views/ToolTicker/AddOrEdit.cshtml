@@ -12,18 +12,26 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col">
                 <div class="form-group">
-                    <label asp-for="ToolId" class="control-label"></label>
+                    <label class="control-label">Tên dụng cụ</label>
                     <select asp-for="ToolId" class="form-control" asp-items="@ViewBag.tool"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Amount" class="control-label"></label>
+                    <label class="control-label">Số lượng phân công</label>
                     <input asp-for="Amount" class="form-control" />
                     <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notes" class="control-label"></label>
-                    <textarea asp-for="Notes" class="form-control" rows="3" ></textarea>
+                    <label class="control-label">Ghi chú</label>
+                    <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
                     <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Trạng thái</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="1">Đạt số lượng</option>
+                        <option value="2">Chưa đạt số lượng</option>
+                        <option value="3">Đang sử dụng</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
