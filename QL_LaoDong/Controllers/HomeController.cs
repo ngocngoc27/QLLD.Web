@@ -21,25 +21,9 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
             var totalw = HttpContext.Session.GetString("totalwork");
-            int total;
-            if (totalw != null)
-            {
-                total = Convert.ToInt32(totalw);
-            }
-            else
-            {
-                total = 0;
-            }
-           
             var numw = HttpContext.Session.GetString("numberwork");
-            int numbw;
-            if (numw == null)
-            {
-                numbw = 0;
-            }
-            numbw = Convert.ToInt32(numw);
-            ViewBag.numwork = numbw;
-            ViewBag.totalwork = total;
+            ViewBag.numwork = numw;
+            ViewBag.totalwork = totalw;
             ViewBag.ds = _workTickerService.CountsDS();
             ViewBag.lop = _classService.CountClass();
             ViewBag.daduyet = _workTickerService.CountTT();
