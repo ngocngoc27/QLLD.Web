@@ -22,7 +22,7 @@ namespace QL_LaoDong.Controllers
             ViewBag.usename = HttpContext.Session.GetString("user");
             var totalw = HttpContext.Session.GetString("totalwork");
             int total;
-            if (totalw != default)
+            if (totalw != null)
             {
                 total = Convert.ToInt32(totalw);
             }
@@ -33,7 +33,7 @@ namespace QL_LaoDong.Controllers
            
             var numw = HttpContext.Session.GetString("numberwork");
             int numbw;
-            if (numw == default)
+            if (numw == null)
             {
                 numbw = 0;
             }
