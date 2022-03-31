@@ -109,10 +109,10 @@ namespace QL_LaoDong.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(Groups model, long id)
+        public IActionResult DeleteConfirmed(Muster model, long id)
         {
             ViewBag.idca = id;
-            _groupsService.Delete(model);
+            _musterService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(id)) });
         }
     }

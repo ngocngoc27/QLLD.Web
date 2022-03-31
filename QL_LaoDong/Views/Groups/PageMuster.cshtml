@@ -59,7 +59,7 @@
                                 @Html.DisplayFor(modelItem => item.Student.Mssv)
                             </td>
                             <td>
-                                <form asp-action="Delete" asp-route-id="@item.StudentId" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                     <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
                                 </form>
                             </td>
