@@ -22,15 +22,14 @@
                     {                        
                         <p class="text-muted text-overflow font-weight-bold"><i class="ion ion-md-calendar"></i> Buổi @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay), ngày @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy") (@Html.DisplayFor(modelItem => item.Calendar.Weekdays)))</p>
                     }
-                <div class="d-flex justify-content-lg-between">
-                    <div class="btn-addoredit">
-                        <a href="/calendar/Index"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
+                    <div class="d-flex justify-content-lg-between">
+                        <div class="btn-addoredit">
+                            <a href="/calendar/Index"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
+                        </div>
+                        <div class="btn-addoredit">
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=0, ids = ViewBag.caid},Context.Request.Scheme)', 'THÊM NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                        </div>
                     </div>
-                    <div class="btn-addoredit">
-                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=0, ids = ViewBag.caid},Context.Request.Scheme)', 'THÊM NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
-                    </div>
-                </div>
-
                     <br />
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
@@ -87,19 +86,19 @@
                                         <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
                                         <form asp-action="PageToolTicKer" asp-route-id="@item.Id" asp-controller="ToolTicker" class="d-inline">
                                             @Html.Hidden("CalendarId", item.CalendarId)
-                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-secondary"><i class="ion ion-md-construct"></i></button>
+                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-teal btn-sm"><i class="ion ion-md-construct"></i></button>
                                         </form>
                                         <form asp-action="PageMuster" asp-route-id="@item.Id" asp-controller="Groups" class="d-inline">
                                             @*<input type="hidden" name="CalendarId" value="@item.CalendarId" />*@
                                             @Html.Hidden("CalendarId", item.CalendarId)
-                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm sinh viên vào nhóm" class="btn btn-secondary"><i class="fas fa-users-cog"></i></button>
+                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm sinh viên vào nhóm" class="btn btn-orange btn-sm"><i class="fas fa-users-cog"></i></button>
                                         </form>
-                                        <form asp-action="StudentList" asp-route-id="@item.CalendarId" asp-controller="Calendar" class="d-inline">
-                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách" class="btn btn-secondary"><i class="fa fa-th-list"></i></button>
-                                        </form>
+                                        @*<form asp-action="StudentList" asp-route-id="@item.CalendarId" asp-controller="Calendar" class="d-inline">
+                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách" class="btn btn-secondary btn-sm"><i class="fa fa-th-list"></i></button>
+                                        </form>*@
                                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                             <input type="hidden" name="ids" value="@ViewBag.idca" />
-                                            <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

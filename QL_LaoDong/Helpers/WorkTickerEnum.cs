@@ -9,6 +9,7 @@ namespace QL_LaoDong.Helpers
     {
         ChoDuyet = 1,
         DaDuyet = 2,
-        BaoBan = 3
+        BaoBan = 3,
+        DaHuy = 4
     }
 }

@@ -21,6 +21,7 @@
                 <div class="btn-addoredit">
                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {IdMn=0},Context.Request.Scheme)', 'THÊM THỜI GIAN ĐĂNG KÝ')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                 </div>
+
                 <br />
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -76,17 +77,16 @@
                                 }
                             </td>
                             <td>
-                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thời gian đăng ký"><i class="fas fa-pencil-alt"></i></a>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Calendar",new {id=item.Id},Context.Request.Scheme)', 'CẬP NHẬT THỜI GIAN ĐĂNG KÝ')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thời gian đăng ký"><i class="fas fa-pencil-alt"></i></a>
                                 <form asp-action="PageGroups" asp-route-id="@item.Id" asp-controller="Groups" class="d-inline">                                 
-                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Nhóm lao động" class="btn btn-secondary"><i class="mdi mdi-account-group"></i></button>
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Nhóm lao động" class="btn btn-success btn-sm"><i class="fas fa-users"></i></button>
                                 </form>
                                 <form asp-action="PageWorkTicker" asp-route-id="@item.Id" class="d-inline">
-                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách đăng ký" class="btn btn-secondary"><i class="mdi mdi-playlist-check"></i></button>
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách đăng ký" class="btn btn-orange btn-sm"><i class="far fa-calendar-check"></i></button>
                                 </form>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xóa" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                </form>
-                                                            
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xóa" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                </form>                                                            
                             </td>
                         </tr>
                         }

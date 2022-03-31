@@ -28,7 +28,7 @@
                         <a href="/Groups/PageGroups/@ViewBag.caid"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
                     </div>
                     <div class="btn-addoredit">
-                        <a onclick="showInPopup('@Url.Action("AddStudent","Calendar", new {id=ViewBag.caid, ids = ViewBag.groupID} ,Context.Request.Scheme)', 'THÊM SINH VIÊN VÀO NHÓM')" class="btn btn-success text-white btn-sm"><i class="typcn typcn-user-add"></i> Thêm sinh viên vào nhóm</a>
+                        <a onclick="showInPopup('@Url.Action("AddStudent","Calendar", new {id=ViewBag.caid, ids = ViewBag.groupID} ,Context.Request.Scheme)', 'THÊM SINH VIÊN VÀO NHÓM')" class="btn btn-success text-white btn-sm"><i class="fas fa-user-plus"></i> Thêm sinh viên vào nhóm</a>
                     </div>
                 </div>
                 
@@ -60,7 +60,7 @@
                             </td>
                             <td>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="typcn typcn-user-delete"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
                                 </form>
                             </td>
                         </tr>

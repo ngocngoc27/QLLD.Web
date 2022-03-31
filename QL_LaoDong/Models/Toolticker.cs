@@ -11,7 +11,7 @@ namespace QL_LaoDong.Models
         public string Notes { get; set; }
         public bool? IsDelete { get; set; }
         public long? GroupsId { get; set; }
-
+        public int? Status { get; set; }
         public virtual Groups Groups { get; set; }
         public virtual Tool Tool { get; set; }
     }
