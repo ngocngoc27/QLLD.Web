@@ -23,7 +23,7 @@ namespace QL_LaoDong.Services
             entity.StudentId = model.Id;
             entity.GroupsId = id;
             entity.IsDelete = false;
-            entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
+            //entity.Groups.Status = (int)GroupsEnum.ChuaDiemDanh;
             _context.Muster.Add(entity);
             _context.SaveChanges();
         }

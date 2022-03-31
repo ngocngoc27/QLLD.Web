@@ -140,9 +140,10 @@ namespace QL_LaoDong.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddStudent(Muster model, long ids)
         {
-           
             _musterService.AddStudent(model, ids);
-            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _musterService.Get()) });
+            //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(controller:Groups, "_ViewAll", _musterService.Get()) });
+            return RedirectToAction("PageMuster","Groups");
+
         }
     }
 }
