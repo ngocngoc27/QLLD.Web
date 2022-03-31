@@ -1,0 +1,39 @@
+﻿@model QL_LaoDong.Models.Toolticker
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
+            <input type="hidden" name="ids" value="@ViewBag.idgr" />
+            <input type="hidden" name="caid" value="@ViewBag.groupID" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="ToolId" class="control-label"></label>
+                    <select asp-for="ToolId" class="form-control" asp-items="@ViewBag.tool"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Notes" class="control-label"></label>
+                    <textarea asp-for="Notes" class="form-control" />
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-secondary btn-sm" data-dismiss="modal">Đóng</button>
+                <input type="submit" value="Lưu" class="btn btn-primary btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

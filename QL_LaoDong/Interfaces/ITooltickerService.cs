@@ -10,8 +10,9 @@ namespace QL_LaoDong.Interfaces
     {
         List<Toolticker> PageToolTicker(long id);
         Toolticker GetById(long id);
-        void Create(Toolticker model);
+        void Create(Toolticker model, long id);
         void Edit(Toolticker model);
         void Delete(Toolticker model);
+        bool TooltickerExists(long id);
     }
 }
