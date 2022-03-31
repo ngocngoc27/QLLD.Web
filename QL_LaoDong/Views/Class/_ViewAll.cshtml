@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<QL_LaoDong.Models.Class>
-
+@using QL_LaoDong.Helpers
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -19,7 +19,7 @@
         <div class="col-sm-12">
             <div class="card-box table-responsive">
                 <div class="btn-addoredit">
-                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Class",new {IdMn=0},Context.Request.Scheme)', 'THÊM LỚP MỚI')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                    <a onclick="showInPopup('@Url.Action("AddOrEdit","Class",new {Id=0},Context.Request.Scheme)', 'THÊM LỚP MỚI')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                 </div>
                 <br />
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -60,7 +60,14 @@
                                     @Html.DisplayFor(modelItem => item.Faculty.FacultyName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
+                                    @if (item.Status == (int)ClassEnum.chuahoanthanh)
+                                    {
+                                        @Html.FormatValue(item.Status, "Chưa hoàn thành")
+                                    }
+                                    else if (item.Status == (int)ClassEnum.hoanthanh)
+                                    {
+                                        @Html.FormatValue(item.Status, "Hoàn thành")
+                                    }
                                 </td>
                                 <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Class",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THÔNG TIN LỚP')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thông tin lớp"><i class="fas fa-pencil-alt"></i></a>
