@@ -46,7 +46,6 @@ namespace QL_LaoDong.Services
             entity.Sum = model.Sum;
             entity.Unit = model.Unit;
             entity.Available = model.Available;
-            entity.IsDelete = model.IsDelete;
             _context.Tool.Update(entity);
             _context.SaveChanges();
         }

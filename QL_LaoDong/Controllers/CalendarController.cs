@@ -143,7 +143,7 @@ namespace QL_LaoDong.Controllers
         {
             _musterService.AddStudent(model, ids);
             //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(controller:Groups, "_ViewAll", _musterService.Get()) });
-            return RedirectToAction("PageMuster","Groups");
+            return RedirectToAction("PageMuster", "Groups");
         }
     }
 }

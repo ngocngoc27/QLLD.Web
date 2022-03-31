@@ -41,7 +41,6 @@ namespace QL_LaoDong.Services
             var entity = _context.Menus.Where(x => x.IdMn == id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
             _context.Menus.Remove(entity);
             _context.SaveChanges();
         }
