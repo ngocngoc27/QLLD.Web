@@ -9,46 +9,26 @@
     <div class="col-md-12">
         <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Tên công việc</label>
-                        <input asp-for="JobName" class="form-control" />
-                        <span asp-validation-for="JobName" class="text-danger"></span>
-                    </div>
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label">Tên công việc</label>
+                    <input asp-for="JobName" class="form-control" />
+                    <span asp-validation-for="JobName" class="text-danger"></span>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Mô tả công việc</label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Vị trí</label>
+                    <input asp-for="Locate" class="form-control" />
+                    <span asp-validation-for="Locate" class="text-danger"></span>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Vị trí</label>
-                        <input asp-for="Locate" class="form-control" />
-                        <span asp-validation-for="Locate" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Số ngày thụ hưởng</label>
+                    <input asp-for="BenefitOfDay" class="form-control" />
+                    <span asp-validation-for="BenefitOfDay" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Số ngày thụ hưởng</label>
-                        <input asp-for="BenefitOfDay" class="form-control" />
-                        <span asp-validation-for="BenefitOfDay" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="control-label">Khóa công việc</label>
-                        <select asp-for="IsDelete" class="form-control">
-                            <option>---Chọn khóa----</option>
-                            <option value="False">Mở khóa</option>
-                            <option value="True">Khóa</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Mô tả công việc</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
             </div>
             <div class="modal-footer">
