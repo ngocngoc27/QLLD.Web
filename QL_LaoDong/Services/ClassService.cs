@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
@@ -25,11 +26,7 @@ namespace QL_LaoDong.Services
             entity.TypeOfEducation = model.TypeOfEducation;
             entity.Total = model.Total;
             entity.TotalOfWork = model.TotalOfWork;
-<<<<<<< HEAD
-            entity.Status = model.Status;
-=======
             entity.Status = model.Status; //1 = Chưa hoàn thành
->>>>>>> 6ca1f91c9c61829edc4b462a338ab73fbf374a04
             entity.FacultyId = model.FacultyId;
             entity.IsDelete = false;
             _context.Class.Add(entity);
@@ -78,6 +75,21 @@ namespace QL_LaoDong.Services
         public int CountClass()
         {
             var data = _context.Class.Where(x => x.IsDelete != true).ToList();
+            return data.Count();
+        }
+        public int CountHoanthanh()
+        {
+            var data = _context.Class.Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.hoanthanh).ToList();
+            return data.Count();
+        }
+        public int CountChuaHT()
+        {
+            var data = _context.Class.Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.chuahoanthanh).ToList();
+            return data.Count();
+        }
+        public int CountChuaxet()
+        {
+            var data = _context.Class.Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.chuaxet).ToList();
             return data.Count();
         }
     }

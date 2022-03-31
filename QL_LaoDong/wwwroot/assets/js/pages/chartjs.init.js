@@ -63,9 +63,9 @@
             }]
         });
         this.respChart(s("#pie"), "Pie", {
-            labels: ["Desktops", "Tablets", "Mobiles"],
+            labels: ["Hoàn thành", "Chưa hoàn thành", "Chưa xét"],
             datasets: [{
-                data: [$("daduyet").data("myValue"), 50, 100],
+                data: [$("#hoanthanh").data("value"), $("#chuahoanthanh").data("value"), $("#chuaxet").data("value")],
                 backgroundColor: ["#f9c851", "#3ac9d6", "#ebeff2"],
                 hoverBackgroundColor: ["#f9c851", "#3ac9d6", "#ebeff2"],
                 hoverBorderColor: "#fff"

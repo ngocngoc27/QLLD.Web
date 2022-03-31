@@ -29,6 +29,9 @@ namespace QL_LaoDong.Controllers
             ViewBag.daduyet = _workTickerService.CountTT();
             ViewBag.baoban = _workTickerService.CountBan();
             ViewBag.choduyet = _workTickerService.Choduyet();
+            ViewBag.hoanthanh = _classService.CountHoanthanh();
+            ViewBag.chuahoanthanh = _classService.CountChuaHT();
+            ViewBag.chuaxet = _classService.CountChuaxet();
             return View();
         }
 

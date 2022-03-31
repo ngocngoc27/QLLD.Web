@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using static QL_LaoDong.Helpers.Helper;
 using Microsoft.AspNetCore.Http.Extensions;
 
+
 namespace QL_LaoDong.Controllers
 {
     public class CalendarController : Controller
@@ -143,7 +144,6 @@ namespace QL_LaoDong.Controllers
             _musterService.AddStudent(model, ids);
             //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(controller:Groups, "_ViewAll", _musterService.Get()) });
             return RedirectToAction("PageMuster","Groups");
-
         }
     }
 }

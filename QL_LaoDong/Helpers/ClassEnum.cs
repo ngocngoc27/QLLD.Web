@@ -8,6 +8,7 @@ namespace QL_LaoDong.Helpers
     public enum ClassEnum
     {
         chuahoanthanh=1,
-        hoanthanh=2
+        hoanthanh=2,
+        chuaxet=3
     }
 }

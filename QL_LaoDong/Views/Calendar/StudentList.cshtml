@@ -33,15 +33,11 @@
                 </td>
                 <td>
                     <form asp-action="AddStudent" asp-route-id="@item.StudentId" asp-controller="Groups" class="d-inline">
-                        <button onclick="reload();" type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm vào nhóm" class="btn btn-secondary"><i class=" ion ion-md-person-add"></i></button>
+                        <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm vào nhóm" class="btn btn-secondary"><i class=" ion ion-md-person-add"></i></button>
                     </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<script>
-    function reload() {
-        window.location.reload();
-    }
-</script>
+

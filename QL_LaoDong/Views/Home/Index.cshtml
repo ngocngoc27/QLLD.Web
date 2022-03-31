@@ -117,17 +117,19 @@
                 </div>
 
                 <div class="row mt-2">
-                    @*<div class="col-lg-6 mt-2">
+                    <div class="col-lg-6 mt-2">
                             <div class="demo-box">
-                                <h4 class="header-title">Pie Chart</h4>
+                                <h4 class="header-title">Trạng thái hoàn thành</h4>
                                 <p class="sub-header">
-                                    Pie and doughnut charts are probably the most commonly used chart there are. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
+                                    <input type="hidden" data-value="@ViewBag.hoanthanh" id="hoanthanh" />
+                                    <input type="hidden" data-value="@ViewBag.chuahoanthanh" id="chuahoanthanh" />
+                                    <input type="hidden" data-value="@ViewBag.chuaxet" id="chuaxet" />
                                 </p>
 
                                 <canvas id="pie" height="260"></canvas>
 
                             </div>
-                        </div>*@
+                        </div>
 
                     <div class="col-lg-6 mt-2">
 
