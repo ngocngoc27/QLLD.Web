@@ -33,8 +33,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Muster.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Muster.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
 
@@ -59,7 +58,7 @@ namespace QL_LaoDong.Services
         }
         public List<Muster> PageMuster(long id)
         {
-            return _context.Muster.Include(x => x.Student).Include(x => x.Groups).Where(x => x.GroupsId == id).ToList();
+            return _context.Muster.Include(x => x.Student).Include(x => x.Groups).Where(x => x.GroupsId == id && x.IsDelete != true).ToList();
         }
         public Muster GetById(int id)
         {

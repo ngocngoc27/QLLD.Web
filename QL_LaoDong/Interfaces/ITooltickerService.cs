@@ -8,8 +8,8 @@ namespace QL_LaoDong.Interfaces
 {
     public interface ITooltickerService
     {
-        List<Toolticker> Get();
-        Toolticker GetById(int id);
+        List<Toolticker> PageToolTicker(long id);
+        Toolticker GetById(long id);
         void Create(Toolticker model);
         void Edit(Toolticker model);
         void Delete(Toolticker model);

@@ -32,8 +32,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Job.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Job.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
 

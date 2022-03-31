@@ -25,7 +25,7 @@ namespace QL_LaoDong.Services
             entity.TypeOfEducation = model.TypeOfEducation;
             entity.Total = model.Total;
             entity.TotalOfWork = model.TotalOfWork;
-            entity.Status = 1; //1 = Chưa hoàn thành
+            entity.Status = 1; 
             entity.FacultyId = model.FacultyId;
             _context.Class.Add(entity);
             _context.SaveChanges();
@@ -36,8 +36,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Class.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Class.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
 
@@ -60,7 +59,7 @@ namespace QL_LaoDong.Services
 
         public List<Class> Get()
         {
-            return _context.Class.Include(x=>x.Faculty).ToList();
+            return _context.Class.Include(x=>x.Faculty).Where(x => x.IsDelete != true).ToList();
         }
 
         public Class GetById(int id)

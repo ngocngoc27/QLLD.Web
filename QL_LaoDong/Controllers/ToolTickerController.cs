@@ -15,10 +15,13 @@ namespace QL_LaoDong.Controllers
         {
             _tooltickerService = tooltickerService;
         }
-        public IActionResult Index()
+        public IActionResult PageToolTicker(long id, long CalendarId)
         {
-            ViewBag.usename = HttpContext.Session.GetString("user");
-            var data = _tooltickerService.Get();
+            ViewBag.caid = CalendarId;
+            ViewBag.groupID = id;
+
+            ViewBag.grname = _tooltickerService.GetById(id).Groups.GroupsName;
+            var data = _tooltickerService.PageToolTicker(id);
             return View(data);
         }
 

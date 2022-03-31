@@ -18,8 +18,7 @@ namespace QL_LaoDong.Services
             _context = context;
         }
         public void Create(Calendar model)
-        {
-          
+        {          
             var entity = new Calendar();
             entity.SessionOfDay = model.SessionOfDay;
             entity.Day = model.Day;
@@ -69,8 +68,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Calendar.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
-
-            _context.Calendar.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
 

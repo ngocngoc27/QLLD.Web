@@ -35,7 +35,6 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = id;
             var data = _groupsService.PageGroups(id);
-            ViewBag.content = data;
             return View(data);
         }
         [NoDirectAccess]

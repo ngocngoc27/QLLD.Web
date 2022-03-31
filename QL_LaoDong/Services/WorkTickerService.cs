@@ -52,7 +52,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Workticker.Where(x => x.Id == model.Id && x.Status != (int)WorkTickerEnum.DaDuyet).FirstOrDefault();
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
-            _context.Workticker.Remove(entity);
+            entity.IsDelete = true;
             _context.SaveChanges();
         }
 
@@ -86,7 +86,7 @@ namespace QL_LaoDong.Services
         }
         public List<Workticker> Get()
         {
-            return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).ToList();
+            return _context.Workticker.Include(x=>x.Calendar).Include(x => x.Account).Where(x=>x.IsDelete != true).ToList();
         }
         public List<Workticker> PageWorkTicker(long id)
         {
