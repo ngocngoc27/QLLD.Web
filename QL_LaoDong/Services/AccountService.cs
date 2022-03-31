@@ -110,7 +110,6 @@ namespace QL_LaoDong.Services
             //    }
             //}
             entity.IsDelete = true;
-            //_context.Account.Remove(entity);
             _context.SaveChanges();
         }
         public Account GetById(int id)

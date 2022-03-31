@@ -1,0 +1,7 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Toolticker>
+
+@{
+    ViewData["Title"] = "PageToolTicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@await Html.PartialAsync("_ViewAll", Model)

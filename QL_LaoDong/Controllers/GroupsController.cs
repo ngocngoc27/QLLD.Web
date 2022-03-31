@@ -35,7 +35,6 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = id;
             var data = _groupsService.PageGroups(id);
-            ViewBag.content = data;
             return View(data);
         }
         [NoDirectAccess]
@@ -103,7 +102,6 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;
-
             ViewBag.grname = _groupsService.GetById(id).GroupsName;
             var data = _musterService.PageMuster(id);
             return View(data);
