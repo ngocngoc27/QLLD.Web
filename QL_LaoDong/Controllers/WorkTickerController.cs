@@ -65,7 +65,7 @@ namespace QL_LaoDong.Controllers
             return _worktickerService.TickerExists(id);
         }
         [NoDirectAccess]
-        public IActionResult AddOrEdit(int id = 0)
+        public IActionResult Edit(int id = 0)
         {
             CalendarList();
             if (id == 0)
@@ -84,8 +84,9 @@ namespace QL_LaoDong.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddOrEdit(Workticker model)
+        public IActionResult Edit(Workticker model, long id)
         {
+            ViewBag.calendar = _calendarService.GetById(id);
             if (ModelState.IsValid)
             {
                 if (model.Id == 0)
@@ -117,15 +118,16 @@ namespace QL_LaoDong.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(Workticker model)
+        public IActionResult DeleteConfirmed(Workticker model, long id)
         {
+            ViewBag.calendar = _calendarService.GetById(id);
             _worktickerService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
-        public IActionResult PageWorkTicker(long CalendarID)
+        public IActionResult PageWorkTicker(long id)
         {
-            ViewBag.calendar = _calendarService.GetById(CalendarID);
-            var data = _worktickerService.PageWorkTicker(CalendarID);
+            ViewBag.calendar = _calendarService.GetById(id);
+            var data = _worktickerService.PageWorkTicker(id);
             return View(data);
         }
     }
