@@ -33,15 +33,6 @@
                     <thead>
                         <tr>
                             <th>
-                                Buổi
-                            </th>
-                            <th>
-                                Thứ
-                            </th>
-                            <th>
-                                Ngày
-                            </th>
-                            <th>
                                 Người đăng ký
                             </th>
                             <th>
@@ -60,15 +51,6 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Calendar.SessionOfDay)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Calendar.Weekdays)
-                                </td>
-                                <td>
-                                    @Convert.ToDateTime(item.Calendar.Day).ToString("dd/MM/yyyy")
-                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Account.Fullname)
                                 </td>
