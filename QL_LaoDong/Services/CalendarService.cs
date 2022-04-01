@@ -53,7 +53,6 @@ namespace QL_LaoDong.Services
             {
                 thu = "Chủ nhật";
             }
-            //var thu = Convert.ToString(week);
             entity.Weekdays = thu;
             entity.LimitsNumber = model.LimitsNumber;
             entity.RegistrationTotal = 0;

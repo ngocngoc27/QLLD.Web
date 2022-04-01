@@ -34,6 +34,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult PageGroups(long id)
         {
             ViewBag.caid = id;
+            ViewBag.calendar = _calendarService.GetById(id);
             var data = _groupsService.PageGroups(id);
             return View(data);
         }
@@ -97,15 +98,7 @@ namespace QL_LaoDong.Controllers
         private bool GroupsExists(long id)
         {
             return _groupsService.GroupsExists(id);
-        }
-        public IActionResult PageMuster(long id, long CalendarId)
-        {
-            ViewBag.caid = CalendarId;
-            ViewBag.groupID = id;
-            ViewBag.grname = _groupsService.GetById(id).GroupsName;
-            var data = _musterService.PageMuster(id);
-            return View(data);
-        }
+        }      
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

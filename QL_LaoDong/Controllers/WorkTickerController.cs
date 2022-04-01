@@ -122,6 +122,11 @@ namespace QL_LaoDong.Controllers
             _worktickerService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _worktickerService.Get()) });
         }
-        
+        public IActionResult PageWorkTicker(long CalendarID)
+        {
+            ViewBag.calendar = _calendarService.GetById(CalendarID);
+            var data = _worktickerService.PageWorkTicker(CalendarID);
+            return View(data);
+        }
     }
 }

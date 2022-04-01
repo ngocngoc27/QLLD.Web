@@ -51,10 +51,6 @@ namespace QL_LaoDong.Services
             _context.SaveChanges();
         }
 
-        public List<Groups> Get()
-        {
-            return _context.Groups.Include(x => x.Calendar).Include(x=>x.Job).Where(x => x.IsDelete != true).ToList();
-        }
         public List<Groups> PageGroups(long id)
         {
             return _context.Groups.Include(x => x.Calendar).Include(x => x.Job).Include(x => x.Muster).Where(x => x.CalendarId == id && x.IsDelete != true).ToList();

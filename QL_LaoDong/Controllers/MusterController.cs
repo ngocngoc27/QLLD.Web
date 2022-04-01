@@ -1,17 +1,54 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QL_LaoDong.Helpers;
+using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static QL_LaoDong.Helpers.Helper;
 
 namespace QL_LaoDong.Controllers
 {
     public class MusterController : Controller
     {
-        public IActionResult Index()
+        private readonly IGroupsService _groupsService;
+        private readonly ICalendarService _calendarService;
+        private readonly IJobService _jobService;
+        private readonly IToolService _toolService;
+        private readonly IMusterService _musterService;
+        private readonly IWorkTickerService _worktickerService;
+        public MusterController(IGroupsService groupsService, ICalendarService calendarService, IJobService jobService, IToolService toolService, IMusterService musterService, IWorkTickerService workTickerService)
         {
-            return View();
+            _groupsService = groupsService;
+            _calendarService = calendarService;
+            _jobService = jobService;
+            _toolService = toolService;
+            _musterService = musterService;
+            _worktickerService = workTickerService;
+        }
+        public IActionResult PageMuster(long id, long CalendarId)
+        {
+            ViewBag.caid = CalendarId;
+            ViewBag.groupID = id;
+            ViewBag.grname = _groupsService.GetById(id).GroupsName;
+            var data = _musterService.PageMuster(id);
+            return View(data);
+        }
+        [NoDirectAccess]
+        public IActionResult AddStudent(long id, long ids)
+        {
+            ViewBag.idgr = ids;
+            var data = _worktickerService.GetStudent(id);
+            return View(data);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddStudent(Muster model, long ids)
+        {
+            _musterService.AddStudent(model, ids);
+            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(ids)) });
+            //return RedirectToAction("PageMuster", "Groups");
         }
     }
 }

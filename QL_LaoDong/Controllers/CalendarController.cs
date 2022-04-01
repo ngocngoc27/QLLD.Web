@@ -67,7 +67,6 @@ namespace QL_LaoDong.Controllers
             {
                 if (model.Id == 0)
                 {
-
                     _CalendarService.Create(model);
                 }
                 else
@@ -99,38 +98,6 @@ namespace QL_LaoDong.Controllers
         {
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
-        }
-        /*--------------------------------------*/
-        private void JobList(object selectJob = null)
-        {
-            ViewBag.job = new SelectList(_jobService.Get(), "Id", "JobName", selectJob);
-        }
-        public IActionResult StudentList(long id)
-        {
-            var data = _WorkTickerService.GetStudent(id);
-            return View(data);
-        }
-        public IActionResult PageWorkTicker(long id)
-        {
-            var data = _WorkTickerService.PageWorkTicker(id);
-            return View(data);
-        }
-        
-        [NoDirectAccess]
-        public IActionResult AddStudent(long id, long ids)
-        {
-
-            ViewBag.idgr = ids;
-            var data = _WorkTickerService.GetStudent(id);
-            return View(data);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddStudent(Muster model, long ids)
-        {
-            _musterService.AddStudent(model, ids);
-            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _musterService.PageMuster(ids))});
-            //return RedirectToAction("PageMuster", "Groups");
         }
     }
 }

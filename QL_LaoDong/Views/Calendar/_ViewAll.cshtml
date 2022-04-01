@@ -81,7 +81,7 @@
                                 <form asp-action="PageGroups" asp-route-id="@item.Id" asp-controller="Groups" class="d-inline">                                 
                                     <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Nhóm lao động" class="btn btn-success btn-sm"><i class="fas fa-users"></i></button>
                                 </form>
-                                <form asp-action="PageWorkTicker" asp-route-id="@item.Id" class="d-inline">
+                                <form asp-action="PageWorkTicker" asp-route-id="@item.Id" asp-controller="WorkTicker" class="d-inline">
                                     <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Xem danh sách đăng ký" class="btn btn-orange btn-sm"><i class="far fa-calendar-check"></i></button>
                                 </form>
                                 <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
