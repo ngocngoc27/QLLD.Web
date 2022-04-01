@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
@@ -46,9 +47,20 @@ namespace QL_LaoDong.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddStudent(Muster model, long ids)
         {
+            ViewBag.idgr = ids;
             _musterService.AddStudent(model, ids);
-            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(ids)) });
-            //return RedirectToAction("PageMuster", "Groups");
+            //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(ids)) });
+            //return RedirectToAction("PageMuster");
+            return Redirect("/Muster/PageMuster/" + ids);
+
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Muster model, long id)
+        {
+            ViewBag.idca = id;
+            _musterService.Delete(model);
+            return Json(new { html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(id)) });
         }
     }
 }
