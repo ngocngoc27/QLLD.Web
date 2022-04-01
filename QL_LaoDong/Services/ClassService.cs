@@ -92,5 +92,11 @@ namespace QL_LaoDong.Services
             var data = _context.Class.Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.chuaxet).ToList();
             return data.Count();
         }
+        public int CountLD()
+        {
+            var data = _context.Class.Where(x => x.IsDelete != true).Sum(x=>x.TotalOfWork);
+
+            return data.Value;
+        }
     }
 }
