@@ -20,5 +20,6 @@ namespace QL_LaoDong.Interfaces
 
         Profile Details(long id);
         void ChangePass(Account model, int id);
+        void EditInfo(Account model, int id);
     }
 }
