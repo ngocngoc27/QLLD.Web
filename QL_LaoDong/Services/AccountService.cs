@@ -207,6 +207,21 @@ namespace QL_LaoDong.Services
             _context.SaveChanges();
 
         }
-       
+        public void EditInfo(Account model, int id)
+        {
+            var entity = _context.Account.Where(x => x.Id == id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu.");
+            entity.Username = model.Username;
+            var check = _context.Account.Where(x => x.Username == model.Username && x.Id != model.Id).FirstOrDefault();
+            if (check != default)
+                throw new Exception("Tên đăng nhập đã tồn tại");
+            entity.Sex = model.Sex;
+            entity.Fullname = model.Fullname;
+            entity.DateOfBirth = model.DateOfBirth;
+            _context.SaveChanges();
+        }
+
+
     }
 }

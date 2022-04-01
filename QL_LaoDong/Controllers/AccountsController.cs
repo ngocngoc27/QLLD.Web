@@ -189,6 +189,23 @@ namespace QL_LaoDong.Controllers
             _AccountService.ChangePass(model, id);
             return RedirectToAction(nameof(Login),"Accounts");
         }
+        public IActionResult ChangeInfo()
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
+            var Acc = _AccountService.GetById(id);
+            if (Acc == null)
+            {
+                return NotFound();
+            }
+            return View(Acc);
+        }
+        [HttpPost]
+        public IActionResult ChangeInfo(Account model)
+        {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
+            _AccountService.EditInfo(model, id);
+            return RedirectToAction(nameof(Index), "Home");
+        }
        
     }
 }

@@ -59,6 +59,12 @@
                             <div class="form-group">
                                 <label style="color: rgb(0, 0, 109); font-weight: bold;">Số ngày lao động</label> / <label style="color: rgb(115, 115, 236);"> @Html.DisplayFor(model => model.NumberOfWork)</label>
                             </div>
+                            <div class="form-group">
+                                <a asp-area="" asp-controller="Accounts" asp-action="ChangeInfo" class="btn btn-success btn-sm">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span>Cập nhật thông tin cá nhân</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
