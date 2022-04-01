@@ -22,16 +22,25 @@ namespace QL_LaoDong.Controllers
             ViewBag.usename = HttpContext.Session.GetString("user");
             var totalw = HttpContext.Session.GetString("totalwork");
             var numw = HttpContext.Session.GetString("numberwork");
+            var classname = HttpContext.Session.GetString("classname");
+            ViewBag.totalwork = "";
+            if(classname== "Tổ quản lý môi trường")
+            {
+                ViewBag.totalwork = _classService.CountLD();
+            }
+            else
+            {
+                ViewBag.totalwork = totalw;
+            }
             ViewBag.numwork = numw;
-            ViewBag.totalwork = totalw;
             ViewBag.ds = _workTickerService.CountsDS();
-            ViewBag.lop = _classService.CountClass();
             ViewBag.daduyet = _workTickerService.CountTT();
             ViewBag.baoban = _workTickerService.CountBan();
             ViewBag.choduyet = _workTickerService.Choduyet();
             ViewBag.hoanthanh = _classService.CountHoanthanh();
             ViewBag.chuahoanthanh = _classService.CountChuaHT();
             ViewBag.chuaxet = _classService.CountChuaxet();
+            ViewBag.lop = _classService.CountClass();
             return View();
         }
 

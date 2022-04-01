@@ -18,5 +18,6 @@ namespace QL_LaoDong.Interfaces
         int CountHoanthanh();
         int CountChuaHT();
         int CountChuaxet();
+        int CountLD();
     }
 }
