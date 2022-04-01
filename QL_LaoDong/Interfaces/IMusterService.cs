@@ -14,5 +14,6 @@ namespace QL_LaoDong.Interfaces
         void AddStudent(Muster model, long id);
         void Edit(Muster model);
         void Delete(Muster model);
+        void Diemdanh(List<Muster> model);
     }
 }

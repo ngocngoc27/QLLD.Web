@@ -11,6 +11,7 @@ namespace QL_LaoDong.Models
         public long? GroupsId { get; set; }
         public bool? IsDelete { get; set; }
 
+        public List<Muster> Diemdanh { get; set; }
         public virtual Groups Groups { get; set; }
         public virtual Student Student { get; set; }
     }

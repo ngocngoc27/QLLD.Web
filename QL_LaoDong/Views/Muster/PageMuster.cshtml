@@ -51,11 +51,11 @@
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Student.Mssv)
+                                      
                                     </td>
                                     <td>
-
                                         <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
-                                            <input id="checkbox1" type="checkbox">
+                                            <input data-msv="@item.RollUp" id="checkbox1" type="checkbox">
                                             <label for="checkbox1"></label>
                                         </div>
                                     </td>

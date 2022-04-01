@@ -62,5 +62,11 @@ namespace QL_LaoDong.Controllers
             _musterService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(id)) });
         }
+        [HttpPost]
+        public IActionResult Diemdanh(List<Muster> model)
+        {
+            _musterService.Diemdanh(model);
+            return View();
+        }
     }
 }

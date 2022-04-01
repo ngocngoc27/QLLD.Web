@@ -64,5 +64,17 @@ namespace QL_LaoDong.Services
         {
             return _context.Muster.Where(x => x.Id == id).FirstOrDefault();
         }
+        public void Diemdanh(List<Muster> model)
+        {
+            foreach(var item in model)
+            {
+                var entity = _context.Muster.Where(x => x.Id == item.Id && x.IsDelete != true).FirstOrDefault();
+                if (item.RollUp != null)
+                {
+                    entity.RollUp = item.RollUp;
+                    _context.SaveChanges();
+                }
+            }
+        }
     }
 }
