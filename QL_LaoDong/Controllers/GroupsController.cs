@@ -102,7 +102,7 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;
-            //ViewBag.grname = _groupsService.GetById(id).GroupsName;
+            ViewBag.grname = _groupsService.GetById(id).GroupsName;
             var data = _musterService.PageMuster(id);
             return View(data);
         }

@@ -105,19 +105,6 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.job = new SelectList(_jobService.Get(), "Id", "JobName", selectJob);
         }
-        //[NoDirectAccess]
-        //public IActionResult CreateGroups()
-        //{
-        //    JobList();
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult CreateGroups(Groups model)
-        //{
-        //    _CalendarService.CreateGroups(model);
-        //    return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
-        //}
         public IActionResult StudentList(long id)
         {
             var data = _WorkTickerService.GetStudent(id);
@@ -142,8 +129,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddStudent(Muster model, long ids)
         {
             _musterService.AddStudent(model, ids);
-            //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(controller:Groups, "_ViewAll", _musterService.Get()) });
-            return RedirectToAction("PageMuster", "Groups");
+            return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _musterService.PageMuster(ids))});
+            //return RedirectToAction("PageMuster", "Groups");
         }
     }
 }
