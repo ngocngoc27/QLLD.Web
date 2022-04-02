@@ -92,10 +92,20 @@
                     <ul class="metismenu" id="side-menu">
                         <li class="menu-title">User</li>
                         <li>
-                            <a href="/Home/Index" class="waves-effect waves-light">
-                                <i class="fas fa-home"></i>
-                                <span>  Trang chủ  </span>
-                            </a>
+                            @if (ViewBag.rolename == "Admin")
+                            {
+                                <a href="/Home/Index" class="waves-effect waves-light">
+                                    <i class="fas fa-home"></i>
+                                    <span>  Trang chủ  </span>
+                                </a>
+                            }
+                            else
+                            {
+                                 <a href="/Home/IndexUser" class="waves-effect waves-light">
+                                   <i class="fas fa-home"></i>
+                                    <span>  Trang chủ  </span>
+                                 </a>
+                            }
                         </li>
 
                         <li>

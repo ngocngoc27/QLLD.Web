@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,10 +64,11 @@ namespace QL_LaoDong.Controllers
             return Json(new { html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(id)) });
         }
         [HttpPost]
-        public IActionResult Diemdanh(List<Muster> model)
+        public IActionResult Checkdiemdanh([FromBody] List<MusterVM> model)
         {
-            _musterService.Diemdanh(model);
-            return View();
+            //_musterService.Diemdanh(model);
+            return Json(model);
         }
+       
     }
 }

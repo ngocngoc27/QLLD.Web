@@ -19,7 +19,8 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.usename = HttpContext.Session.GetString("user");
+            ViewBag.usename = HttpContext.Session.GetString("user"); 
+            ViewBag.role = HttpContext.Session.GetString("rolename");
             var totalw = HttpContext.Session.GetString("totalwork");
             var numw = HttpContext.Session.GetString("numberwork");
             var classname = HttpContext.Session.GetString("classname");
@@ -41,6 +42,10 @@ namespace QL_LaoDong.Controllers
             ViewBag.chuahoanthanh = _classService.CountChuaHT();
             ViewBag.chuaxet = _classService.CountChuaxet();
             ViewBag.lop = _classService.CountClass();
+            return View();
+        }
+        public IActionResult IndexUser()
+        {
             return View();
         }
 

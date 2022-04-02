@@ -68,13 +68,14 @@ namespace QL_LaoDong.Services
         {
             foreach(var item in model)
             {
-                var entity = _context.Muster.Where(x => x.Id == item.Id && x.IsDelete != true).FirstOrDefault();
-                if (item.RollUp != null)
+                var entity = _context.Muster.Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
+                if(entity!=default)
                 {
                     entity.RollUp = item.RollUp;
-                    _context.SaveChanges();
                 }
+                _context.SaveChanges();
             }
         }
+    
     }
 }

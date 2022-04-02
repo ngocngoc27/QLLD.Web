@@ -55,8 +55,17 @@
                                     </td>
                                     <td>
                                         <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
-                                            <input data-msv="@item.RollUp" id="checkbox1" type="checkbox">
-                                            <label for="checkbox1"></label>
+                                            @if (item.RollUp == true)
+                                            {
+                                                <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);" checked>
+                                                <label for="@item.RollUp"></label>
+                                            }
+                                            else
+                                            {
+                                                <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);">
+                                                <label for="@item.RollUp"></label>
+                                            }
+
                                         </div>
                                     </td>
                                     <td>
@@ -69,7 +78,47 @@
                            
                         </tbody>
                     </table>
+                <button onclick="send();" class="btn btn-success">Lưu</button>
             </div>
         </div>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    var DiemdanhSV = [];
+    $(document).ready(function () {
+       /* console.log("ready!");*/
+        $('.diemdanh').each(function (i, value) {
+            var diemdanh = {
+                Id: $(value).data('idmuster'),
+                StudentId: $(value).data('stuid'),
+                RollUp: $(value).is(":checked")
+            }
+            DiemdanhSV.push(diemdanh);
+        });
+        console.log(DiemdanhSV);
+    });
+    function send() {
+        console.log(DiemdanhSV)
+        $.ajax({
+            url: '/Muster/Checkdiemdanh',
+            data: JSON.stringify(DiemdanhSV),
+            type: 'POST',
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                window.location = "@Url.Action("Index", "calendar")";
+            }
+        });
+    }
+    function check(item) {
+        console.log("item", item)
+        console.log("student", item.id)
+        
+        var result = DiemdanhSV.map(function (element) {
+            element.RollUp = true;
+                    return element;
+        });
+        console.log("update", result);
+    }
+</script>

@@ -153,7 +153,16 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("total", user.Total.ToString());
                     HttpContext.Session.SetString("totalwork", user.TotalOfWork.ToString());
                     HttpContext.Session.SetString("numberwork", user.NumberWork.ToString());
-                    return RedirectToAction(nameof(Index),"Home");
+                    HttpContext.Session.SetString("rolename", user.RoleName);
+                    if (HttpContext.Session.GetString("rolename") == "Admin")
+                    {
+                        return RedirectToAction(nameof(Index), "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("IndexUser", "Home");
+                    }
+                    
                 }
                 else
                 {

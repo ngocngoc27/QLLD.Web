@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewData["Title"] = "IndexUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="wrapper">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <br />
+            <h4 class="header-title">Thông tin cơ bản user</h4>
+            <br />
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card widget-box-one border border-primary bg-soft-primary">
+                        <div class="card-body">
+                            <div class="float-right avatar-lg rounded-circle mt-3">
+                                <i class="mdi mdi-chart-areaspline font-30 widget-icon rounded-circle avatar-title text-primary"></i>
+                            </div>
+                            <div class="wigdet-one-content">
+                                <p class="m-0 text-uppercase font-weight-bold text-muted" title="Tổng số ngày lao động">Số ngày lao động</p>
+                                <h2><span data-plugin="counterup">@ViewBag.totalwork</span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
+                                <a href=""></a>
+                                @*<p class="text-muted m-0"><span class="font-weight-medium">Last:</span> 30.4k</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card widget-box-one border border-warning bg-soft-warning">
+                        <div class="card-body">
+                            <div class="float-right avatar-lg rounded-circle mt-3">
+                                <i class="mdi mdi-layers font-30 widget-icon rounded-circle avatar-title text-warning"></i>
+                            </div>
+                            <div class="wigdet-one-content">
+                                <p class="m-0 text-uppercase font-weight-bold text-muted" title="Ngày lao động cá nhân hoàn thành">Hoàn thành</p>
+                                <h2><span data-plugin="counterup">@ViewBag.numwork </span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
+                                @*<p class="text-muted m-0"><span class="font-weight-medium">Last:</span> 40.33k</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card widget-box-one border border-danger bg-soft-danger">
+                        <div class="card-body">
+                            <div class="float-right avatar-lg rounded-circle mt-3">
+                                <i class="mdi mdi-av-timer font-30 widget-icon rounded-circle avatar-title text-danger"></i>
+                            </div>
+                            <div class="wigdet-one-content">
+                                <p class="m-0 text-uppercase font-weight-bold text-muted" title="Tổng số đăng ký">Tổng số đăng ký</p>
+                                <h2><span data-plugin="counterup">@ViewBag.ds </span> <i class="mdi mdi-arrow-up text-success font-24"></i></h2>
+                                @*<p class="text-muted m-0"><span class="font-weight-medium">Last:</span> 956</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-xl-3 col-md-6">
+                    <div class="card widget-box-one border border-success bg-soft-success">
+                        <div class="card-body">
+                            <div class="float-right avatar-lg rounded-circle mt-3">
+                                <i class="mdi mdi-account-convert font-30 widget-icon rounded-circle avatar-title text-success"></i>
+                            </div>
+                            <div class="wigdet-one-content">
+                                <p class="m-0 text-uppercase font-weight-bold text-muted" title="Số lượng lớp">Số lượng lớp</p>
+                                <h2><span data-plugin="counterup">@ViewBag.lop</span> <i class="mdi mdi-arrow-up text-danger font-24"></i></h2>
+                                @*<p class="text-muted m-0"><span class="font-weight-medium">Last:</span> 1250</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-lg-6 mt-2">
+                    <div class="demo-box">
+                        <h4 class="header-title">Tiến độ hoàn thành</h4>
+                        <p class="sub-header">
+                            <input type="hidden" data-value="@ViewBag.hoanthanh" id="hoanthanh" />
+                            <input type="hidden" data-value="@ViewBag.chuahoanthanh" id="chuahoanthanh" />
+                            <input type="hidden" data-value="@ViewBag.chuaxet" id="chuaxet" />
+                        </p>
+
+                        <canvas id="pie" height="260"></canvas>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-2">
+
+                    <div class="demo-box mt-5 mt-lg-0">
+                        <h4 class="header-title">Trạng thái xử lý</h4>
+                        <p class="sub-header">
+                            <input type="hidden" data-value="@ViewBag.daduyet" id="daduyet" />
+                            <input type="hidden" data-value="@ViewBag.choduyet" id="choduyet" />
+                            <input type="hidden" data-value="@ViewBag.baoban" id="baoban" />
+                        </p>
+                        <canvas id="doughnut" height="260"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
