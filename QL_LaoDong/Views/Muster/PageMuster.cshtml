@@ -112,8 +112,6 @@
         });
     }
     function check(item) {
-        console.log("item", item)
-        console.log("student", $(item).data("stuid"))
         var studentId = $(item).data("stuid");
         var result = DiemdanhSV.map(function (element) {
             if (studentId === element.StudentId)
