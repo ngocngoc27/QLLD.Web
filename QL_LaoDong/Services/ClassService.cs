@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -13,9 +14,11 @@ namespace QL_LaoDong.Services
     public class ClassService : IClassService
     {
         public DataContext _context;
-        public ClassService(DataContext context)
+        private IHttpContextAccessor _httpContextAccessor;
+        public ClassService(DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
         public void Create(Class model)
         {
@@ -97,6 +100,24 @@ namespace QL_LaoDong.Services
             var data = _context.Class.Where(x => x.IsDelete != true).Sum(x=>x.TotalOfWork);
 
             return data.Value;
+        }
+        public int countTotalLD()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            if (typeofedu == "Đại học")
+            {
+                var dulieu = _context.Class.Where(x => x.Id == id).FirstOrDefault();
+                int total = ((int)(dulieu.Total * 18));
+                return total;
+            }
+            else
+            {
+                var dulieu = _context.Class.Where(x => x.Id == id).FirstOrDefault();
+                int total = ((int)(dulieu.Total * 12));
+                return total;
+            }
         }
     }
 }
