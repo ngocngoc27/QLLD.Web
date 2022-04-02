@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace QL_LaoDong.Interfaces
         void AddStudent(Muster model, long id);
         void Edit(Muster model);
         void Delete(Muster model);
-        void Diemdanh(List<Muster> model);
+        void Diemdanh(List<MusterVM> model);
     }
 }

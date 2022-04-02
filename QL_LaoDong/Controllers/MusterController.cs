@@ -66,7 +66,7 @@ namespace QL_LaoDong.Controllers
         [HttpPost]
         public IActionResult Checkdiemdanh([FromBody] List<MusterVM> model)
         {
-            //_musterService.Diemdanh(model);
+            _musterService.Diemdanh(model);
             return Json(model);
         }
        

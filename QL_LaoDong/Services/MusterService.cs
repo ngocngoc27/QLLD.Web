@@ -3,6 +3,7 @@ using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,7 @@ namespace QL_LaoDong.Services
         {
             return _context.Muster.Where(x => x.Id == id).FirstOrDefault();
         }
-        public void Diemdanh(List<Muster> model)
+        public void Diemdanh(List<MusterVM> model)
         {
             foreach(var item in model)
             {
