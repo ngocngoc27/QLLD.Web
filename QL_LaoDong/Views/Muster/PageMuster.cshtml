@@ -113,12 +113,13 @@
     }
     function check(item) {
         console.log("item", item)
-        console.log("student", item.id)
-        
-        var result = DiemdanhSV.map(function (element) {
-            element.RollUp = true;
-                    return element;
-        });
+        console.log("muster", item.id)
+        var newDiemdanhSV = DiemdanhSV.map(obj => {
+            if (obj.Id === item.id) {
+                return { ...obj, RollUp: true };
+            }
+            return obj;
+        })
         console.log("update", result);
     }
 </script>
