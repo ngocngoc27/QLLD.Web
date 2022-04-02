@@ -31,53 +31,53 @@
                         <a onclick="showInPopup('@Url.Action("AddStudent","Muster", new {id=ViewBag.caid, ids = ViewBag.groupID} ,Context.Request.Scheme)', 'THÊM SINH VIÊN VÀO NHÓM')" class="btn btn-success text-white btn-sm"><i class="fas fa-user-plus"></i> Thêm sinh viên vào nhóm</a>
                     </div>
                 </div>
-                
-                <br />
-                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>
-                                    MSSV
-                                </th>
-                                <th>
-                                    Điểm danh
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Student.Mssv)
-                                      
-                                    </td>
-                                    <td>
-                                        <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
-                                            @if (item.RollUp == true)
-                                            {
-                                                <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);" checked>
-                                                <label for="@item.RollUp"></label>
-                                            }
-                                            else
-                                            {
-                                                <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);">
-                                                <label for="@item.RollUp"></label>
-                                            }
 
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                            <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
-                           
-                        </tbody>
-                    </table>
+                <br />
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                MSSV
+                            </th>
+                            <th>
+                                Điểm danh
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Mssv)
+
+                                </td>
+                                <td>
+                                    <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
+                                        @if (item.RollUp == true)
+                                        {
+                                            <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);" checked>
+                                            <label for="@item.RollUp"></label>
+                                        }
+                                        else
+                                        {
+                                            <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);">
+                                            <label for="@item.RollUp"></label>
+                                        }
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
                 <button onclick="send();" class="btn btn-success">Lưu</button>
             </div>
         </div>
@@ -113,12 +113,15 @@
     }
     function check(item) {
         console.log("item", item)
-        console.log("student", item.id)
-        
+        console.log("student", $(item).data("stuid"))
+        var studentId = $(item).data("stuid");
         var result = DiemdanhSV.map(function (element) {
-            element.RollUp = true;
-                    return element;
+            if (studentId === element.StudentId)
+                element.RollUp = !element.RollUp;
+            return element;
         });
-        console.log("update", result);
+
+        DiemdanhSV = [...result];
+        console.log("update", DiemdanhSV);
     }
 </script>
