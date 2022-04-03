@@ -60,7 +60,7 @@ namespace QL_LaoDong.Controllers
             return _AccountService.AccountExists(id);
         }
         [NoDirectAccess]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult AddOrEdit(int id = 0)
         {
             RoleList();
