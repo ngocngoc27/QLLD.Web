@@ -53,19 +53,19 @@
         }
         s(window).resize(i), i()
     }, r.prototype.init = function () {
-        this.respChart(s("#doughnut"), "Doughnut", {
-            labels: ["Đã duyệt", "Chờ duyệt", "Báo bận"],
+        this.respChart(s("#doughnutus"), "Doughnut", {
+            labels: ["Đã duyệt", "Chờ duyệt", "Báo bận", "Đã hủy"],
             datasets: [{
-                data: [$("#daduyet").data("value"), $("#choduyet").data("value"), $("#baoban").data("value")],
-                backgroundColor: ["#3ac9d6", "#ebeff2", "#CC0000"],
-                hoverBackgroundColor: ["#3ac9d6", "#ebeff2", "#CC0000"],
+                data: [$("#duyet").data("value"), $("#choduyet").data("value"), $("#baoban").data("value"), $("#huy").data("value")],
+                backgroundColor: ["#3ac9d6", "#ebeff2", "#CC0000","#6495ED"],
+                hoverBackgroundColor: ["#3ac9d6", "#ebeff2", "#CC0000","#6495ED"],
                 hoverBorderColor: "#fff"
             }]
         });
-        this.respChart(s("#pie"), "Pie", {
-            labels: ["Hoàn thành", "Chưa hoàn thành", "Chưa xét"],
+        this.respChart(s("#pieus"), "Pie", {
+            labels: ["Hoàn thành", "Chưa hoàn thành", "Sắp hoàn thành"],
             datasets: [{
-                data: [$("#hoanthanh").data("value"), $("#chuahoanthanh").data("value"), $("#chuaxet").data("value")],
+                data: [$("#hoanthanh").data("value"), $("#chuahoanthanh").data("value"), $("#saphoanthanh").data("value")],
                 backgroundColor: ["#f9c851", "#3ac9d6", "#ebeff2"],
                 hoverBackgroundColor: ["#f9c851", "#3ac9d6", "#ebeff2"],
                 hoverBorderColor: "#fff"
@@ -77,4 +77,3 @@
         "use strict";
         window.jQuery.ChartJs.init()
     }();
-

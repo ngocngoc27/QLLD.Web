@@ -90,5 +90,53 @@ namespace QL_LaoDong.Services
         {
             return _context.Student.Any(x => x.Id == Id);
         }
+        public int countChuaHT()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            if(typeofedu=="Đại học")
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork <= 14).ToList();
+                return dulieu.Count();
+            }
+            else
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork <= 8).ToList();
+                return dulieu.Count();
+            }
+        }
+        public int coutSapHT()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            if (typeofedu == "Đại học")
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork > 14 && x.NumberOfWork<18).ToList();
+                return dulieu.Count();
+            }
+            else
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork > 8 && x.NumberOfWork < 12).ToList();
+                return dulieu.Count();
+            }
+        }
+        public int countHT()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            if (typeofedu == "Đại học")
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork==18).ToList();
+                return dulieu.Count();
+            }
+            else
+            {
+                var dulieu = _context.Student.Include(x => x.Class).Where(x => x.ClassId == id && x.NumberOfWork ==12).ToList();
+                return dulieu.Count();
+            }
+        }
     }
 }

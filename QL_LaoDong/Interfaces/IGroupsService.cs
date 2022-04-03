@@ -15,5 +15,9 @@ namespace QL_LaoDong.Interfaces
         void Edit(Groups model);
         void Delete(Groups model);
         bool GroupsExists(long id);
+        int CountChuaSV();
+        int CountChuaDiemdanh();
+        int CountGr();
+        
     }
 }
