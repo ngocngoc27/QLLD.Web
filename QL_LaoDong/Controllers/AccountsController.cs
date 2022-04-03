@@ -154,7 +154,6 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("totalwork", user.TotalOfWork.ToString());
                     HttpContext.Session.SetString("numberwork", user.NumberWork.ToString());
                     HttpContext.Session.SetString("rolename", user.RoleName);
-                    HttpContext.Session.SetString("typeofedu", user.TypeOfEducation);
                     if (HttpContext.Session.GetString("rolename") == "Admin")
                     {
                         return RedirectToAction(nameof(Index), "Home");

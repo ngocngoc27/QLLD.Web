@@ -231,40 +231,5 @@ namespace QL_LaoDong.Services
             var data = _context.Workticker.Where(x => x.IsDelete != true && x.Status == (int)WorkTickerEnum.ChoDuyet).ToList();
             return data.Count();
         }
-        public int CountDSDK()
-        {
-            string dulieu = _httpContextAccessor.HttpContext.Session.GetString("id");
-            int id = Convert.ToInt32(dulieu);
-            var data = _context.Workticker.Where(x => x.IsDelete != true && x.AccountId == id).ToList();
-            return data.Count();
-        }
-        public int CountDuyet()
-        {
-            string dulieu = _httpContextAccessor.HttpContext.Session.GetString("id");
-            int id = Convert.ToInt32(dulieu);
-            var data = _context.Workticker.Where(x => x.IsDelete != true && x.AccountId == id && x.Status == (int)WorkTickerEnum.DaDuyet).ToList();
-            return data.Count();
-        }
-        public int CountCho()
-        {
-            string dulieu = _httpContextAccessor.HttpContext.Session.GetString("id");
-            int id = Convert.ToInt32(dulieu);
-            var data = _context.Workticker.Where(x => x.IsDelete != true && x.AccountId == id && x.Status == (int)WorkTickerEnum.ChoDuyet).ToList();
-            return data.Count();
-        }
-        public int CountbBan()
-        {
-            string dulieu = _httpContextAccessor.HttpContext.Session.GetString("id");
-            int id = Convert.ToInt32(dulieu);
-            var data = _context.Workticker.Where(x => x.IsDelete != true && x.AccountId == id && x.Status == (int)WorkTickerEnum.BaoBan).ToList();
-            return data.Count();
-        }
-        public int CountHuy()
-        {
-            string dulieu = _httpContextAccessor.HttpContext.Session.GetString("id");
-            int id = Convert.ToInt32(dulieu);
-            var data = _context.Workticker.Where(x => x.IsDelete != true && x.AccountId == id && x.Status == (int)WorkTickerEnum.DaHuy).ToList();
-            return data.Count();
-        }
     }
 }

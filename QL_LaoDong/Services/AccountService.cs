@@ -159,8 +159,7 @@ namespace QL_LaoDong.Services
                                     ClassName = classes.ClassName,
                                     Total = classes.Total,
                                     TotalOfWork=classes.TotalOfWork,
-                                    NumberWork=students.NumberOfWork,
-                                    TypeOfEducation=classes.TypeOfEducation
+                                    NumberWork=students.NumberOfWork
                                     
                                 };
                     AppUser = query.FirstOrDefault();

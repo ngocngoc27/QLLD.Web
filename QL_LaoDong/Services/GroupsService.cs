@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -15,11 +14,9 @@ namespace QL_LaoDong.Services
     public class GroupsService : IGroupsService
     {
         public DataContext _context;
-        private IHttpContextAccessor _httpContextAccessor;
-        public GroupsService(DataContext context, IHttpContextAccessor httpContextAccessor)
+        public GroupsService(DataContext context)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
         }
         public void Delete(Groups model)
         {
@@ -66,21 +63,5 @@ namespace QL_LaoDong.Services
         {
             return _context.Groups.Any(x => x.Id == id);
         }
-        public int CountChuaSV()
-        {
-            var data = _context.Groups.Where(x => x.IsDelete != true && x.Status == (int)GroupsEnum.ChuaCoSinhVien).ToList();
-            return data.Count();
-        }
-        public int CountChuaDiemdanh()
-        {
-            var data = _context.Groups.Where(x => x.IsDelete != true && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-            return data.Count();
-        }
-        public int CountGr()
-        {
-            var data = _context.Groups.Where(x => x.IsDelete != true).ToList();
-            return data.Count();
-        }
-        
     }
 }
