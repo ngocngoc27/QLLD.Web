@@ -37,5 +37,10 @@ namespace QL_LaoDong.Interfaces
         int CountTT();
         int CountBan();
         int Choduyet();
+        int CountDK();
+        int CountDuyet();
+        int CountCho();
+        int CountBban();
+        int CountHuy();
     }
 }
