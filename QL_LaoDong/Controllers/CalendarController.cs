@@ -22,15 +22,16 @@ namespace QL_LaoDong.Controllers
         private readonly IJobService _jobService;
         private readonly IGroupsService _groupsService;
         private readonly IMusterService _musterService;
-        
-        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService, IGroupsService groupsService, IMusterService musterService)
+        private readonly ITooltickerService _tooltickerService;
+
+        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService, IGroupsService groupsService, IMusterService musterService, ITooltickerService tooltickerService)
         {
             _CalendarService = calendarService;
             _WorkTickerService = workTickerService;
             _jobService = jobService;
             _groupsService = groupsService;
             _musterService = musterService;
-            
+            _tooltickerService = tooltickerService;
         }
         public IActionResult Index()
         {
@@ -120,6 +121,8 @@ namespace QL_LaoDong.Controllers
 
         public IActionResult CalendarDetail(long id)
         {
+            ViewBag.liststudent = _musterService.PageMuster(id);
+            ViewBag.listtool = _tooltickerService.PageToolTicker(id);
             var data = _groupsService.GetById(id);
             return View(data);
         }

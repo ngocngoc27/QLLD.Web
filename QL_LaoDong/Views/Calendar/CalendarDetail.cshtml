@@ -56,5 +56,64 @@
                 </dl>
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                @foreach (Toolticker item in ((ViewBag.listtool) as IEnumerable<Toolticker>))
+                {
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Tên dụng cụ
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => item.Tool.Tool1)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Số lượng phân bổ
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Đơn vị tính
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(modelItem => item.Tool.Unit)
+                    </dd>
+                </dl>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                @foreach (Muster item in ((ViewBag.liststudent) as IEnumerable<Muster>))
+                {
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            MSSV
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(modelItem => item.Student.Mssv)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Họ Tên
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(modelItem => item.Student.Account.Fullname)
+                        </dd>
+                        <dt class="col-sm-2">
+                            Lớp
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(modelItem => item.Student.Class.ClassName)
+                        </dd>
+                    </dl>
+                }
+            </div>
+        </div>
+    </div>
 </div>
