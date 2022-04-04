@@ -36,30 +36,10 @@ namespace QL_LaoDong.Controllers
             var data = _worktickerService.Get();
             return View(data);
         }
-        public IActionResult CalendarPage()
-        {
-            ViewBag.sundayafter = _worktickerService.GetSundayAfter();
-            ViewBag.sundaymor = _worktickerService.GetSundayMor();
-            ViewBag.mondayafter = _worktickerService.GetMondayAfter();
-            ViewBag.mondaymor = _worktickerService.GetMondayMor();
-            ViewBag.tuesdayafter = _worktickerService.GetTuesdayAfter();
-            ViewBag.tuesdaymor = _worktickerService.GetTuesdayMor();
-            ViewBag.wednesdayafter = _worktickerService.GetWednesdayAfter();
-            ViewBag.wednesdaymor = _worktickerService.GetWednesdayMor();
-            ViewBag.thursdayafter = _worktickerService.GetThursdayAfter();
-            ViewBag.thursdaymor = _worktickerService.GetThursdayMor();
-            ViewBag.fridayafter = _worktickerService.GetFridayAfter();
-            ViewBag.fridaymor = _worktickerService.GetFridayMor();
-            ViewBag.saturdayafter = _worktickerService.GetSaturdayAfter();
-            ViewBag.saturdaymor = _worktickerService.GetSaturdayMor();
-            return View();
-        }
-
         private void CalendarList(object selectCalendar = null)
         {
             ViewBag.calendar = new SelectList(_calendarService.Get(), "Id", "Day", selectCalendar);
-        }
-        
+        }        
         private bool TickerExists(long id)
         {
             return _worktickerService.TickerExists(id);

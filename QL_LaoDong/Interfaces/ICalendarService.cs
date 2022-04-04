@@ -14,6 +14,21 @@ namespace QL_LaoDong.Interfaces
         void Edit(Calendar model);
         void Delete(Calendar model);
         bool CalendarExists(long id);
-       
+
+        List<Groups> GetSundayAfter();
+        List<Groups> GetSundayMor();
+        List<Groups> GetMondayAfter();
+        List<Groups> GetMondayMor();
+        List<Groups> GetTuesdayAfter();
+        List<Groups> GetTuesdayMor();
+        List<Groups> GetWednesdayAfter();
+        List<Groups> GetWednesdayMor();
+        List<Groups> GetThursdayAfter();
+        List<Groups> GetThursdayMor();
+        List<Groups> GetFridayAfter();
+        List<Groups> GetFridayMor();
+        List<Groups> GetSaturdayAfter();
+        List<Groups> GetSaturdayMor();
+
     }
 }

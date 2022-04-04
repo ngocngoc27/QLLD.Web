@@ -99,5 +99,24 @@ namespace QL_LaoDong.Controllers
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
         }
+        public IActionResult CalendarPage()
+        {
+            ViewBag.sundayafter = _CalendarService.GetSundayAfter();
+            ViewBag.sundaymor = _CalendarService.GetSundayMor();
+            ViewBag.mondayafter = _CalendarService.GetMondayAfter();
+            ViewBag.mondaymor = _CalendarService.GetMondayMor();
+            ViewBag.tuesdayafter = _CalendarService.GetTuesdayAfter();
+            ViewBag.tuesdaymor = _CalendarService.GetTuesdayMor();
+            ViewBag.wednesdayafter = _CalendarService.GetWednesdayAfter();
+            ViewBag.wednesdaymor = _CalendarService.GetWednesdayMor();
+            ViewBag.thursdayafter = _CalendarService.GetThursdayAfter();
+            ViewBag.thursdaymor = _CalendarService.GetThursdayMor();
+            ViewBag.fridayafter = _CalendarService.GetFridayAfter();
+            ViewBag.fridaymor = _CalendarService.GetFridayMor();
+            ViewBag.saturdayafter = _CalendarService.GetSaturdayAfter();
+            ViewBag.saturdaymor = _CalendarService.GetSaturdayMor();
+            return View();
+        }
+
     }
 }

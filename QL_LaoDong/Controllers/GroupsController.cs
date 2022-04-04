@@ -42,6 +42,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddOrEdit(long ids, int id = 0)
         {
             JobList();
+            ViewBag.calendar = _calendarService.GetById(ids);
             ViewBag.idca = ids;
             if (id == 0)
             {
