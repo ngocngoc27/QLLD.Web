@@ -60,28 +60,11 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
+                <h4>DỤNG CỤ:</h4>
                 @foreach (Toolticker item in ((ViewBag.listtool) as IEnumerable<Toolticker>))
                 {
-                <dl class="row">
-                    <dt class="col-sm-2">
-                        Tên dụng cụ
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(modelItem => item.Tool.Tool1)
-                    </dd>
-                    <dt class="col-sm-2">
-                        Số lượng phân bổ
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(modelItem => item.Amount)
-                    </dd>
-                    <dt class="col-sm-2">
-                        Đơn vị tính
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(modelItem => item.Tool.Unit)
-                    </dd>
-                </dl>
+                    <p>@Html.DisplayFor(modelItem => item.Tool.Tool1)</p>: <p>@Html.DisplayFor(modelItem => item.Amount)</p> <p>@Html.DisplayFor(modelItem => item.Tool.Unit)</p>
+                    <br />
                 }
             </div>
         </div>
