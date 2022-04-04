@@ -46,7 +46,7 @@
                                         {
                                             <div class="tkb">
                                                 <div class="tkb-contents">
-                                                    <a href="#" class="margin-10px-top font-size14">
+                                                    <a href="/Calendar/CalendarDetail/@ViewBag.GroupsID" class="margin-10px-top font-size14">
                                                         Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
                                                     </a>
                                                     <div class="font-size13 text-danger">
@@ -225,7 +225,8 @@
                                         {
                                         <div class="tkb">
                                             <div class="tkb-contents">
-                                                <a href="#" class="margin-10px-top font-size14">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    <input type="hidden" name="id" value="@ViewBag.idgroups" />
                                                     Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
                                                 </a>
                                                 <div class="font-size13 text-danger">

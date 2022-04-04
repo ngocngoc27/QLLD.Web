@@ -127,62 +127,6 @@ namespace QL_LaoDong.Services
         {
             return _context.Calendar.Any(x => x.Id == id);
         }
-        /*===============================================================*/
-        public List<Groups> GetSundayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetSundayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Chủ nhật" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetMondayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ hai" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetMondayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ hai" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetTuesdayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ ba" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetTuesdayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ ba" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetWednesdayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ tư" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetWednesdayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ tư" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetThursdayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ năm" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetThursdayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ năm" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetFridayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetFridayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ sáu" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetSaturdayAfter()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Chiều" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
-        public List<Groups> GetSaturdayMor()
-        {
-            return _context.Groups.Include(x => x.Job).Include(x => x.Toolticker).Include(x => x.Calendar).Include(x => x.Muster).Where(x => x.Calendar.SessionOfDay == "Sáng" && x.Calendar.Weekdays == "Thứ bảy" && x.Status == (int)GroupsEnum.ChuaDiemDanh).ToList();
-        }
+        
     }
 }

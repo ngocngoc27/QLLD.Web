@@ -1,0 +1,60 @@
+﻿@model QL_LaoDong.Models.Groups
+
+@{
+    ViewData["Title"] = "CalendarDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Lao động</a></li>
+                        <li class="breadcrumb-item active">Chi tiết lịch lao động</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">THÔNG TIN CHI TIẾT LỊCH LAO ĐỘNG</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        Tên nhóm
+                    </dt>
+                    <dd class="col-sm-10">
+                        Nhóm @Html.DisplayFor(model => model.GroupsName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tên công việc
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Job.JobName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Mô tả
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Job.Description)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Vị trí
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Job.Locate)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Số ngày thụ hưởng
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Job.BenefitOfDay)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>    
+</div>

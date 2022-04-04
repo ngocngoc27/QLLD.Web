@@ -101,22 +101,27 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult CalendarPage()
         {
-            ViewBag.sundayafter = _CalendarService.GetSundayAfter();
-            ViewBag.sundaymor = _CalendarService.GetSundayMor();
-            ViewBag.mondayafter = _CalendarService.GetMondayAfter();
-            ViewBag.mondaymor = _CalendarService.GetMondayMor();
-            ViewBag.tuesdayafter = _CalendarService.GetTuesdayAfter();
-            ViewBag.tuesdaymor = _CalendarService.GetTuesdayMor();
-            ViewBag.wednesdayafter = _CalendarService.GetWednesdayAfter();
-            ViewBag.wednesdaymor = _CalendarService.GetWednesdayMor();
-            ViewBag.thursdayafter = _CalendarService.GetThursdayAfter();
-            ViewBag.thursdaymor = _CalendarService.GetThursdayMor();
-            ViewBag.fridayafter = _CalendarService.GetFridayAfter();
-            ViewBag.fridaymor = _CalendarService.GetFridayMor();
-            ViewBag.saturdayafter = _CalendarService.GetSaturdayAfter();
-            ViewBag.saturdaymor = _CalendarService.GetSaturdayMor();
+            ViewBag.sundayafter = _groupsService.GetSundayAfter();
+            ViewBag.sundaymor = _groupsService.GetSundayMor();
+            ViewBag.mondayafter = _groupsService.GetMondayAfter();
+            ViewBag.mondaymor = _groupsService.GetMondayMor();
+            ViewBag.tuesdayafter = _groupsService.GetTuesdayAfter();
+            ViewBag.tuesdaymor = _groupsService.GetTuesdayMor();
+            ViewBag.wednesdayafter = _groupsService.GetWednesdayAfter();
+            ViewBag.wednesdaymor = _groupsService.GetWednesdayMor();
+            ViewBag.thursdayafter = _groupsService.GetThursdayAfter();
+            ViewBag.thursdaymor = _groupsService.GetThursdayMor();
+            ViewBag.fridayafter = _groupsService.GetFridayAfter();
+            ViewBag.fridaymor = _groupsService.GetFridayMor();
+            ViewBag.saturdayafter = _groupsService.GetSaturdayAfter();
+            ViewBag.saturdaymor = _groupsService.GetSaturdayMor();
             return View();
         }
 
+        public IActionResult CalendarDetail(long id)
+        {
+            var data = _groupsService.GetById(id);
+            return View(data);
+        }
     }
 }
