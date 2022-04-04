@@ -187,6 +187,9 @@ namespace QL_LaoDong.Controllers
         public IActionResult Details()
         {
             int id = Convert.ToInt32(HttpContext.Session.GetString("id"));
+            ViewBag.usename = HttpContext.Session.GetString("user");
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             var data = _AccountService.Details(id);
             return View(data);
         }
