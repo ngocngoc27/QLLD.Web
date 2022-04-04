@@ -1,0 +1,278 @@
+﻿@model IEnumerable<QL_LaoDong.Models.Groups>
+
+@{
+    ViewData["Title"] = "CalendarPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">User</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Lao động</a></li>
+                        <li class="breadcrumb-item active">LỊCH LAO ĐỘNG</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">LỊCH LAO ĐỘNG</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>BUỔI</th>
+                                    <th>THỨ HAI</th>
+                                    <th>THỨ BA</th>
+                                    <th>THỨ TƯ</th>
+                                    <th>THỨ NĂM</th>
+                                    <th>THỨ SÁU</th>
+                                    <th>THỨ BẢY</th>
+                                    <th>CHỦ NHẬT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: rgb(255, 255, 255);">
+                                    <td class="align-middle" style="background-color: #38c2f9; color: white ">Sáng</td>
+                                    <!-- SÁNG/THỨ HAI -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.mondaymor) as IEnumerable<Groups>))
+                                        {
+                                            <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href="/Calendar/CalendarDetail/@ViewBag.GroupsID" class="margin-10px-top font-size14">
+                                                        Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                    </a>
+                                                    <div class="font-size13 text-danger">
+                                                        @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ BA -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.tuesdaymor) as IEnumerable<Groups>))
+                                        {
+                                             <div class="tkb">
+                                                <div class="tkb-contents">
+                                                    <a href = "/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                        Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                    </a>
+                                                    <div class="font-size13 text-danger">
+                                                        @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ TƯ -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.wednesdaymor) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ NĂM -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.thursdaymor) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ SÁU-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.fridaymor) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/THỨ BẢY-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.saturdaymor) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- SÁNG/CHỦ NHẬT-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.sundaymor) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr style="background-color: rgb(255, 255, 255);">
+                                    <td class="align-middle" style="background-color: #38c2f9; color: white ">Chiều</td>
+                                    <!-- CHIỀU/THỨ HAI -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.mondayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ BA -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.tuesdayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ TƯ -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.wednesdayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ NĂM -->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.thursdayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ SÁU-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.fridayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/THỨ BẢY-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.saturdayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                    <!-- CHIỀU/CHỦ NHẬT-->
+                                    <td>
+                                        @foreach (Groups item in ((ViewBag.sundayafter) as IEnumerable<Groups>))
+                                        {
+                                        <div class="tkb">
+                                            <div class="tkb-contents">
+                                                <a href="/Calendar/CalendarDetail/@item.Id" class="margin-10px-top font-size14">
+                                                    Nhóm @Html.DisplayFor(modelItem => item.GroupsName)
+                                                </a>
+                                                <div class="font-size13 text-danger">
+                                                    @Html.DisplayFor(modelItem => item.Job.JobName)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

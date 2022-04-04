@@ -126,6 +126,7 @@ namespace QL_LaoDong.Services
         public bool CalendarExists(long id)
         {
             return _context.Calendar.Any(x => x.Id == id);
-        }        
+        }
+        
     }
 }

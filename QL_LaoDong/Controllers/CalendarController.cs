@@ -22,15 +22,16 @@ namespace QL_LaoDong.Controllers
         private readonly IJobService _jobService;
         private readonly IGroupsService _groupsService;
         private readonly IMusterService _musterService;
-        
-        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService, IGroupsService groupsService, IMusterService musterService)
+        private readonly ITooltickerService _tooltickerService;
+
+        public CalendarController(ICalendarService calendarService, IWorkTickerService workTickerService, IJobService jobService, IGroupsService groupsService, IMusterService musterService, ITooltickerService tooltickerService)
         {
             _CalendarService = calendarService;
             _WorkTickerService = workTickerService;
             _jobService = jobService;
             _groupsService = groupsService;
             _musterService = musterService;
-            
+            _tooltickerService = tooltickerService;
         }
         public IActionResult Index()
         {
@@ -100,6 +101,32 @@ namespace QL_LaoDong.Controllers
         {
             _CalendarService.Delete(model);
             return Json(new { html = Helper.RenderRazorViewToString(this, "_ViewAll", _CalendarService.Get()) });
+        }
+        public IActionResult CalendarPage()
+        {
+            ViewBag.sundayafter = _groupsService.GetSundayAfter();
+            ViewBag.sundaymor = _groupsService.GetSundayMor();
+            ViewBag.mondayafter = _groupsService.GetMondayAfter();
+            ViewBag.mondaymor = _groupsService.GetMondayMor();
+            ViewBag.tuesdayafter = _groupsService.GetTuesdayAfter();
+            ViewBag.tuesdaymor = _groupsService.GetTuesdayMor();
+            ViewBag.wednesdayafter = _groupsService.GetWednesdayAfter();
+            ViewBag.wednesdaymor = _groupsService.GetWednesdayMor();
+            ViewBag.thursdayafter = _groupsService.GetThursdayAfter();
+            ViewBag.thursdaymor = _groupsService.GetThursdayMor();
+            ViewBag.fridayafter = _groupsService.GetFridayAfter();
+            ViewBag.fridaymor = _groupsService.GetFridayMor();
+            ViewBag.saturdayafter = _groupsService.GetSaturdayAfter();
+            ViewBag.saturdaymor = _groupsService.GetSaturdayMor();
+            return View();
+        }
+
+        public IActionResult CalendarDetail(long id)
+        {
+            ViewBag.liststudent = _musterService.PageMuster(id);
+            ViewBag.listtool = _tooltickerService.PageToolTicker(id);
+            var data = _groupsService.GetById(id);
+            return View(data);
         }
     }
 }

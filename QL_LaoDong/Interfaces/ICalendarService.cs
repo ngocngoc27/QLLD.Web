@@ -13,7 +13,7 @@ namespace QL_LaoDong.Interfaces
         void Create(Calendar model);
         void Edit(Calendar model);
         void Delete(Calendar model);
-        bool CalendarExists(long id);
-       
+        bool CalendarExists(long id);       
+
     }
 }
