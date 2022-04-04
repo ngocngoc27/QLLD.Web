@@ -15,5 +15,8 @@ namespace QL_LaoDong.Interfaces
         void Edit(Student model);
         void Delete(Student model);
         bool StudentExists(long Id);
+        int CountHT();
+        int CountSap();
+        int CountChua();
     }
 }

@@ -175,5 +175,40 @@ namespace QL_LaoDong.Services
             var data = _context.Workticker.Where(x => x.IsDelete != true && x.Status == (int)WorkTickerEnum.ChoDuyet).ToList();
             return data.Count();
         }
+        public int CountDK()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var value= _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.AccountId == id && x.IsDelete != true).ToList();
+            return value.Count();
+        }
+        public int CountDuyet()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var value = _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.AccountId == id && x.IsDelete != true && x.Status == (int)WorkTickerEnum.DaDuyet).ToList();
+            return value.Count();
+        }
+        public int CountCho()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var value = _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.AccountId == id && x.IsDelete != true && x.Status == (int)WorkTickerEnum.ChoDuyet).ToList();
+            return value.Count();
+        }
+        public int CountBban()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var value = _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.AccountId == id && x.IsDelete != true && x.Status == (int)WorkTickerEnum.BaoBan).ToList();
+            return value.Count();
+        }
+        public int CountHuy()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("id");
+            int id = Convert.ToInt32(data);
+            var value = _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.AccountId == id && x.IsDelete != true && x.Status == (int)WorkTickerEnum.DaHuy).ToList();
+            return value.Count();
+        }
     }
 }

@@ -90,5 +90,54 @@ namespace QL_LaoDong.Services
         {
             return _context.Student.Any(x => x.Id == Id);
         }
+        public int CountHT()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            long id = Convert.ToInt64(data);
+            if(typeofedu=="Đại học")
+            {
+                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >= 18).ToList();
+                return datahoanthanh.Count();
+            }
+            else
+            {
+                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >= 12).ToList();
+                return dataht.Count();
+            }
+                
+        }
+        public int CountSap()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            long id = Convert.ToInt64(data);
+            if (typeofedu == "Đại học")
+            {
+                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >10 && x.NumberOfWork<18).ToList();
+                return datahoanthanh.Count();
+            }
+            else
+            {
+                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >= 6 && x.NumberOfWork<12).ToList();
+                return dataht.Count();
+            }
+        }
+        public int CountChua()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            long id = Convert.ToInt64(data);
+            if (typeofedu == "Đại học")
+            {
+                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork <10).ToList();
+                return datahoanthanh.Count();
+            }
+            else
+            {
+                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork<6).ToList();
+                return dataht.Count();
+            }
+        }
     }
 }
