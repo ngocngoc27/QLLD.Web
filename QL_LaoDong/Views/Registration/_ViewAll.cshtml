@@ -89,7 +89,7 @@
                                 }
                                 else if (item.Status == (int)WorkTickerEnum.DaDuyet)
                                 {
-                                    <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'BÁO BẬN')" class="btn btn-info text-white btn-sm" title="Báo bận"><i class="mdi mdi-alert-circle-outline"></i></a>
+                                    <a onclick="showInPopup('@Url.Action("Cancle","Registration",new {id=item.Id},Context.Request.Scheme)', 'BÁO BẬN')" class="btn btn-info text-white btn-sm"  data-toggle="tooltip" data-placement="bottom" title="Báo bận"><i class="mdi mdi-alert-circle-outline"></i></a>
                                 }
 
                             </td>
