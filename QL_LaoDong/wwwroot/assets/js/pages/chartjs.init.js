@@ -77,4 +77,3 @@
         "use strict";
         window.jQuery.ChartJs.init()
     }();
-

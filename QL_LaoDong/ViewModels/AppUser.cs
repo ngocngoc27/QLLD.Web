@@ -17,6 +17,5 @@ namespace QL_LaoDong.ViewModels
         public int? Total { get; set; }
         public int? TotalOfWork { get; set; }
         public int? NumberWork { get; set; }
-        public string TypeOfEducation { get; set; }
     }
 }
