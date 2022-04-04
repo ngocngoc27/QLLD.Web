@@ -1,4 +1,5 @@
 ﻿using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,6 @@ namespace QL_LaoDong.Interfaces
         int CountChuaxet();
         int CountLD();
         int CountNgayLD();
+        List<ClassRPVM> GetClass();
     }
 }

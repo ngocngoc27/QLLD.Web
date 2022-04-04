@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using static QL_LaoDong.Helpers.Helper;
@@ -29,6 +31,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             var data = _studentService.Get();
             return View(data);
         }

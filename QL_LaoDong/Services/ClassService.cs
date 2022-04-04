@@ -4,6 +4,7 @@ using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
+using QL_LaoDong.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,8 +116,17 @@ namespace QL_LaoDong.Services
             }
             else
                 return ngayld = (int)(value.Total * 12);
-
-
+        }
+        public List<ClassRPVM> GetClass()
+        {
+            var data = _context.Class.Include(x=>x.Faculty).Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.hoanthanh).Select(x => new ClassRPVM()
+            {
+                ClassCode=x.ClassCode,
+                ClassName=x.ClassName,
+                TypeOfEducation=x.TypeOfEducation,
+                FacultyName=x.Faculty.FacultyName
+            }).ToList();
+            return data;
         }
     }
 }

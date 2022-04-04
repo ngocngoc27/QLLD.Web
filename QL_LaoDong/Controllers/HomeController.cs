@@ -25,8 +25,9 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.usename = HttpContext.Session.GetString("user"); 
             ViewBag.role = HttpContext.Session.GetString("rolename");
-            
-           
+            var data= HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(data);
+
             ViewBag.ds = _workTickerService.CountsDS();
             ViewBag.daduyet = _workTickerService.CountTT();
             ViewBag.baoban = _workTickerService.CountBan();

@@ -35,6 +35,7 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = id;
             ViewBag.calendar = _calendarService.GetById(id);
+
             var data = _groupsService.PageGroups(id);
             return View(data);
         }

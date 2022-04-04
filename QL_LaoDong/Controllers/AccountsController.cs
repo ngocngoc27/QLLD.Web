@@ -39,6 +39,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             var data = _AccountService.Get();
             return View(data);
         }
@@ -155,6 +157,7 @@ namespace QL_LaoDong.Controllers
                     HttpContext.Session.SetString("numberwork", user.NumberWork.ToString());
                     HttpContext.Session.SetString("rolename", user.RoleName);
                     HttpContext.Session.SetString("typeofedu", user.TypeofEdu);
+                    HttpContext.Session.SetString("idrole", user.RoleId.ToString());
                     if (HttpContext.Session.GetString("rolename") == "Admin")
                     {
                         return RedirectToAction(nameof(Index), "Home");

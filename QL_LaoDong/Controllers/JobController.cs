@@ -22,6 +22,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
+            var data = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(data);
             var job = _jobService.Get();
             return View(job);
         }

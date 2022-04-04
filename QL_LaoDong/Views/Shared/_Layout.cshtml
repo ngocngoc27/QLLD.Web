@@ -86,103 +86,113 @@
                 </li>
             </ul>
         </div>
-        <div class="left-side-menu">
-            <div class="slimscroll-menu">
-                <div id="sidebar-menu">
-                    <ul class="metismenu" id="side-menu">
-                        <li class="menu-title">User</li>
-                        <li>
-                            @if (ViewBag.rolename == "Admin")
-                            {
+        @if (ViewBag.idrole == 1)
+        {
+            <div class="left-side-menu">
+                <div class="slimscroll-menu">
+                    <div id="sidebar-menu">
+                        <ul class="metismenu" id="side-menu">
+                            <li class="menu-title mt-2">Admin</li>
+                            <li>
                                 <a href="/Home/Index" class="waves-effect waves-light">
                                     <i class="fas fa-home"></i>
                                     <span>  Trang chủ  </span>
                                 </a>
-                            }
-                            else
-                            {
-                                <a href="/Home/IndexUser" class="waves-effect waves-light">
-                                    <i class="fas fa-home"></i>
-                                    <span>  Trang chủ  </span>
+                            </li>
+                            <li>
+                                <a href="/Menus/Index" class="waves-effect waves-light">
+                                    <i class="fas fa-list"></i>
+                                    <span>  Quản lý danh mục  </span>
                                 </a>
-                            }
-                        </li>
+                            </li>
+                            <li>
 
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect waves-light">
-                                <i class="far fa-calendar-plus"></i>
-                                <span> Lao động </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    <span>  Quản lý chung  </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/class/Index">Lớp sinh viên</a></li>
+                                    <li><a href="/Accounts/Index">Tài khoản sinh viên</a></li>
+                                    <li><a href="/student/Index">Sinh viên</a></li>
+                                </ul>
+                            </li>
 
-                                <li><a href="/workticker/Calendarpage">Lịch lao động</a></li>
-                                <li><a href="/Registration/Index">Đăng ký lao động</a></li>
-                            </ul>
-                        </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="fa fa-gavel" aria-hidden="true"></i>
+                                    <span>  Lao động  </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/calendar/Index">Thời gian đăng ký</a></li>
+                                    @*<li><a href="/workticker/Index">Quản lý đăng ký</a></li>
+                <li><a href="/groups/Index">Nhóm lao động</a></li>
+                <li><a href="#">Điểm danh</a></li>*@
+                                </ul>
+                            </li>
 
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect waves-light">
-                                <i class="fas fa-user-edit"></i>
-                                <span>  Thông tin </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/Accounts/Details">Thông tin cá nhân</a></li>
-                                <li><a href="/Student/studentclass">Thông tin lớp</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-title mt-2">Admin</li>
-                        <li>
-                            <a href="/Menus/Index" class="waves-effect waves-light">
-                                <i class="fas fa-list"></i>
-                                <span>  Quản lý danh mục  </span>
-                            </a>
-                        </li>
-                        <li>
-
-                            <a href="javascript: void(0);" class="waves-effect waves-light">
-                                <i class="fa fa-cog" aria-hidden="true"></i>
-                                <span>  Quản lý chung  </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/class/Index">Lớp sinh viên</a></li>
-                                <li><a href="/Accounts/Index">Tài khoản sinh viên</a></li>
-                                <li><a href="/student/Index">Sinh viên</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect waves-light">
-                                <i class="fa fa-gavel" aria-hidden="true"></i>
-                                <span>  Lao động  </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/calendar/Index">Thời gian đăng ký</a></li>
-                                @*<li><a href="/workticker/Index">Quản lý đăng ký</a></li>
-                                    <li><a href="/groups/Index">Nhóm lao động</a></li>
-                                    <li><a href="#">Điểm danh</a></li>*@
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="waves-effect waves-light">
-                                <i class="fas fa-clipboard-list"></i>
-                                <span>  Danh mục </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/job/Index">Công việc</a></li>
-                                <li><a href="/tool/Index">Dụng cụ lao động</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <span>  Danh mục </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/job/Index">Công việc</a></li>
+                                    <li><a href="/tool/Index">Dụng cụ lao động</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="left-side-menu">
+                <div class="slimscroll-menu">
+                    <div id="sidebar-menu">
+                        <ul class="metismenu" id="side-menu">
+                            <li class="menu-title">User</li>
+                            <li>
+                                    <a href="/Home/IndexUser" class="waves-effect waves-light">
+                                        <i class="fas fa-home"></i>
+                                        <span>  Trang chủ  </span>
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="far fa-calendar-plus"></i>
+                                    <span> Lao động </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+
+                                    <li><a href="/workticker/Calendarpage">Lịch lao động</a></li>
+                                    <li><a href="/Registration/Index">Đăng ký lao động</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span>  Thông tin </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="/Accounts/Details">Thông tin cá nhân</a></li>
+                                    <li><a href="/Student/studentclass">Thông tin lớp</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
         <div class="content-page">
             <div class="content">
                 @RenderBody()
@@ -221,13 +231,6 @@
 
     <script src="~/assets/js/pages/chartjs.init.js"></script>
     <script src="~/assets/js/pages/charjsuser.init.js"></script>
-<<<<<<< HEAD
-
-    <script src="~/assets/libs/datatables/Language.js"></script>
-    <script src="~/assets/js/pages/chartjs.init.js"></script>
-
-=======
->>>>>>> 9d4ddb0e17cdac4ad99af94533f36ea0bf390645
     <!-- App js -->
     <script src="~/assets/js/app.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

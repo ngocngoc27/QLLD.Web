@@ -26,6 +26,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             var data = _menusService.Get();
             return View(data);
         }

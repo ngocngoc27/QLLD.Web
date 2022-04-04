@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Data;
+using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
 using QL_LaoDong.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -139,5 +142,6 @@ namespace QL_LaoDong.Services
                 return dataht.Count();
             }
         }
+       
     }
 }
