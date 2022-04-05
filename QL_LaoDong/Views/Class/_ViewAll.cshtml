@@ -76,11 +76,11 @@
                                 </td>
                                 <td>
                                     <a onclick="showInPopup('@Url.Action("AddOrEdit","Class",new {id=item.Id },Context.Request.Scheme)', 'CẬP NHẬT THÔNG TIN LỚP')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật thông tin lớp"><i class="fas fa-pencil-alt"></i></a>
+                                    <form asp-action="Capnhat" asp-route-id="@item.Id" class="d-inline">
+                                        <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật số ngày lao động"><i class="mdi mdi-reload-alert"></i></button>
+                                    </form>
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                         <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="fas fa-trash-alt"></i></button>
-                                    </form>
-                                    <form asp-action="Capnhat" asp-route-id="@item.Id" class="d-inline">
-                                        <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cập nhật số ngày lao động"><i class="ion ion-md-refresh-circle"></i></button>
                                     </form>
                                 </td>
                             </tr>

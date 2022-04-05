@@ -12249,7 +12249,8 @@ a.text-success:hover {
 }
 
 .text-info {
-    color: #3db9dc !important;
+    color: #6f757a !important;
+    font-weight: 800;
 }
 
 a.text-info:focus,
