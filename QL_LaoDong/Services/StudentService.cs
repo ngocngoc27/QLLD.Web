@@ -34,7 +34,7 @@ namespace QL_LaoDong.Services
             entity.NumberOfWork = model.NumberOfWork;
             string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
             long id = Convert.ToInt64(data);
-            entity.ClassId = id;
+            entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
             _context.Student.Add(entity);

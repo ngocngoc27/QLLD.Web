@@ -88,15 +88,15 @@
                                     </td>
                                     <td>
                                         <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=item.Id, ids=ViewBag.caid},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
-                                        <form asp-action="PageToolTicKer" asp-route-id="@item.Id" asp-controller="ToolTicker" class="d-inline">
-                                            @Html.Hidden("CalendarId", item.CalendarId)
-                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-teal btn-sm"><i class="ion ion-md-construct"></i></button>
-                                        </form>
                                         <form asp-action="PageMuster" asp-route-id="@item.Id" asp-controller="Muster" class="d-inline">
                                             @*<input type="hidden" name="CalendarId" value="@item.CalendarId" />*@
                                             @Html.Hidden("CalendarId", item.CalendarId)
                                             <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Thêm sinh viên vào nhóm" class="btn btn-orange btn-sm"><i class="fas fa-users-cog"></i></button>
                                         </form>
+                                        <form asp-action="PageToolTicKer" asp-route-id="@item.Id" asp-controller="ToolTicker" class="d-inline">
+                                            @Html.Hidden("CalendarId", item.CalendarId)
+                                            <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-teal btn-sm"><i class="ion ion-md-construct"></i></button>
+                                        </form>                                        
                                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
                                             <input type="hidden" name="ids" value="@ViewBag.idca" />
                                             <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="far fa-trash-alt"></i></button>
