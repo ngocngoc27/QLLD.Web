@@ -45,10 +45,7 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.StudentId = model.StudentId;
             entity.GroupsId = model.GroupsId;
-            entity.RollUp = model.RollUp;
-            //logic cộng ngày lao động khi check điểm danh
-            if (entity.RollUp == true)
-                entity.Student.NumberOfWork += entity.Groups.Job.BenefitOfDay;
+            entity.RollUp = model.RollUp;            
             _context.Muster.Update(entity);
             _context.SaveChanges();
         }
@@ -67,16 +64,20 @@ namespace QL_LaoDong.Services
         }
         public void Diemdanh(List<MusterVM> model)
         {
-            foreach(var item in model)
+            
+            foreach (var item in model)
             {
-                var entity = _context.Muster.Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
-                if(entity!=default)
+                var entity = _context.Muster.Include(x => x.Student).Include(x=>x.Groups.Job).Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
+                if (entity!=default)
                 {
                     entity.RollUp = item.RollUp;
                 }
+                if (entity.RollUp == true)
+                    entity.Student.NumberOfWork += Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
+                else
+                    entity.Student.NumberOfWork -= Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
                 _context.SaveChanges();
-            }
+            }      
         }
-    
     }
 }
