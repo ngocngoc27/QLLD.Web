@@ -51,6 +51,7 @@ namespace QL_LaoDong.Services
         {
             return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true).ToList();
         }
+       
         public void Edit(Account model)
         {
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();

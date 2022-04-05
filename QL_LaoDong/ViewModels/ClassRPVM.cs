@@ -9,6 +9,8 @@ namespace QL_LaoDong.ViewModels
     {
         public string ClassCode { get; set; }
         public string ClassName { get; set; }
+        public int Total { get; set; }
+        public int TotalOfWork { get; set; }
         public string TypeOfEducation { get; set; }
         public string FacultyName { get; set; }
        

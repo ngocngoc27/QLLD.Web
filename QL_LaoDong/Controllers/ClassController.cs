@@ -111,8 +111,10 @@ namespace QL_LaoDong.Controllers
                 sheet.Cells["D3"].Value = "DANH SÁCH LỚP ĐẠT ĐỦ NGÀY LAO ĐỘNG";
                 sheet.Cells[5, 3].Value = "Mã lớp";
                 sheet.Cells[5, 4].Value = "Tên lớp";
-                sheet.Cells[5, 5].Value = "Loại hình đào tạo";
-                sheet.Cells[5, 6].Value = "Khoa";
+                sheet.Cells[5, 5].Value = "Sĩ số lớp";
+                sheet.Cells[5, 6].Value = "Số ngày lao động";
+                sheet.Cells[5, 7].Value = "Loại hình đào tạo";
+                sheet.Cells[5, 8].Value = "Khoa";
                 // định dạng
                 sheet.Cells["A1"].Style.Font.Bold = true;
                 sheet.Cells["A2"].Style.Font.UnderLine=true;
@@ -121,19 +123,26 @@ namespace QL_LaoDong.Controllers
                 sheet.Cells[5, 4].Style.Font.Bold = true;
                 sheet.Cells[5, 5].Style.Font.Bold = true;
                 sheet.Cells[5, 6].Style.Font.Bold = true;
+                sheet.Cells[5, 7].Style.Font.Bold = true;
+                sheet.Cells[5, 8].Style.Font.Bold = true;
                 sheet.Cells["D3"].AutoFitColumns();
                 sheet.Cells[5, 5].AutoFitColumns();
                 sheet.Cells[5, 4].AutoFitColumns();
                 sheet.Cells[5, 3].AutoFitColumns();
                 sheet.Cells[5, 6].AutoFitColumns();
+                sheet.Cells[5, 7].AutoFitColumns();
+                sheet.Cells[5, 8].AutoFitColumns();
                 // dổ dữ liệu vào sheet
                 int rowIdx = 6;
-                foreach(var lo in data)
+                foreach (var lo in data)
                 {
                     sheet.Cells[rowIdx, 3].Value = lo.ClassCode;
                     sheet.Cells[rowIdx, 4].Value = lo.ClassName;
-                    sheet.Cells[rowIdx, 5].Value = lo.TypeOfEducation;
-                    sheet.Cells[rowIdx, 6].Value = lo.FacultyName;
+                    sheet.Cells[rowIdx, 5].Value = lo.Total;
+                    sheet.Cells[rowIdx, 6].Value = lo.TotalOfWork;
+                    sheet.Cells[rowIdx, 7].Value = lo.TypeOfEducation;
+                    sheet.Cells[rowIdx, 8].Value = lo.FacultyName;
+                    rowIdx++;
                 }
                 //sheet.Cells.LoadFromCollection(data, true);
 
