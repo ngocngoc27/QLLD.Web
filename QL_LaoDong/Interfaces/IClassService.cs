@@ -22,5 +22,6 @@ namespace QL_LaoDong.Interfaces
         int CountLD();
         int CountNgayLD();
         List<ClassRPVM> GetClass();
+        void TongLD(Class model);
     }
 }
