@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -31,6 +32,8 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageMuster(long id, long CalendarId)
         {
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;
             ViewBag.grname = _groupsService.GetById(id).GroupsName;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QL_LaoDong.Helpers;
@@ -35,6 +36,8 @@ namespace QL_LaoDong.Controllers
         {
             ViewBag.caid = id;
             ViewBag.calendar = _calendarService.GetById(id);
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
 
             var data = _groupsService.PageGroups(id);
             return View(data);

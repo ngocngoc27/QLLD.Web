@@ -56,23 +56,20 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
                 <h4>DỤNG CỤ:</h4>
                 @foreach (Toolticker item in ((ViewBag.listtool) as IEnumerable<Toolticker>))
                 {
-                    <p>@Html.DisplayFor(modelItem => item.Tool.Tool1)</p>: <p>@Html.DisplayFor(modelItem => item.Amount)</p> <p>@Html.DisplayFor(modelItem => item.Tool.Unit)</p>
+                    @Html.DisplayFor(modelItem => item.Tool.Tool1)
+                    @Html.DisplayFor(modelItem => item.Amount) 
+                    @Html.DisplayFor(modelItem => item.Tool.Unit)
                     <br />
                 }
             </div>
         </div>
     </div>
-   
-=======
-    
->>>>>>> 2cfb232ab4c28c31ab2033d77f530f8b6533864a
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">

@@ -24,6 +24,8 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageToolTicker(long id, long CalendarId)
         {
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;
             //ViewBag.grname = _tooltickerService.GetById(id).Groups.GroupsName;
