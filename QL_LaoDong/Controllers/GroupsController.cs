@@ -66,8 +66,8 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddOrEdit(Groups model, long id, long caid)
         {
             ViewBag.calendar = _calendarService.GetById(caid);
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            
                 if (model.Id == 0)
                 {
                     _groupsService.CreateGroups(model, id);
@@ -91,8 +91,8 @@ namespace QL_LaoDong.Controllers
                     }
                 }
                 return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(id))});
-            }
-            return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
+            
+            //return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
         }        
         private void JobList(object selectJob = null)
         {

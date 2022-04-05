@@ -67,7 +67,7 @@ namespace QL_LaoDong.Services
             
             foreach (var item in model)
             {
-                var entity = _context.Muster.Include(x => x.Student).Include(x=>x.Groups.Job).Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
+                var entity = _context.Muster.Include(x => x.Student).Include(x=>x.Groups.Job).Where(x => x.Id == item.id && x.IsDelete != true).FirstOrDefault();
                 if (entity!=default)
                 {
                     entity.RollUp = item.RollUp;
