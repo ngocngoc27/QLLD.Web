@@ -65,6 +65,7 @@ namespace QL_LaoDong.Controllers
             ViewBag.hoanthanh = _studentService.CountHT();
             ViewBag.sap = _studentService.CountSap();
             ViewBag.chua = _studentService.CountChua();
+            ViewBag.ngayldlop = _studentService.CountLDClass();
             return View();
         }
 

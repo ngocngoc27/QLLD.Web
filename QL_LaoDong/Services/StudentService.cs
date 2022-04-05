@@ -142,6 +142,26 @@ namespace QL_LaoDong.Services
                 return dataht.Count();
             }
         }
-       
+        public float CountLDClass()
+        {
+            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
+            long id = Convert.ToInt64(data);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            var sslop = _context.Class.Where(x=>x.Id==id).Select(x=>x.Total).FirstOrDefault();
+            int ss = Convert.ToInt32(sslop);
+            var value = _context.Student.Where(x => x.ClassId == id).Sum(x=>x.NumberOfWork);
+            float ngaylaodong = 0;
+            if(typeofedu=="Đại học")
+            {
+                ngaylaodong = ((float)value / (ss * 18)) * 100;
+            }
+            else
+            {
+                ngaylaodong = ((float)value / (ss * 12)) * 100;
+            }
+            return ngaylaodong;
+        }
+
+
     }
 }

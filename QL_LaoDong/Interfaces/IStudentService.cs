@@ -18,5 +18,6 @@ namespace QL_LaoDong.Interfaces
         int CountHT();
         int CountSap();
         int CountChua();
+        float CountLDClass();
     }
 }
