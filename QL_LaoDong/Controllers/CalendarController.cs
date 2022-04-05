@@ -118,11 +118,13 @@ namespace QL_LaoDong.Controllers
             ViewBag.fridaymor = _groupsService.GetFridayMor();
             ViewBag.saturdayafter = _groupsService.GetSaturdayAfter();
             ViewBag.saturdaymor = _groupsService.GetSaturdayMor();
+            ViewBag.usename = HttpContext.Session.GetString("user");
             return View();
         }
 
         public IActionResult CalendarDetail(long id)
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             ViewBag.liststudent = _musterService.PageMuster(id);
             ViewBag.listtool = _tooltickerService.PageToolTicker(id);
             var data = _groupsService.GetById(id);
