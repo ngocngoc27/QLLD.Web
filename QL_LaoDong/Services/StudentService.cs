@@ -32,11 +32,13 @@ namespace QL_LaoDong.Services
             var entity = new Student();
             entity.Mssv = model.Mssv;
             entity.NumberOfWork = model.NumberOfWork;
-            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
-            long id = Convert.ToInt64(data);
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
+            var dem = _context.Student.Where(x => x.ClassId == model.ClassId).ToList();
+            int siso = dem.Count();
+            var lop = _context.Class.Where(x => x.Id == model.ClassId).FirstOrDefault();
+            lop.Total = siso+1;
             _context.Student.Add(entity);
             _context.SaveChanges();
         }
@@ -57,11 +59,13 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Mssv = model.Mssv;
             entity.NumberOfWork = model.NumberOfWork;            
-            string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
-            long id = Convert.ToInt64(data);
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
+            var dem = _context.Student.Where(x => x.ClassId == model.ClassId).ToList();
+            int siso = dem.Count();
+            var lop = _context.Class.Where(x => x.Id == model.ClassId).FirstOrDefault();
+            lop.Total = siso + 1;
             _context.Student.Update(entity);
             _context.SaveChanges();
         }
