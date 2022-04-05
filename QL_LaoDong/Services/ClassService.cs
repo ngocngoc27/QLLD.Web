@@ -128,5 +128,34 @@ namespace QL_LaoDong.Services
             }).ToList();
             return data;
         }
+        public void TongLD(Class model)
+        {
+            var stu = _context.Student.Where(x => x.ClassId == model.Id).Sum(x => x.NumberOfWork);
+            var sslop = _context.Class.Where(x => x.Id ==model.Id).Select(x => x.Total).FirstOrDefault();
+            int ss = Convert.ToInt32(sslop);
+            string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
+            float ngaylaodong = 0;
+            if (typeofedu == "Đại học")
+            {
+                ngaylaodong = ((float)stu / (ss * 18)) * 100;
+            }
+            else
+            {
+                ngaylaodong = ((float)stu / (ss * 12)) * 100;
+            }
+            var entity = _context.Class.Where(x => x.Id == model.Id).FirstOrDefault();
+            if (entity == default)
+                throw new Exception("Không tìm thấy dữ liệu.");
+            entity.TotalOfWork = Convert.ToInt32(stu);
+            if (ngaylaodong >= 70)
+            {
+                entity.Status = (int)ClassEnum.hoanthanh;
+            }
+            else if (ngaylaodong < 70)
+            {
+                entity.Status = (int)ClassEnum.chuahoanthanh;
+            }
+            _context.SaveChanges();
+        }
     }
 }

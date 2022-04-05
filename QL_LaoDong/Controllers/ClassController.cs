@@ -143,5 +143,11 @@ namespace QL_LaoDong.Controllers
             var fileName = $"Danhsachhoanthanh_{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",fileName);
         }
+        [HttpPost]
+        public IActionResult Capnhat(Class model)
+        {
+            _classService.TongLD(model);
+            return RedirectToAction("Index", "Class");
+        }
     }
 }

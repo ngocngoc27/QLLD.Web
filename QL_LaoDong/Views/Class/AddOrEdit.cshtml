@@ -35,8 +35,10 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Loại hình đào tạo</label>
-                        <input asp-for="TypeOfEducation" class="form-control" />
-                        <span asp-validation-for="TypeOfEducation" class="text-danger"></span>
+                        <select asp-for="TypeOfEducation" class="form-control">
+                            <option value="Đại học">Đại học chính quy</option>
+                            <option value="Cao đẳng">Cao đẳng chính quy</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -61,7 +63,7 @@
                     <div class="form-group">
                         <label class="control-label">Trạng thái</label>
                         <select asp-for="Status" class="form-control">
-                            <option>---Chọn trạng thái----</option>
+                            <option value="3">---Chọn trạng thái----</option>
                             <option value="2">Đã hoàn thành</option>
                             <option value="1">Chưa hoàn thành</option>
                         </select>
