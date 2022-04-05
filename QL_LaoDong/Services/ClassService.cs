@@ -65,7 +65,7 @@ namespace QL_LaoDong.Services
 
         public List<Class> Get()
         {
-            return _context.Class.Include(x=>x.Faculty).Where(x => x.IsDelete != true).ToList();
+            return _context.Class.Include(x => x.Student).Include(x => x.Faculty).Where(x => x.IsDelete != true).ToList();
         }
 
         public Class GetById(int id)
