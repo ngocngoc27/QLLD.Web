@@ -21,6 +21,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
+                <p class="text-muted text-overflow font-weight-bold">
+                    <i class="ion ion-md-calendar"></i>
+                    Buổi @Html.DisplayFor(model => model.Calendar.SessionOfDay), ngày @Convert.ToDateTime(Model.Calendar.Day).ToString("dd/MM/yyyy") (@Html.DisplayFor(model => model.Calendar.Weekdays))
+                </p>
                 <dl class="row">
                     <dt class="col-sm-2">
                         Tên nhóm
@@ -57,22 +61,91 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12">            
             <div class="card-box table-responsive">
-                <h4>DỤNG CỤ:</h4>
-                @foreach (Toolticker item in ((ViewBag.listtool) as IEnumerable<Toolticker>))
-                {
-                    @Html.DisplayFor(modelItem => item.Tool.Tool1)
-                    @Html.DisplayFor(modelItem => item.Amount) 
-                    @Html.DisplayFor(modelItem => item.Tool.Unit)
-                    <br />
-                }
+                <h4 class="header-title">
+                    DANH SÁCH DỤNG CỤ LAO ĐỘNG
+                </h4>
+                <br />
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tên dụng cụ
+                            </th>
+                            <th>
+                                Số lượng
+                            </th>
+                            <th>
+                                Đơn vị tính
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Toolticker item in ((ViewBag.listtool) as IEnumerable<Toolticker>))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tool.Tool1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tool.Unit)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box table-responsive">
+                <h4 class="header-title">
+                    DANH SÁCH SINH VIÊN
+                </h4>
+                <br />
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                MSSV
+                            </th>
+                            <th>
+                                Họ tên
+                            </th>
+                            <th>
+                                Lớp
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Muster item in ((ViewBag.liststudent) as IEnumerable<Muster>))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Mssv)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Account.Fullname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Class.ClassName)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    @*<div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <p class="sub-header">DANH SÁCH SINH VIÊN NHÓM @Html.DisplayFor(model => model.GroupsName)</p>
                 @foreach (Muster item in ((ViewBag.liststudent) as IEnumerable<Muster>))
                 {
                     <dl class="row">
@@ -97,6 +170,4 @@
                     </dl>
                 }
             </div>
-        </div>
-    </div>
-</div>
+        </div>*@

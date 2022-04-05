@@ -46,13 +46,14 @@ namespace QL_LaoDong.Controllers
         public IActionResult AddOrEdit(long ids, int id = 0)
         {
             JobList();
+            ViewBag.caid = ids;
             ViewBag.calendar = _calendarService.GetById(ids);
             if (id == 0)
             {
                 return View(new Groups());
             }
             else
-            {
+            {                
                 var data = _groupsService.GetById(id);
                 if (data == null)
                 {
@@ -63,14 +64,14 @@ namespace QL_LaoDong.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddOrEdit(Groups model, long id, long caid)
+        public IActionResult AddOrEdit(Groups model, long caid)
         {
             ViewBag.calendar = _calendarService.GetById(caid);
             //if (ModelState.IsValid)
             
                 if (model.Id == 0)
                 {
-                    _groupsService.CreateGroups(model, id);
+                    _groupsService.CreateGroups(model, caid);
                 }
                 else
                 {
@@ -90,7 +91,7 @@ namespace QL_LaoDong.Controllers
                         }
                     }
                 }
-                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(id))});
+                return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "_ViewAll", _groupsService.PageGroups(caid))});
             
             //return Json(new { IsValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", model) });
         }        
