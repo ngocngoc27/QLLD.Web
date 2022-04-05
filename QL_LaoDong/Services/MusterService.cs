@@ -64,10 +64,9 @@ namespace QL_LaoDong.Services
         }
         public void Diemdanh(List<MusterVM> model)
         {
-            
             foreach (var item in model)
             {
-                var entity = _context.Muster.Include(x => x.Student).Include(x=>x.Groups.Job).Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
+                var entity = _context.Muster.Include(x => x.Student.Class).Include(x=>x.Groups.Job).Where(x => x.StudentId == item.StudentId && x.IsDelete != true).FirstOrDefault();
                 if (entity!=default)
                 {
                     entity.RollUp = item.RollUp;
@@ -76,6 +75,7 @@ namespace QL_LaoDong.Services
                     entity.Student.NumberOfWork += Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
                 else
                     entity.Student.NumberOfWork -= Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
+                entity.Student.Class.TotalOfWork += Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
                 _context.SaveChanges();
             }      
         }

@@ -56,7 +56,7 @@ namespace QL_LaoDong.Services
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Mssv = model.Mssv;
-            entity.NumberOfWork = model.NumberOfWork;
+            entity.NumberOfWork = model.NumberOfWork;            
             string data = _httpContextAccessor.HttpContext.Session.GetString("idclass");
             long id = Convert.ToInt64(data);
             entity.ClassId = model.ClassId;
