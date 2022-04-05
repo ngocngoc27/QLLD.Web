@@ -29,11 +29,11 @@ namespace QL_LaoDong.Services
             entity.IsDelete = true;
             _context.SaveChanges();
         }
-        public void CreateGroups(Groups model, long ids)
+        public void CreateGroups(Groups model, long caid)
         {
             var entity = new Groups();
             entity.Leader = model.Leader;
-            entity.CalendarId = ids;
+            entity.CalendarId = caid;
             entity.GroupsName = model.GroupsName;
             entity.JobId = model.JobId;
             entity.IsDelete = false;

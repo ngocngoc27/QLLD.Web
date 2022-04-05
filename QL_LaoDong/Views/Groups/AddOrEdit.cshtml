@@ -8,7 +8,6 @@
 <div class="row">
     <div class="col-md-12">
         <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
-            <input type="hidden" name="ids" value="@ViewBag.idca" />
             <input type="hidden" name="caid" value="@ViewBag.caid" />
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

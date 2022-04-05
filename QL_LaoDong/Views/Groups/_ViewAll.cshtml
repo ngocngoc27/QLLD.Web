@@ -31,7 +31,7 @@
                             <a href="/calendar/Index"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
                         </div>
                         <div class="btn-addoredit">
-                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=0, ids = ViewBag.caid},Context.Request.Scheme)', 'THÊM NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=0, ids=ViewBag.caid},Context.Request.Scheme)', 'THÊM NHÓM LAO ĐỘNG')" class="btn btn-success text-white btn-sm"><i class="fas fa-plus-circle"></i> Thêm mới</a>
                         </div>
                     </div>
                     <br />
@@ -87,7 +87,7 @@
                                         }
                                     </td>
                                     <td>
-                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=item.Id},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Groups",new {id=item.Id, ids=ViewBag.caid},Context.Request.Scheme)', 'PHÂN CÔNG CÔNG VIỆC')" class="btn btn-info text-white btn-sm" data-toggle="tooltip" data-placement="bottom" title="Phân công công việc"><i class="fa fa-check-square" aria-hidden="true"></i></a>
                                         <form asp-action="PageToolTicKer" asp-route-id="@item.Id" asp-controller="ToolTicker" class="d-inline">
                                             @Html.Hidden("CalendarId", item.CalendarId)
                                             <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-teal btn-sm"><i class="ion ion-md-construct"></i></button>
