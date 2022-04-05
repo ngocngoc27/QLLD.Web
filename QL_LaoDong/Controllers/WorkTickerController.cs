@@ -28,11 +28,15 @@ namespace QL_LaoDong.Controllers
         public IActionResult ListStudent()
         {
             var data=_studentService.GetClass();
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             return View(data);
         }
         public IActionResult Index()
         {
             ViewBag.usename = HttpContext.Session.GetString("user");
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             var data = _worktickerService.Get();
             return View(data);
         }
@@ -106,6 +110,8 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageWorkTicker(long id)
         {
+            var value = HttpContext.Session.GetString("idrole");
+            ViewBag.idrole = Convert.ToInt32(value);
             ViewBag.calendar = _calendarService.GetById(id);
             var data = _worktickerService.PageWorkTicker(id);
             return View(data);
