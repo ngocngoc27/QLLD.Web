@@ -124,7 +124,10 @@ namespace QL_LaoDong.Services
                 ClassCode=x.ClassCode,
                 ClassName=x.ClassName,
                 TypeOfEducation=x.TypeOfEducation,
-                FacultyName=x.Faculty.FacultyName
+                FacultyName=x.Faculty.FacultyName,
+                Total=(int)x.Total,
+                TotalOfWork=(int)x.TotalOfWork
+
             }).ToList();
             return data;
         }
