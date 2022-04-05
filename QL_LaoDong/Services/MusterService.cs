@@ -56,7 +56,7 @@ namespace QL_LaoDong.Services
         }
         public List<Muster> PageMuster(long id)
         {
-            return _context.Muster.Include(x => x.Student.Class).Include(x => x.Student.Account).Include(x => x.Groups).Where(x => x.GroupsId == id && x.IsDelete != true).ToList();
+            return _context.Muster.Include(x => x.Student.Class).Include(x=>x.Student.Class.Faculty).Include(x => x.Student.Account).Include(x => x.Groups).Where(x => x.GroupsId == id && x.IsDelete != true).ToList();
         }
         public Muster GetById(int id)
         {
