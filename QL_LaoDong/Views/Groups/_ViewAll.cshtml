@@ -98,7 +98,7 @@
                                             <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Phân công dụng cụ lao động" class="btn btn-teal btn-sm"><i class="ion ion-md-construct"></i></button>
                                         </form>                                        
                                         <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                            <input type="hidden" name="ids" value="@ViewBag.idca" />
+                                            <input type="hidden" name="id" value="@ViewBag.caid" />
                                             <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Xóa"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
