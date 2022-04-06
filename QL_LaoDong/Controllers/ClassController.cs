@@ -111,10 +111,11 @@ namespace QL_LaoDong.Controllers
                 sheet.Cells["D3"].Value = "DANH SÁCH LỚP ĐẠT ĐỦ NGÀY LAO ĐỘNG";
                 sheet.Cells[5, 3].Value = "Mã lớp";
                 sheet.Cells[5, 4].Value = "Tên lớp";
-                sheet.Cells[5, 5].Value = "Sĩ số lớp";
+                sheet.Cells[5, 5].Value = "Sỉ số lớp";
                 sheet.Cells[5, 6].Value = "Số ngày lao động";
                 sheet.Cells[5, 7].Value = "Loại hình đào tạo";
                 sheet.Cells[5, 8].Value = "Khoa";
+                sheet.Cells[5, 9].Value = "Tỷ lệ hoàn thành";
                 // định dạng
                 sheet.Cells["A1"].Style.Font.Bold = true;
                 sheet.Cells["A2"].Style.Font.UnderLine=true;
@@ -125,6 +126,7 @@ namespace QL_LaoDong.Controllers
                 sheet.Cells[5, 6].Style.Font.Bold = true;
                 sheet.Cells[5, 7].Style.Font.Bold = true;
                 sheet.Cells[5, 8].Style.Font.Bold = true;
+                sheet.Cells[5, 9].Style.Font.Bold = true;
                 sheet.Cells["D3"].AutoFitColumns();
                 sheet.Cells[5, 5].AutoFitColumns();
                 sheet.Cells[5, 4].AutoFitColumns();
@@ -132,17 +134,26 @@ namespace QL_LaoDong.Controllers
                 sheet.Cells[5, 6].AutoFitColumns();
                 sheet.Cells[5, 7].AutoFitColumns();
                 sheet.Cells[5, 8].AutoFitColumns();
+                sheet.Cells[5, 9].AutoFitColumns();
                 // dổ dữ liệu vào sheet
                 int rowIdx = 6;
                 foreach (var lo in data)
                 {
+                    float percent = 0;
                     sheet.Cells[rowIdx, 3].Value = lo.ClassCode;
                     sheet.Cells[rowIdx, 4].Value = lo.ClassName;
                     sheet.Cells[rowIdx, 5].Value = lo.Total;
                     sheet.Cells[rowIdx, 6].Value = lo.TotalOfWork;
                     sheet.Cells[rowIdx, 7].Value = lo.TypeOfEducation;
+                    if (lo.TypeOfEducation == "Đại học")
+                    {
+                        percent = (float)lo.TotalOfWork / (float)(lo.Total * 18) * 100;
+                    }
                     sheet.Cells[rowIdx, 8].Value = lo.FacultyName;
-                    rowIdx++;
+                    sheet.Cells[rowIdx, 9].Value = percent;
+                    rowIdx++;                    
+                    
+
                 }
                 //sheet.Cells.LoadFromCollection(data, true);
 
