@@ -34,6 +34,7 @@ namespace QL_LaoDong.Controllers
         }
         public IActionResult PageGroups(long id)
         {
+            ViewBag.usename = HttpContext.Session.GetString("user");
             ViewBag.caid = id;
             ViewBag.calendar = _calendarService.GetById(id);
             var value = HttpContext.Session.GetString("idrole");

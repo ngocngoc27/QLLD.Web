@@ -33,6 +33,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult PageMuster(long id, long CalendarId)
         {
             var value = HttpContext.Session.GetString("idrole");
+            ViewBag.usename = HttpContext.Session.GetString("user");
             ViewBag.idrole = Convert.ToInt32(value);
             ViewBag.caid = CalendarId;
             ViewBag.groupID = id;

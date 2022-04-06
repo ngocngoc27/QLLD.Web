@@ -146,6 +146,8 @@ namespace QL_LaoDong.Services
             {
                 ngaylaodong = ((float)stu / (ss * 12)) * 100;
             }
+            var sosinhvien = _context.Student.Where(x => x.ClassId == model.Id).ToList();
+            int sosv = Convert.ToInt32(sosinhvien.Count());
             var entity = _context.Class.Where(x => x.Id == model.Id).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
@@ -158,6 +160,8 @@ namespace QL_LaoDong.Services
             {
                 entity.Status = (int)ClassEnum.chuahoanthanh;
             }
+
+            entity.Total = sosv;
             _context.SaveChanges();
         }
     }

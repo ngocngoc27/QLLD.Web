@@ -121,12 +121,12 @@ namespace QL_LaoDong.Services
             long id = Convert.ToInt64(data);
             if (typeofedu == "Đại học")
             {
-                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >10 && x.NumberOfWork<18).ToList();
+                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork>=11 && x.NumberOfWork<=17).ToList();
                 return datahoanthanh.Count();
             }
             else
             {
-                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >= 6 && x.NumberOfWork<12).ToList();
+                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork >=6 && x.NumberOfWork<=12).ToList();
                 return dataht.Count();
             }
         }
@@ -137,12 +137,12 @@ namespace QL_LaoDong.Services
             long id = Convert.ToInt64(data);
             if (typeofedu == "Đại học")
             {
-                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork <10).ToList();
+                var datahoanthanh = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork <=10).ToList();
                 return datahoanthanh.Count();
             }
             else
             {
-                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork<6).ToList();
+                var dataht = _context.Student.Where(x => x.ClassId == id && x.NumberOfWork<=6).ToList();
                 return dataht.Count();
             }
         }
