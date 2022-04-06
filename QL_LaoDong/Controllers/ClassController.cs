@@ -150,7 +150,7 @@ namespace QL_LaoDong.Controllers
                         percent = (float)lo.TotalOfWork / (float)(lo.Total * 18) * 100;
                     }
                     sheet.Cells[rowIdx, 8].Value = lo.FacultyName;
-                    sheet.Cells[rowIdx, 9].Value = percent;
+                    sheet.Cells[rowIdx, 9].Value = percent + "%";
                     rowIdx++;                    
                     
 

@@ -119,7 +119,7 @@ namespace QL_LaoDong.Services
         }
         public List<ClassRPVM> GetClass()
         {
-            var data = _context.Class.Include(x=>x.Faculty).Where(x => x.IsDelete != true && x.Status == (int)ClassEnum.hoanthanh).Select(x => new ClassRPVM()
+            var data = _context.Class.Include(x=>x.Faculty).Where(x => x.IsDelete != true).Select(x => new ClassRPVM()
             {
                 ClassCode=x.ClassCode,
                 ClassName=x.ClassName,

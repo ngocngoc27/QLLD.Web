@@ -25,6 +25,7 @@ namespace QL_LaoDong.Services
             entity.GroupsId= id;
             entity.Amount = model.Amount;
             data.Available -= Convert.ToInt32(entity.Amount);
+            entity.Status = model.Status;
             _context.Toolticker.Add(entity);
             _context.SaveChanges();
         }
