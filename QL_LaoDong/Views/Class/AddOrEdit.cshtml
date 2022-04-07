@@ -46,14 +46,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Sỉ số lớp</label>
-                        <input asp-for="Total" class="form-control" />
+                        <input asp-for="Total" class="form-control" type="number" min="0" />
                         <span asp-validation-for="Total" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Số ngày lao động</label>
-                        <input asp-for="TotalOfWork" class="form-control" />
+                        <input asp-for="TotalOfWork" class="form-control" type="number" min="0" />
                         <span asp-validation-for="TotalOfWork" class="text-danger"></span>
                     </div>
                 </div>

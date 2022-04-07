@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Số ngày lao động</label>
-                        <input asp-for="NumberOfWork" class="form-control" />
+                        <input asp-for="NumberOfWork" class="form-control" type="number" min="0" />
                         <span asp-validation-for="NumberOfWork" class="text-danger"></span>
                     </div>
                 </div>

@@ -31,7 +31,14 @@ namespace QL_LaoDong.Services
             }
             var entity = new Student();
             entity.Mssv = model.Mssv;
-            entity.NumberOfWork = model.NumberOfWork;
+            if (model.NumberOfWork == null)
+            {
+                entity.NumberOfWork = 0;
+            }
+            else
+            {
+                entity.NumberOfWork = model.NumberOfWork;
+            }
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
@@ -58,7 +65,14 @@ namespace QL_LaoDong.Services
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Mssv = model.Mssv;
-            entity.NumberOfWork = model.NumberOfWork;            
+            if (model.NumberOfWork == null)
+            {
+                entity.NumberOfWork = entity.NumberOfWork;
+            }
+            else
+            {
+                entity.NumberOfWork = model.NumberOfWork;
+            }       
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
