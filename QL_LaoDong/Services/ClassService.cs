@@ -28,7 +28,14 @@ namespace QL_LaoDong.Services
             entity.ClassName = model.ClassName;
             entity.Training = model.Training;
             entity.TypeOfEducation = model.TypeOfEducation;
-            entity.Total = model.Total;
+            if (model.Total == null)
+            {
+                entity.Total = 0;
+            }
+            else
+            {
+                entity.Total = model.Total;
+            }
             entity.TotalOfWork = model.TotalOfWork;
             entity.Status = model.Status; //1 = Chưa hoàn thành
             entity.FacultyId = model.FacultyId;
@@ -55,7 +62,14 @@ namespace QL_LaoDong.Services
             entity.ClassName = model.ClassName;
             entity.Training = model.Training;
             entity.TypeOfEducation = model.TypeOfEducation;
-            entity.Total = model.Total;
+            if (model.Total == null)
+            {
+                entity.Total = entity.Total;
+            }
+            else
+            {
+                entity.Total = model.Total;
+            }
             entity.TotalOfWork = model.TotalOfWork;
             entity.Status = model.Status;
             entity.FacultyId = model.FacultyId;
