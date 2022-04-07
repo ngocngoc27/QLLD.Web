@@ -57,6 +57,7 @@ namespace QL_LaoDong.Controllers
             //return Json(new { IsValid = true, html = Helper.RenderRazorViewToString(this, "PageMuster", _musterService.PageMuster(ids)) });
             //return RedirectToAction("PageMuster");
             return Redirect("/Muster/PageMuster/" + ids);
+            //return View("PageMuster");
 
         }
         [HttpPost, ActionName("Delete")]
