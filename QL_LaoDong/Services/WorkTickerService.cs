@@ -24,6 +24,7 @@ namespace QL_LaoDong.Services
         public void Create(Workticker model)
         {
             var entity = new Workticker();
+            var number_data = _context.Calendar.Include(x=>x.Workticker).Where(x=>x.Id==model.CalendarId).FirstOrDefault();
             entity.CalendarId = model.Id;
             entity.Note = model.Note;
 
@@ -33,7 +34,7 @@ namespace QL_LaoDong.Services
 
             entity.Status = (int) WorkTickerEnum.ChoDuyet;
             entity.RegistrationForm = model.RegistrationForm;
-
+            
             string total = _httpContextAccessor.HttpContext.Session.GetString("total");
             int num = Convert.ToInt32(total);
             
@@ -41,8 +42,8 @@ namespace QL_LaoDong.Services
                 entity.RegistrationNumber = 1; //gán số lượng là một
             else if (entity.RegistrationForm == "Lớp")
                 entity.RegistrationNumber = num; //lấy sỉ số lớp của session
+            number_data.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
 
-            
             _context.Workticker.Add(entity);
             _context.SaveChanges();
         }
@@ -63,13 +64,15 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Status = model.Status;
             entity.Note = model.Note;
-            if (entity.Status == (int)WorkTickerEnum.DaDuyet)
-                entity.Calendar.RegistrationTotal += Convert.ToInt32(entity.RegistrationNumber);
+            if (entity.Status == (int)WorkTickerEnum.DaHuy)
+                entity.Calendar.RegistrationTotal -= Convert.ToInt32(entity.RegistrationNumber);
             if (entity.Calendar.RegistrationTotal >= entity.Calendar.LimitsNumber)
                 entity.Calendar.Status = (int)CalendarEnum.KhoaDangKy;
+            else entity.Calendar.Status = (int)CalendarEnum.ChoPhepDangKy;
             _context.Workticker.Update(entity);
             _context.SaveChanges();
         }
+
         public void Cancle(Workticker model)
         {
             var entity = _context.Workticker.Include(x => x.Calendar).Where(x => x.Id == model.Id).FirstOrDefault();
