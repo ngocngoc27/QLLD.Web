@@ -64,6 +64,7 @@ namespace QL_LaoDong.Services
             var entity = _context.Student.Where(x => x.Id == model.Id).FirstOrDefault();
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
+            
             entity.Mssv = model.Mssv;
             if (model.NumberOfWork == default)
             {
