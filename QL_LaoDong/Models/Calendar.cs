@@ -18,8 +18,8 @@ namespace QL_LaoDong.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Day { get; set; }
-        public int? LimitsNumber { get; set; }
-        public int? RegistrationTotal { get; set; }
+        public int LimitsNumber { get; set; }
+        public int RegistrationTotal { get; set; }
         public int? Status { get; set; }
         public bool? IsDelete { get; set; }
 

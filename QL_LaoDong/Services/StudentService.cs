@@ -31,7 +31,7 @@ namespace QL_LaoDong.Services
             }
             var entity = new Student();
             entity.Mssv = model.Mssv;
-            if (model.NumberOfWork == null)
+            if (model.NumberOfWork == default)
             {
                 entity.NumberOfWork = 0;
             }
@@ -65,7 +65,7 @@ namespace QL_LaoDong.Services
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             entity.Mssv = model.Mssv;
-            if (model.NumberOfWork == null)
+            if (model.NumberOfWork == default)
             {
                 entity.NumberOfWork = entity.NumberOfWork;
             }

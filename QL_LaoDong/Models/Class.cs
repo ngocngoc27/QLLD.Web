@@ -15,8 +15,8 @@ namespace QL_LaoDong.Models
         public string ClassName { get; set; }
         public string Training { get; set; }
         public string TypeOfEducation { get; set; }
-        public int? Total { get; set; }
-        public int? TotalOfWork { get; set; }
+        public int Total { get; set; }
+        public int TotalOfWork { get; set; }
         public int? Status { get; set; }
         public long? FacultyId { get; set; }
         public bool? IsDelete { get; set; }

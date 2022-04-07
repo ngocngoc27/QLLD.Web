@@ -28,7 +28,7 @@ namespace QL_LaoDong.Services
             entity.ClassName = model.ClassName;
             entity.Training = model.Training;
             entity.TypeOfEducation = model.TypeOfEducation;
-            if (model.Total == null)
+            if (model.Total == default)
             {
                 entity.Total = 0;
             }
@@ -62,7 +62,7 @@ namespace QL_LaoDong.Services
             entity.ClassName = model.ClassName;
             entity.Training = model.Training;
             entity.TypeOfEducation = model.TypeOfEducation;
-            if (model.Total == null)
+            if (model.Total == default)
             {
                 entity.Total = entity.Total;
             }
@@ -114,7 +114,7 @@ namespace QL_LaoDong.Services
         {
             var data = _context.Class.Where(x => x.IsDelete != true).Sum(x=>x.TotalOfWork);
 
-            return data.Value;
+            return data;
         }
        public int CountNgayLD()
         {
