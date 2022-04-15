@@ -42,9 +42,9 @@ namespace QL_LaoDong.Services
             entity.ClassId = model.ClassId;
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
-            var dem = _context.Student.Where(x => x.ClassId == model.ClassId).ToList();
+            var dem = _context.Student.Where(x => x.ClassId == model.ClassId && x.IsDelete!=true).ToList();
             int siso = dem.Count();
-            var lop = _context.Class.Where(x => x.Id == model.ClassId).FirstOrDefault();
+            var lop = _context.Class.Where(x => x.Id == model.ClassId&& x.IsDelete!=true).FirstOrDefault();
             lop.Total = siso+1;
             _context.Student.Add(entity);
             _context.SaveChanges();
@@ -55,6 +55,10 @@ namespace QL_LaoDong.Services
             var entity = _context.Student.Where(x => x.Id == model.Id).FirstOrDefault();
             if(entity == default)
                 throw new Exception("Không tìm thấy dữ liệu!!!");
+            var dem = _context.Student.Where(x => x.ClassId == entity.ClassId &&x.IsDelete!=true ).ToList();
+            int siso = dem.Count();
+            var lop = _context.Class.Where(x => x.Id == entity.ClassId && x.IsDelete!=true).FirstOrDefault();
+            lop.Total = siso - 1;
             entity.IsDelete = true;
             _context.SaveChanges();
         }
@@ -74,13 +78,24 @@ namespace QL_LaoDong.Services
             {
                 entity.NumberOfWork = model.NumberOfWork;
             }       
-            entity.ClassId = model.ClassId;
+            
             entity.AccountId = model.AccountId;
             entity.IsDelete = false;
-            var dem = _context.Student.Where(x => x.ClassId == model.ClassId).ToList();
+            var dem = _context.Student.Where(x => x.ClassId == model.ClassId && x.IsDelete!=true).ToList();
             int siso = dem.Count();
-            var lop = _context.Class.Where(x => x.Id == model.ClassId).FirstOrDefault();
-            lop.Total = siso + 1;
+            if (model.ClassId != entity.ClassId)
+            {
+                var lop = _context.Class.Where(x => x.Id == model.ClassId && x.IsDelete!=true).FirstOrDefault();
+                lop.Total = siso + 1;
+                var lopcu = _context.Class.Where(x => x.Id == entity.ClassId && x.IsDelete!=true).FirstOrDefault();
+                lopcu.Total -= 1;
+                entity.ClassId = model.ClassId;
+
+            }
+            else
+            {
+                entity.ClassId = entity.ClassId;
+            }
             _context.Student.Update(entity);
             _context.SaveChanges();
         }
