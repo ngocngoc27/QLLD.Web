@@ -147,8 +147,8 @@ namespace QL_LaoDong.Services
         }
         public void TongLD(Class model)
         {
-            var stu = _context.Student.Where(x => x.ClassId == model.Id).Sum(x => x.NumberOfWork);
-            var sslop = _context.Class.Where(x => x.Id ==model.Id).Select(x => x.Total).FirstOrDefault();
+            var stu = _context.Student.Where(x => x.ClassId == model.Id && x.IsDelete!=true).Sum(x => x.NumberOfWork);
+            var sslop = _context.Class.Where(x => x.Id ==model.Id && x.IsDelete!=true).Select(x => x.Total).FirstOrDefault();
             int ss = Convert.ToInt32(sslop);
             string typeofedu = _httpContextAccessor.HttpContext.Session.GetString("typeofedu");
             float ngaylaodong = 0;
@@ -160,9 +160,9 @@ namespace QL_LaoDong.Services
             {
                 ngaylaodong = ((float)stu / (ss * 12)) * 100;
             }
-            var sosinhvien = _context.Student.Where(x => x.ClassId == model.Id).ToList();
+            var sosinhvien = _context.Student.Where(x => x.ClassId == model.Id && x.IsDelete!=true).ToList();
             int sosv = Convert.ToInt32(sosinhvien.Count());
-            var entity = _context.Class.Where(x => x.Id == model.Id).FirstOrDefault();
+            var entity = _context.Class.Where(x => x.Id == model.Id && x.IsDelete!=true).FirstOrDefault();
             if (entity == default)
                 throw new Exception("Không tìm thấy dữ liệu.");
             entity.TotalOfWork = Convert.ToInt32(stu);

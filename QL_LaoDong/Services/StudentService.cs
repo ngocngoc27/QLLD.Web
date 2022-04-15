@@ -59,7 +59,9 @@ namespace QL_LaoDong.Services
             int siso = dem.Count();
             var lop = _context.Class.Where(x => x.Id == entity.ClassId && x.IsDelete!=true).FirstOrDefault();
             lop.Total = siso - 1;
+            var taikhoan = _context.Account.Where(x => x.Id == entity.AccountId).FirstOrDefault();
             entity.IsDelete = true;
+            taikhoan.IsDelete = true;
             _context.SaveChanges();
         }
 
@@ -116,7 +118,7 @@ namespace QL_LaoDong.Services
             //var entity = new Class();
             //entity.TotalOfWork = sum;  
             
-            var student = _context.Student.Include(x => x.Account).Include(x => x.Class).Where(x=>x.ClassId == id).ToList();
+            var student = _context.Student.Include(x => x.Account).Include(x => x.Class).Where(x=>x.ClassId == id && x.IsDelete!=true).ToList();
             return student;
         }
         public Student GetById(int id)
