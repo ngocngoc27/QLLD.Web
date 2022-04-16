@@ -76,8 +76,16 @@ namespace QL_LaoDong.Controllers
             {
                 if (model.Id == 0)
                 {
-
-                    _studentService.Create(model);
+                    try
+                    {
+                        _studentService.Create(model);
+                    }
+                    catch(Exception ex)
+                    {
+                       
+                         throw new Exception(ex.Message.ToString());
+                    }
+                    
                 }
                 else
                 {

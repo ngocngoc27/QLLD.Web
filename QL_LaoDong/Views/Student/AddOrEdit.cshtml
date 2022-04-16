@@ -4,6 +4,7 @@
     ViewData["Title"] = "AddOrEdit";
     Layout = null;
 }
+
 <div class="row">
     <div class="col-md-12">
         <form asp-action="AddOrEdit" asp-route-id="@Model.Id" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
@@ -44,8 +45,10 @@
             </div>
         </form>
     </div>
+
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

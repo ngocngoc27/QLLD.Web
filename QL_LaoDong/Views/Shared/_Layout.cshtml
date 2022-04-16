@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="~/assets/images/logokonen.ico">
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />*@
+    <link href="~/lib/toastr-master/build/toastr.min.css" rel="stylesheet" />
     <!-- Table datatable css -->
     <link href="~/assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
@@ -17,6 +19,7 @@
 
     <link href="~/assets/css/icons.min.css" rel="stylesheet" />
     <link href="~/assets/css/app.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div id="wrapper">
@@ -235,7 +238,8 @@
 
     <!-- Datatables init -->
     <script src="~/assets/js/pages/datatables.init.js"></script>
-
+    <!--thongbao javascripts-->
+    <script src="~/lib/toastr-master/build/toastr.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

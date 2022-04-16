@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Nancy.Json;
 using QL_LaoDong.Data;
 using QL_LaoDong.Helpers;
 using QL_LaoDong.Interfaces;
@@ -27,7 +28,7 @@ namespace QL_LaoDong.Services
             var check = _context.Student.Where(x => x.Mssv == model.Mssv || x.AccountId == model.AccountId).FirstOrDefault();
             if(check != default(Student))
             {
-                throw new Exception("Tài khoản đã tồn tại!!!");
+                throw new Exception("Sinh viên đã tồn tại!!!");
             }
             var entity = new Student();
             entity.Mssv = model.Mssv;
@@ -198,6 +199,6 @@ namespace QL_LaoDong.Services
             return ngaylaodong;
         }
 
-
     }
 }
+

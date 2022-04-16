@@ -31,7 +31,27 @@ JQueryAjaxPost = form => {
                     $("#form-modal .modal-title").html('');
                     $("#form-modal").modal('hide');
                     /*$.notify('submitted successfully', { globalPosition: 'top center', className: 'success' })*/
-                    window.location.reload();
+                    Command: toastr["success"]("Thực hiện thành công")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": true,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                        
+                    };
+                    setTimeout("window.location.reload()", 3000);
 
                 }
                 else
@@ -64,8 +84,27 @@ JQueryAjaxDelete = form => {
                 processData: false,
                 success: function (res) {
                     $("#view-all").html(res.html);
-                  /*  $.notify('delete successfully', { globalPosition: 'top center', className: 'success' })*/
-                    window.location.reload();
+                    Command: toastr["success"]("Xóa thành công")
+
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": true,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+
+                    };
+                    setTimeout("window.location.reload()", 3000);
                 },
                 error: function (err) {
                     console.log(err);
@@ -102,3 +141,4 @@ function previewFile(input) {
 function changeImage() {
     document.getElementById('myImage').style.display = "none";
 }
+

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace QL_LaoDong.Models
 {
@@ -11,8 +12,11 @@ namespace QL_LaoDong.Models
         }
 
         public long Id { get; set; }
+        
         public string ClassCode { get; set; }
+        
         public string ClassName { get; set; }
+        
         public string Training { get; set; }
         public string TypeOfEducation { get; set; }
         public int Total { get; set; }
