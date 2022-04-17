@@ -15,7 +15,7 @@ namespace QL_LaoDong.Models
         public string Description { get; set; }
         public string Locate { get; set; }
         public bool? IsDelete { get; set; }
-        public int? BenefitOfDay { get; set; }
+        public int BenefitOfDay { get; set; }
 
         public virtual ICollection<Groups> Groups { get; set; }
     }
