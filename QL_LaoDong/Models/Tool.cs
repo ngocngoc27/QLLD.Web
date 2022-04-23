@@ -12,7 +12,7 @@ namespace QL_LaoDong.Models
 
         public long Id { get; set; }
         public string Tool1 { get; set; }
-        public int? Sum { get; set; }
+        public int Sum { get; set; }
         public string Unit { get; set; }
         public int? Available { get; set; }
         public bool? IsDelete { get; set; }

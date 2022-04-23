@@ -29,7 +29,9 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Họ Tên</label>
-                        <select asp-for="AccountId" class="form-control" asp-items="@ViewBag.acc"></select>
+                        <select asp-for="AccountId" class="form-control" asp-items="@ViewBag.acc">
+                            <option value="">------Họ tên------</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-6">
