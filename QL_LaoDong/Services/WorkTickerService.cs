@@ -24,7 +24,7 @@ namespace QL_LaoDong.Services
         public void Create(Workticker model)
         {
             var entity = new Workticker();
-            var number_data = _context.Calendar.Include(x=>x.Workticker).Where(x=>x.Id==model.CalendarId).FirstOrDefault();
+            var number_data = _context.Calendar.Include(x=>x.Workticker).Where(x=>x.Id==model.Id).FirstOrDefault();
             entity.CalendarId = model.Id;
             entity.Note = model.Note;
 
