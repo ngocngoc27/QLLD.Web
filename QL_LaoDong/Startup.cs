@@ -32,11 +32,7 @@ namespace QL_LaoDong
         {
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
-<<<<<<< HEAD
             services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=LAPTOP-LFIQ3TTI;Database=demoQLLD;User ID=sa;Password=123456;Trusted_Connection=True;Integrated Security=false"));
-=======
-            services.AddDbContext<DataContext>(x => x.UseSqlServer(@"Server=HONGNGOC\SQLEXPRESS;Database=demoQLLD;Trusted_Connection=True;Integrated Security=true"));
->>>>>>> de0e70535008df1685139271576e89097cbd10cc
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IWorkTickerService,WorkTickerService>();

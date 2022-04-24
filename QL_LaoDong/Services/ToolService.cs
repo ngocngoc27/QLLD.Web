@@ -45,7 +45,7 @@ namespace QL_LaoDong.Services
             entity.Tool1 = model.Tool1;
             entity.Sum = model.Sum;
             entity.Unit = model.Unit;
-            entity.Available = model.Available;
+            entity.Available = entity.Sum;
             _context.Tool.Update(entity);
             _context.SaveChanges();
         }

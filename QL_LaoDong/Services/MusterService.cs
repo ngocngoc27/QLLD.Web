@@ -75,10 +75,10 @@ namespace QL_LaoDong.Services
                 {
                     entity.Student.NumberOfWork += Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
                 }
-                else
-                {
-                    entity.Student.NumberOfWork -= Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
-                }                                
+                //else
+                //{
+                //    entity.Student.NumberOfWork -= Convert.ToInt32(entity.Groups.Job.BenefitOfDay);
+                //}                                
                 _context.SaveChanges();
             }      
         }

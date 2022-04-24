@@ -57,49 +57,50 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Student.Mssv)
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Mssv)
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Student.Account.Fullname)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Student.Class.ClassName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Student.Class.Faculty.FacultyName)
-                            </td>
-                            <td>
-                                <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
-                                    @if (item.RollUp == true)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Account.Fullname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Class.ClassName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Student.Class.Faculty.FacultyName)
+                                </td>
+                                <td>
+                                    <div class="checkbox checkbox-primary checkbox-single mr-3 ml-1">
+                                        @if (item.RollUp == true)
+                                        {
+                                            <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);" checked disabled>
+                                            <label for="@item.RollUp"></label>
+                                        }
+                                        else
+                                        {
+                                            <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);">
+                                            <label for="@item.RollUp"></label>
+                                        }
+
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (item.RollUp != true)
                                     {
-                                        <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);" checked>
-                                        <label for="@item.RollUp"></label>
-                                    }
-                                    else
-                                    {
-                                        <input data-idmuster="@item.Id" data-stuid="@item.StudentId" id="@item.Id" type="checkbox" class="diemdanh" onclick="check(this);">
-                                        <label for="@item.RollUp"></label>
+                                        <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
+                                            <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
+                                        </form>
                                     }
 
-                                </div>
-                            </td>
-                            <td>
-                                @if (item.RollUp != true)
-                                {
-                                    <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
-                                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Xóa sinh viên khỏi nhóm"><i class="fas fa-user-minus"></i></button>
-                                    </form>
-                                }
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         }
 
                     </tbody>
                 </table>
-                <button onclick="send();" class="btn btn-success">Lưu</button>
+                   <button onclick="send();" class="btn btn-success">Lưu</button>
             </div>
         </div>
     </div>

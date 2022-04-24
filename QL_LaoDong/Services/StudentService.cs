@@ -73,7 +73,7 @@ namespace QL_LaoDong.Services
                 throw new Exception("Không tìm thấy dữ liệu!!!");
             
             entity.Mssv = model.Mssv;
-            if (model.NumberOfWork == default)
+            if (model.NumberOfWork == null)
             {
                 entity.NumberOfWork = entity.NumberOfWork;
             }
