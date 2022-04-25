@@ -95,7 +95,7 @@ namespace QL_LaoDong.Services
         }
         public List<Workticker> PageWorkTicker(long id)
         {
-            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.CalendarId == id).ToList();
+            return _context.Workticker.Include(x => x.Calendar).Include(x => x.Account).Where(x => x.CalendarId == id && x.IsDelete != true).ToList();
         }
         public Workticker GetById(int id)
         {

@@ -58,7 +58,6 @@ namespace QL_LaoDong.Controllers
             //return RedirectToAction("PageMuster");
             return Redirect("/Muster/PageMuster/" + ids);
             //return View("PageMuster");
-
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

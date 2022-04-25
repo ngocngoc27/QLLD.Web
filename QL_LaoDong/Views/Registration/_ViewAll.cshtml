@@ -78,9 +78,13 @@
                                 {
                                     @Html.FormatValue(item.Status, "Báo bận")
                                 }
+                                else if (item.Status == (int)WorkTickerEnum.DaHuy)
+                                {
+                                    @Html.FormatValue(item.Status, "Đã hủy")
+                                }
                             </td>
                             <td>
-                                @if (item.Status == (int)WorkTickerEnum.ChoDuyet)
+                                @if ((item.Status == (int)WorkTickerEnum.ChoDuyet) || (item.Status == (int)WorkTickerEnum.DaHuy))
                                 {
 
                                     <form asp-action="Delete" asp-route-id="@item.Id" onsubmit="return JQueryAjaxDelete(this);" class="d-inline">
