@@ -13,14 +13,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Tên tài khoản</label>
-                        <input asp-for="Username" class="form-control" />
+                        <input asp-for="Username" class="form-control" required />
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Mật khẩu</label>
-                        <input asp-for="Password" class="form-control" type="password" />
+                        <input asp-for="Password" class="form-control" type="password" required />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Họ tên</label>
-                        <input asp-for="Fullname" class="form-control" />
+                        <input asp-for="Fullname" class="form-control" required />
                         <span asp-validation-for="Fullname" class="text-danger"></span>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Ngày sinh</label>
-                        <input asp-for="DateOfBirth" class="form-control" />
+                        <input asp-for="DateOfBirth" class="form-control" required />
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </div>
                 </div>

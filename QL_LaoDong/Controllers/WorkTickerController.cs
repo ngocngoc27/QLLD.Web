@@ -111,6 +111,7 @@ namespace QL_LaoDong.Controllers
         public IActionResult PageWorkTicker(long id)
         {
             var value = HttpContext.Session.GetString("idrole");
+            ViewBag.usename = HttpContext.Session.GetString("user");
             ViewBag.idrole = Convert.ToInt32(value);
             ViewBag.calendar = _calendarService.GetById(id);
             var data = _worktickerService.PageWorkTicker(id);

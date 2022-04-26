@@ -12,14 +12,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Mã lớp</label>
-                        <input asp-for="ClassCode" class="form-control" />
+                        <input asp-for="ClassCode" class="form-control" required />
                         <span asp-validation-for="ClassCode" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Tên lớp</label>
-                        <input asp-for="ClassName" class="form-control" />
+                        <input asp-for="ClassName" class="form-control" required />
                         <span asp-validation-for="ClassName" class="text-danger"></span>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Khóa đào tạo</label>
-                        <input asp-for="Training" class="form-control" />
+                        <input asp-for="Training" class="form-control" required />
                         <span asp-validation-for="Training" class="text-danger"></span>
                     </div>
                 </div>

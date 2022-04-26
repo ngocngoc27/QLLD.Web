@@ -9,7 +9,7 @@
         <form asp-action="Create" method="post" onsubmit="return JQueryAjaxPost(this);" autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <label class="control-label">Hình thức đăng ký</label>
-            <div class="row justify-content-around">                
+            <div class="row justify-content-around" >                
                 <div class="form-group">
                     <div class="form-check">
                         <input asp-for="RegistrationForm" class="form-check-input" type="radio" id="exampleRadios1" value="Cá nhân" checked>Cá nhân
