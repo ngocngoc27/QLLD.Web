@@ -108,7 +108,7 @@ namespace QL_LaoDong.Controllers
                 var sheet = package.Workbook.Worksheets.Add("Sinh viên");
                 sheet.Cells["A1"].Value = "TRƯỜNG ĐẠI HỌC ĐỒNG THÁP";
                 sheet.Cells["A2"].Value = "Trung tâm Quản lý dịch vụ";
-                sheet.Cells["D3"].Value = "DANH SÁCH LỚP ĐẠT ĐỦ NGÀY LAO ĐỘNG";
+                sheet.Cells["D3"].Value = "TỶ LỆ DANH SÁCH LỚP ĐẠT NGÀY LAO ĐỘNG";
                 sheet.Cells[5, 3].Value = "Mã lớp";
                 sheet.Cells[5, 4].Value = "Tên lớp";
                 sheet.Cells[5, 5].Value = "Sỉ số lớp";
