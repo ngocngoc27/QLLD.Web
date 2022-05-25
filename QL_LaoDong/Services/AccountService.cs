@@ -34,8 +34,15 @@ namespace QL_LaoDong.Services
             }
             var entity = new Account();
             entity.Username = model.Username;
-            string pass = model.Password;
-            entity.Password = Security.MD5(pass);
+            if (model.Password != null)
+            {
+                string pass = model.Password;
+                entity.Password = Security.MD5(pass);
+            }
+            else
+            {
+                entity.Password = Security.MD5("1234567");
+            }
             entity.Fullname = model.Fullname;
             entity.Sex = model.Sex;
             entity.RoleId = model.RoleId;

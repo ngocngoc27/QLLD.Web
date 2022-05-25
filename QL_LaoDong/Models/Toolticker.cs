@@ -7,7 +7,7 @@ namespace QL_LaoDong.Models
     {
         public long Id { get; set; }
         public long? ToolId { get; set; }
-        public int? Amount { get; set; }
+        public int Amount { get; set; }
         public string Notes { get; set; }
         public bool? IsDelete { get; set; }
         public long? GroupsId { get; set; }
