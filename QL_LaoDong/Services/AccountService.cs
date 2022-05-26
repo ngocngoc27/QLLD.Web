@@ -58,7 +58,12 @@ namespace QL_LaoDong.Services
         {
             return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true).ToList();
         }
-       
+      public List<Account> GetSV()
+        {
+            var student = _context.Student.Where(x => x.IsDelete != true).Select(x => x.AccountId).FirstOrDefault();
+
+            return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true && x.Id != student).ToList();
+        }
         public void Edit(Account model)
         {
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();

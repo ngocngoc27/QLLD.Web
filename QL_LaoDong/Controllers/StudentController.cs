@@ -120,7 +120,7 @@ namespace QL_LaoDong.Controllers
         }
         private void AccountList(object selectacc = null)
         {
-            ViewBag.acc = new SelectList(_accountService.Get(), "Id", "Fullname", selectacc);
+            ViewBag.acc = new SelectList(_accountService.GetSV(), "Id", "Fullname", selectacc);
         }
         private void ClassList(object selectClass = null)
         {
