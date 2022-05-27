@@ -22,10 +22,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-box table-responsive">
-                    <p class="text-muted text-overflow font-weight-bold">
+                    @*<p class="text-muted text-overflow font-weight-bold">
                         <i class="ion ion-md-calendar"></i> 
                         Buổi @calendar.SessionOfDay, ngày @Convert.ToDateTime(calendar.Day).ToString("dd/MM/yyyy") (@calendar.Weekdays)
-                    </p>
+                    </p>*@
                     <div class="d-flex justify-content-lg-between">
                         <div class="btn-addoredit">
                             <a href="/calendar/Index"><i class="far fa-arrow-alt-circle-left"></i> Trở lại</a>
@@ -73,17 +73,17 @@
                                         @Html.DisplayFor(modelItem => item.Job.BenefitOfDay)
                                     </td>
                                     <td>
-                                        @if (item.Status == (int)GroupsEnum.CanBoDaXacNhan)
+                                        @if (item.Status == (int)GroupsEnum.HoanThanh)
                                         {
-                                            @Html.FormatValue(item.Status, "Cán bộ đã xác nhận")
+                                            @Html.FormatValue(item.Status, "Hoàn Thành")
                                         }
-                                        else if (item.Status == (int)GroupsEnum.ChuaCoSinhVien)
+                                        else if (item.Status == (int)GroupsEnum.ChoLaoDong)
                                         {
-                                            @Html.FormatValue(item.Status, "Chưa có sinh viên")
+                                            @Html.FormatValue(item.Status, "Chờ lao động")
                                         }
-                                        else if (item.Status == (int)GroupsEnum.ChuaDiemDanh)
+                                        else if (item.Status == (int)GroupsEnum.DangThucHien)
                                         {
-                                            @Html.FormatValue(item.Status, "Chưa điểm danh")
+                                            @Html.FormatValue(item.Status, "Đang thực hiện")
                                         }
                                     </td>
                                     <td>

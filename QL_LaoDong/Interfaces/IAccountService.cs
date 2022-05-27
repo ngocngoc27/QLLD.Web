@@ -10,7 +10,7 @@ namespace QL_LaoDong.Interfaces
     public interface IAccountService
     {
         List<Account> Get();
-        List<Account> GetSV();
+        //List<Account> GetSV();
         Account GetById(int id);
         void Create(Account model);
         void Edit(Account model);

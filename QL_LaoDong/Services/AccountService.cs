@@ -58,12 +58,12 @@ namespace QL_LaoDong.Services
         {
             return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true).ToList();
         }
-      public List<Account> GetSV()
-        {
-            var student = _context.Student.Where(x => x.IsDelete != true).Select(x => x.AccountId).FirstOrDefault();
-
-            return _context.Account.Include(x => x.Role).Where(x => x.IsDelete != true && x.Id != student).ToList();
-        }
+        //public List<Account> GetSV()
+        //{
+        //    var item = _context.Student.Include(x => x.Account).Where(x => x.IsDelete != true).Select(x=>x.AccountId).FirstOrDefault();
+        //    var student = _context.Account.Include(x => x.Student).Where(x => x.IsDelete != true && x.Id != item).ToList();
+        //    return student;
+        //}
         public void Edit(Account model)
         {
             var entity = _context.Account.Where(x => x.Id == model.Id).FirstOrDefault();
@@ -235,7 +235,5 @@ namespace QL_LaoDong.Services
             entity.DateOfBirth = model.DateOfBirth;
             _context.SaveChanges();
         }
-
-
     }
 }
