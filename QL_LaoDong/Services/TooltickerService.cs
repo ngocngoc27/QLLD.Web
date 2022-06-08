@@ -24,7 +24,10 @@ namespace QL_LaoDong.Services
             entity.ToolId = model.ToolId;
             entity.GroupsId= id;
             entity.Amount = model.Amount;
-            data.Available -= Convert.ToInt32(entity.Amount);
+            if(Convert.ToInt32(entity.Amount) <= Convert.ToInt32(data.Available))
+                data.Available -= Convert.ToInt32(entity.Amount);    
+            else
+                throw new Exception("Không đủ số lượng dụng cụ có sẳn!");
             entity.Status = model.Status;
             _context.Toolticker.Add(entity);
             _context.SaveChanges();
